@@ -7,20 +7,28 @@ def sp():
 with open('0196_000902_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
-# grab just the tags we care about
+# Grab just the tags we care about
 time_order_obj = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
+annotation_obj = doc['ANNOTATION_DOCUMENT']['TIER']['ANNOTATION']['ANNOTATION_VALUE']
 
 sp()
-cut_temp = {'start_time':0,
-        'end_time': 0,
-        'annotation':''}
-annotationID = 'a1'
-start_time = 0
-end_time = 0
-annotation = 'empty'
-cut_list = {annotationID:{'start_time':start_time,'end_time':end_time,
-                            'annotation':annotation}}
-count = 0
-print cut_list
-print 'annotationID = ', cut_list.keys()
-print 'start_time = ',cut_list['a1']['start_time']
+
+# Here we create objects to use in our dict (cut_list)
+# When we create a for-loop later we can generate custom annotationIDs
+#   as well as, filling in the start and end times, and the annotations,
+#   however, you might not need the annotation because you'll be combining
+#   annotations later
+# count = 1
+# annotationID = 'a' + str(count)
+# start_time = 0
+# end_time = 0
+# annotation = 'empty'
+# cut_list = {annotationID:{'start_time':start_time,'end_time':end_time,
+#                             'annotation':annotation}}
+
+# for i in time_order_obj:
+#     print i
+
+
+
+sp()
