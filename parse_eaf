@@ -4,10 +4,15 @@ def sp():
     print ''
 # read in elan file (xml)
 # convert to dict using xmltodict
-with open('0196_000902_uclacurt_vetting.eaf') as fd:
+with open('new_eminem.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
-# Make dictionary of start/stop annotation times. keys are time_slot_refs
+# -----------------------------------------------------------------------
+
+# Let's start with the time order tags and separate the time_slot_id (e.g. ts1)
+#   from the time_value (e.g. 32343)
+# We can either create 2 list, one storing the time_slot_id and the other for
+#   the time_value or we can directly put it into a dict
 time_order_obj = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 keys_list = []
 values_list = []
@@ -19,18 +24,59 @@ for i in time_order_obj:
 
 time_order_dict = dict(zip(keys_list,values_list))
 
+# print time_order_dict
+
+# -----------------------------------------------------------------------
+
 # Extract relevant annotation values to build dictionary
+# Let's move to the annotation tag and grab the annotation_id (e.g. a1),
+#   time_slot_ref1 (e.g. ts1), and time_slot_ref2 (e.g. ts2)
+
+# The reason we might need ref1 and ref2 is so that we can use these to
+#   reference our time_order object (which contains the time selection)
+
+# list_of_annotation_objs allows us to access the tiers (e.g. cut or bookmark)
+# annotation_obj contains the first tier (in this case 'cut' tier)..
+#   this was possible by indexing ([0]) with list_of_annotation_objs, however
+#   this doesn't apply for this situation
+
+# annotation_obj is the annotations inside the tier tag
+
 list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER'] # iterate over this eventually
-annotation_obj = list_of_annotation_objs[0]
+annotation_obj = list_of_annotation_objs#[0] <--IMPORTANT
+
+# IMPORTANT ----- IMPORTANT
+# You may or may not need to change the index above depending on how many
+#   tiers you have.  If you only have one tier, then you don't need to
+#   index, however if you have more than one tier, you will need to index.
+#   This way annotation_obj knows which tier to reference to.
 
 print annotation_obj
+sp()
 
-cut_dict = annotation_obj['ANNOTATION']['ALIGNABLE_ANNOTATION']
+# cut_dict gives us our first of many annotations.  We need to use the
+#   index ([0]) to reference the first annotation.  Our next tag
+#   alignable_annotation brings us to our final step where we can start
+#   extracting values
+cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
+
+# cut_id will be the very first key in our dict.  The value for cut_id
+#   is another dict consisting of references to start and end objects and
+#   its values.  These start and end objects are time_slot_id's that we
+#   will use to reference back to our time_order_dict
+# start_cut_ref gives us 'ts1','ts2', etc.
 cut_id = cut_dict['@ANNOTATION_ID']
 start_cut_ref = cut_dict['@TIME_SLOT_REF1']
 
-
-d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0}
+# d is our final product consisting of:
+# cut_id (e.g. 'a1','a2', etc.)
+# start_cut_ref (e.g. 'ts1','ts3', etc.)
+# end_cut_ref (e.g. 'ts2', 'ts4', etc.)
+# start_cut_value (e.g. 1000)
+# end_cut_value (e.g. 1010)
+# we might want to think about adding annotation and its value
+d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
+                'end_curt_rwf': end_curt_ref, 'end_cut_value': 0}
 }
 
 start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
@@ -38,104 +84,12 @@ start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
 d['a1']['start_cut_value'] = start_cut_value
 
 print d
-
-#print d['a1']['start_cut_ref']
-
-sp()
+#
+# #print d['a1']['start_cut_ref']
+#
+# sp()
 # print annotation_obj
 # stuff = annotation_obj['ANNOTATION']
-#
-# sp()
-# # ----------------------------------------------------------0--------
-# # This part of our code extracts the ANNNOTATION_ID, TIME_SLOT_REF1,
-# #   TIME_SLOT_REF2, and ANNOTATION_VALUE and appends it to list that we've
-# #   created for each
-# annotation_id = []
-# time_ref1 = []
-# time_ref2 = []
-# annotation_value = []
-# for i in stuff:
-#     # print i['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-#     # print i['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-#     # print i['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-#     # print i['ALIGNABLE_ANNOTATION']['@ANNOTATION_VALUE']
-#     annotation_id.append(i['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID'])
-#     time_ref1.append(i['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1'])
-#     time_ref2.append(i['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2'])
-#     annotation_value.append(i['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE'])
-# #
-# # print annotation_id
-# # print time_ref1
-# # print time_ref2
-# # print annotation_value
-# # ------------------------------------------------------------------
-#
-#
-# # -------------------------------------------------------------------
-# # This portion of our code creates 2 list, a keys and values list from
-# #   the TIME_ORDER section
 
-
-#print time_order_dict[d['a1']['start_cut_ref']]
-
-# for i in time_order_dict.items():
-#     print i
-#
-# # --------------------------------------------------------------------
-# sp()
-#
-# # --------------------------------------------------------------------
-# # This part of our code creates our cut_list dict consisting of keys from
-# #   annotation_id (a1,a2,a3...) and empty values (None)
-# # keys = annotation_id
-# # cut_list = {key: None for key in keys}
-# # print cut_list
-#
-# # --------------------------------------------------------------------
-#
-#
-#
-#
-# # Now that we have designated which key we want, we can select which values
-# #   we want to extract that particular key
-# # Below this, you created some keys to use for your dict, you can probably
-# #   directly assign each of the values that you are extracting and assign
-# #   it to the variable
-# # print annotation_obj[0]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-# # print annotation_obj[0]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-# # print annotation_obj[0]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-# # print annotation_obj[0]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-# #
-# # # Here we create objects to use in our dict (cut_list)
-# # # When we create a for-loop later we can generate custom annotationIDs
-# # #   as well as, filling in the start and end times, and the annotations,
-# # #   however, you might not need the annotation because you'll be combining
-# # #   annotations later
-#
-# # # Maybe you can use this as a idea of how to setup the your cut_list dict
-# # count = 1
-# # annotationID = 'empty'
-# # start_time = 0
-# # end_time = 0
-# # annotation = 'empty'
-# # cut_list = {annotationID:{'start_time':start_time,
-# #                           'end_time':end_time,
-# #                           'annotation':annotation
-# #                            }}
-#
-#
-#
-#
-#
-# """
-# 1. You want the TIME_SLOT_ID from the TIME_ORDER section to match.
-# 2. So maybe you create a dict using the TIME_SLOT_ID's as a key and the
-#     TIME_VALUE as the value
-# 3. Why don't you try putting the TIME_ORDER into a dict first.
-# 4. Now that you have created a dict of keys and values from the TIME_ORDER
-# 5. We can start transferring the keys and values from time_order_dict
-#     to our cut_list dict
-# """
-#
-#
-#
+# test chang 
+sp()
