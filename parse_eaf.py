@@ -51,7 +51,7 @@ annotation_obj = list_of_annotation_objs#[0] <--IMPORTANT
 #   index, however if you have more than one tier, you will need to index.
 #   This way annotation_obj knows which tier to reference to.
 
-print annotation_obj
+#print annotation_obj
 sp()
 
 # cut_dict gives us our first of many annotations.  We need to use the
@@ -67,6 +67,10 @@ cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
 # start_cut_ref gives us 'ts1','ts2', etc.
 cut_id = cut_dict['@ANNOTATION_ID']
 start_cut_ref = cut_dict['@TIME_SLOT_REF1']
+end_cut_ref = cut_dict['@TIME_SLOT_REF2']
+annotation_value = cut_dict['ANNOTATION_VALUE']
+
+# -------------------------------------------------------------------
 
 # d is our final product consisting of:
 # cut_id (e.g. 'a1','a2', etc.)
@@ -76,20 +80,72 @@ start_cut_ref = cut_dict['@TIME_SLOT_REF1']
 # end_cut_value (e.g. 1010)
 # we might want to think about adding annotation and its value
 d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
-                'end_curt_rwf': end_curt_ref, 'end_cut_value': 0}
+                'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
+                'annotation_value':annotation_value}
 }
 
 start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
-
+end_cut_value = time_order_dict[d['a1']['end_cut_ref']]
 d['a1']['start_cut_value'] = start_cut_value
+d['a1']['end_cut_value'] = end_cut_value
 
-print d
+# print d
 #
 # #print d['a1']['start_cut_ref']
-#
-# sp()
-# print annotation_obj
-# stuff = annotation_obj['ANNOTATION']
 
-# test chang 
+# --------------------------------------------------------------------
+
+# Let's try finding how many annotations there are first so that we
+#   can use it in a loop
+
+print len(list_of_annotation_objs['ANNOTATION'])
+sp()
+num_of_annotations = len(list_of_annotation_objs['ANNOTATION'])
+print num_of_annotations
+
+# Now that we have found how many there are we can probably use it
+#   in a while-loop, but first we need to get to the annotations
+# Let's use the list_of annotation_obj from earlier to
+sp()
+print list_of_annotation_objs['ANNOTATION'][4]
+sp()
+print list_of_annotation_objs['ANNOTATION'][4]['ALIGNABLE_ANNOTATION']
+sp()
+print list_of_annotation_objs['ANNOTATION'][4]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+sp()
+count = 0
+list_of_id = []
+while count != num_of_annotations:
+    id = list_of_annotation_objs['ANNOTATION'][count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+    print id
+    list_of_id.append(id)
+    count += 1
+
+print list_of_id
+
+sp()
+
+list_of_annotation_objs['ANNOTATION']
+
+num = 0
+
+while num != list_of_annotation_objs['ANNOTATION']:
+    print list_of_annotation_objs['ANNOTATION'][num]
+    num += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sp()
