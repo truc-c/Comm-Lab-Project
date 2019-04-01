@@ -153,15 +153,4 @@ while num != list_of_annotation_objs['ANNOTATION']:
 
 
 
-
-=======
-print d
-
-#print d['a1']['start_cut_ref']
->>>>>>> d003bc84e49146ac4a5c381891472bcbb6682425
-
-sp()
-# print annotation_obj
-# stuff = annotation_obj['ANNOTATION']
 #
-# sp()
