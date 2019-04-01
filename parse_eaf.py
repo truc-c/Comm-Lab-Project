@@ -110,6 +110,9 @@ print num_of_annotations
 # Now that we have found how many there are we can probably use it
 #   in a while-loop, but first we need to get to the annotations
 # Let's use the list_of annotation_obj from earlier to
+# FINISHED !!!!!!!!!! DO NOT CHANGE THIS CODE!!!
+# Be sure to move this part of the code up top because we have extracted
+#   the cut_id or can be used for the cut_id
 sp()
 print list_of_annotation_objs['ANNOTATION'][4]
 sp()
