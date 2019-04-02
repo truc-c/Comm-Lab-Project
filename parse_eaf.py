@@ -53,20 +53,26 @@ sp()
 #   index ([0]) to reference the first annotation.  Our next tag
 #   alignable_annotation brings us to our final step where we can start
 #   extracting values
-# cut_dict = annotation_obj['ANNOTATION']#['ALIGNABLE_ANNOTATION']
-# print cut_dict
-# # cut_id will be the very first key in our dict.  The value for cut_id
-# #   is another dict consisting of references to start and end objects and
-# #   its values.  These start and end objects are time_slot_id's that we
-# #   will use to reference back to our time_order_dict
-# # start_cut_ref gives us 'ts1','ts2', etc.
+cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
+print cut_dict
+# cut_id will be the very first key in our dict.  The value for cut_id
+#   is another dict consisting of references to start and end objects and
+#   its values.  These start and end objects are time_slot_id's that we
+#   will use to reference back to our time_order_dict
+# start_cut_ref gives us 'ts1','ts2', etc.
 # cut_id = cut_dict['@ANNOTATION_ID']
 # start_cut_ref = cut_dict['@TIME_SLOT_REF1']
 # end_cut_ref = cut_dict['@TIME_SLOT_REF2']
 # annotation_value = cut_dict['ANNOTATION_VALUE']
+#
+# print('cut_id = ',cut_id)
+# print('start_cut_ref = ',start_cut_ref)
+# print('end_cut_ref = ',end_cut_ref)
+# print('annotation_value = ',annotation_value)
 
 # --------------------------------------------------------------------
 
+# DO NOT TOUCH THIS!!!!! FINISHED!!!!
 # Let's try finding how many annotations there are first so that we
 #   can use it in a loop
 print('How many annotations are there? ',len(list_of_annotation_objs[0]['ANNOTATION']))
@@ -82,17 +88,39 @@ print(type(num_of_annotations))
 # Be sure to move this part of the code up top because we have extracted
 #   the cut_id or can be used for the cut_id
 # print(len(list_of_annotation_objs[0]['ANNOTATION']))
-path_to_annotationID = list_of_annotation_objs[0]['ANNOTATION']
+
+# 4/2
+# Since you're grabbing the ANNOTATION_ID, you may as well grab the
+#   TIME_SLOT_REF's and ANNOTATION_VALUE
+path_to_annotation_info = list_of_annotation_objs[0]['ANNOTATION']
 sp()
 count = 0
 list_of_id = []
 while count < num_of_annotations:
-    annotation_id = path_to_annotationID[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+    annotation_id = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
     # print annotation_id
     list_of_id.append(annotation_id)
     count += 1
 
-print list_of_id
+# print list_of_id
+
+# -------------------------------------------------------------------
+
+# # Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
+# #   for our cut_id
+# # Let's use a for-loop with out list_of_id and create and empty dict as
+# #   the value and the key will be the list_of_id
+# # THIS IS FINISHED!!!! DO NOT TOUCH!!!!
+#
+final_product = {}
+
+for i in list_of_id:
+    final_product[i] = {}
+
+print(final_product)
+print(len(final_product))
+print(type(final_product))
+print('final_product[\'a20\'] should be empty:', final_product['a20'])
 
 sp()
 
@@ -123,22 +151,8 @@ sp()
 #
 # #print final_product['a1']['start_cut_ref']
 
-# -------------------------------------------------------------------
 
-# Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
-#   for our cut_id
-# Let's use a for-loop with out list_of_id and create and empty dict as
-#   the value and the key will be the list_of_id
-# THIS IS FINISHED!!!! DO NOT TOUCH!!!!
 
-final_product = {}
-
-for i in list_of_id:
-    final_product[i] = {}
-
-print(final_product)
-print(len(final_product))
-print(type(final_product))
 
 
 
