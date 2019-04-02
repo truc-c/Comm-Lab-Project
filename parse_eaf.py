@@ -44,11 +44,6 @@ time_order_dict = dict(zip(keys_list,values_list))
 list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER'] # iterate over this eventually
 annotation_obj = list_of_annotation_objs[0]# <--IMPORTANT
 #print list_of_annotation_objs
-# IMPORTANT ----- IMPORTANT
-# You may or may not need to change the index above depending on how many
-#   tiers you have.  If you only have one tier, then you don't need to
-#   index, however if you have more than one tier, you will need to index.
-#   This way annotation_obj knows which tier to reference to.
 
 
 #print annotation_obj
@@ -106,27 +101,45 @@ sp()
 
 
 # sp()
-# # d is our final product consisting of:
+# # final_product consist of:
 # # cut_id (e.g. 'a1','a2', etc.)
 # # start_cut_ref (e.g. 'ts1','ts3', etc.)
 # # end_cut_ref (e.g. 'ts2', 'ts4', etc.)
 # # start_cut_value (e.g. 1000)
 # # end_cut_value (e.g. 1010)
 # # we might want to think about adding annotation and its value
-# d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
+# final_product = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
 #                 'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
 #                 'annotation_value':annotation_value}
 # }
 #
-# start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
-# end_cut_value = time_order_dict[d['a1']['end_cut_ref']]
-# d['a1']['start_cut_value'] = start_cut_value
-# d['a1']['end_cut_value'] = end_cut_value
+# start_cut_value = time_order_dict[final_product['a1']['start_cut_ref']]
+# end_cut_value = time_order_dict[final_product['a1']['end_cut_ref']]
+# final_product['a1']['start_cut_value'] = start_cut_value
+# final_product['a1']['end_cut_value'] = end_cut_value
 
 
-# print d
+# print final_product
 #
-# #print d['a1']['start_cut_ref']
+# #print final_product['a1']['start_cut_ref']
+
+# -------------------------------------------------------------------
+
+# Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
+#   for our cut_id
+# Let's use a for-loop with out list_of_id and create and empty dict as
+#   the value and the key will be the list_of_id
+# THIS IS FINISHED!!!! DO NOT TOUCH!!!!
+
+final_product = {}
+
+for i in list_of_id:
+    final_product[i] = {}
+
+print(final_product)
+print(len(final_product))
+print(type(final_product))
+
 
 
 
