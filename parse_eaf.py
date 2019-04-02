@@ -4,7 +4,7 @@ def sp():
     print ''
 # read in elan file (xml)
 # convert to dict using xmltodict
-with open('new_eminem.eaf') as fd:
+with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
 # -----------------------------------------------------------------------
@@ -42,8 +42,8 @@ time_order_dict = dict(zip(keys_list,values_list))
 
 # annotation_obj is the annotations inside the tier tag
 list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER'] # iterate over this eventually
-annotation_obj = list_of_annotation_objs#[0] <--IMPORTANT
-
+annotation_obj = list_of_annotation_objs[0]# <--IMPORTANT
+#print list_of_annotation_objs
 # IMPORTANT ----- IMPORTANT
 # You may or may not need to change the index above depending on how many
 #   tiers you have.  If you only have one tier, then you don't need to
@@ -58,54 +58,27 @@ sp()
 #   index ([0]) to reference the first annotation.  Our next tag
 #   alignable_annotation brings us to our final step where we can start
 #   extracting values
-cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
-
-# cut_id will be the very first key in our dict.  The value for cut_id
-#   is another dict consisting of references to start and end objects and
-#   its values.  These start and end objects are time_slot_id's that we
-#   will use to reference back to our time_order_dict
-# start_cut_ref gives us 'ts1','ts2', etc.
-cut_id = cut_dict['@ANNOTATION_ID']
-start_cut_ref = cut_dict['@TIME_SLOT_REF1']
-end_cut_ref = cut_dict['@TIME_SLOT_REF2']
-annotation_value = cut_dict['ANNOTATION_VALUE']
-
-
-# -------------------------------------------------------------------
-
-
-sp()
-# d is our final product consisting of:
-# cut_id (e.g. 'a1','a2', etc.)
-# start_cut_ref (e.g. 'ts1','ts3', etc.)
-# end_cut_ref (e.g. 'ts2', 'ts4', etc.)
-# start_cut_value (e.g. 1000)
-# end_cut_value (e.g. 1010)
-# we might want to think about adding annotation and its value
-d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
-                'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
-                'annotation_value':annotation_value}
-}
-
-start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
-end_cut_value = time_order_dict[d['a1']['end_cut_ref']]
-d['a1']['start_cut_value'] = start_cut_value
-d['a1']['end_cut_value'] = end_cut_value
-
-
-# print d
-#
-# #print d['a1']['start_cut_ref']
+# cut_dict = annotation_obj['ANNOTATION']#['ALIGNABLE_ANNOTATION']
+# print cut_dict
+# # cut_id will be the very first key in our dict.  The value for cut_id
+# #   is another dict consisting of references to start and end objects and
+# #   its values.  These start and end objects are time_slot_id's that we
+# #   will use to reference back to our time_order_dict
+# # start_cut_ref gives us 'ts1','ts2', etc.
+# cut_id = cut_dict['@ANNOTATION_ID']
+# start_cut_ref = cut_dict['@TIME_SLOT_REF1']
+# end_cut_ref = cut_dict['@TIME_SLOT_REF2']
+# annotation_value = cut_dict['ANNOTATION_VALUE']
 
 # --------------------------------------------------------------------
 
 # Let's try finding how many annotations there are first so that we
 #   can use it in a loop
-
-print len(list_of_annotation_objs['ANNOTATION'])
-sp()
-num_of_annotations = len(list_of_annotation_objs['ANNOTATION'])
-print num_of_annotations
+print('How many annotations are there? ',len(list_of_annotation_objs[0]['ANNOTATION']))
+# sp()
+num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
+print(type(num_of_annotations))
+# print num_of_annotations
 
 # Now that we have found how many there are we can probably use it
 #   in a while-loop, but first we need to get to the annotations
@@ -113,24 +86,49 @@ print num_of_annotations
 # FINISHED !!!!!!!!!! DO NOT CHANGE THIS CODE!!!
 # Be sure to move this part of the code up top because we have extracted
 #   the cut_id or can be used for the cut_id
-sp()
-print list_of_annotation_objs['ANNOTATION'][4]
-sp()
-print list_of_annotation_objs['ANNOTATION'][4]['ALIGNABLE_ANNOTATION']
-sp()
-print list_of_annotation_objs['ANNOTATION'][4]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+# print(len(list_of_annotation_objs[0]['ANNOTATION']))
+path_to_annotationID = list_of_annotation_objs[0]['ANNOTATION']
 sp()
 count = 0
 list_of_id = []
-while count != num_of_annotations:
-    id = list_of_annotation_objs['ANNOTATION'][count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-    print id
-    list_of_id.append(id)
+while count < num_of_annotations:
+    annotation_id = path_to_annotationID[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+    # print annotation_id
+    list_of_id.append(annotation_id)
     count += 1
 
 print list_of_id
 
 sp()
+
+
+# -------------------------------------------------------------------
+
+
+# sp()
+# # d is our final product consisting of:
+# # cut_id (e.g. 'a1','a2', etc.)
+# # start_cut_ref (e.g. 'ts1','ts3', etc.)
+# # end_cut_ref (e.g. 'ts2', 'ts4', etc.)
+# # start_cut_value (e.g. 1000)
+# # end_cut_value (e.g. 1010)
+# # we might want to think about adding annotation and its value
+# d = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
+#                 'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
+#                 'annotation_value':annotation_value}
+# }
+#
+# start_cut_value = time_order_dict[d['a1']['start_cut_ref']]
+# end_cut_value = time_order_dict[d['a1']['end_cut_ref']]
+# d['a1']['start_cut_value'] = start_cut_value
+# d['a1']['end_cut_value'] = end_cut_value
+
+
+# print d
+#
+# #print d['a1']['start_cut_ref']
+
+
 
 
 
