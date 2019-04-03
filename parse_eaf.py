@@ -37,24 +37,22 @@ time_order_dict = dict(zip(keys_list,values_list))
 
 # list_of_annotation_objs allows us to access the tiers (e.g. cut or bookmark)
 # annotation_obj contains the first tier (in this case 'cut' tier)..
-#   this was possible by indexing ([0]) with list_of_annotation_objs, however
-#   this doesn't apply for this situation
-
-# annotation_obj is the annotations inside the tier tag
+#   this was possible by indexing ([0]) with list_of_annotation_objs
 list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER'] # iterate over this eventually
 annotation_obj = list_of_annotation_objs[0]# <--IMPORTANT
+
 #print list_of_annotation_objs
-
-
 #print annotation_obj
+
 sp()
 
 # cut_dict gives us our first of many annotations.  We need to use the
 #   index ([0]) to reference the first annotation.  Our next tag
-#   alignable_annotation brings us to our final step where we can start
+#   ALIGNABLE_ANNOTATION brings us to our final step where we can start
 #   extracting values
 cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
-print cut_dict
+# print cut_dict
+
 # cut_id will be the very first key in our dict.  The value for cut_id
 #   is another dict consisting of references to start and end objects and
 #   its values.  These start and end objects are time_slot_id's that we
@@ -75,10 +73,10 @@ print cut_dict
 # DO NOT TOUCH THIS!!!!! FINISHED!!!!
 # Let's try finding how many annotations there are first so that we
 #   can use it in a loop
-print('How many annotations are there? ',len(list_of_annotation_objs[0]['ANNOTATION']))
+# print('How many annotations are there? ',len(list_of_annotation_objs[0]['ANNOTATION']))
 # sp()
 num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
-print(type(num_of_annotations))
+# print(type(num_of_annotations))
 # print num_of_annotations
 
 # Now that we have found how many there are we can probably use it
@@ -92,35 +90,61 @@ print(type(num_of_annotations))
 # 4/2
 # Since you're grabbing the ANNOTATION_ID, you may as well grab the
 #   TIME_SLOT_REF's and ANNOTATION_VALUE
+# I'm debating whether I should continuously create and delete my tuple
 path_to_annotation_info = list_of_annotation_objs[0]['ANNOTATION']
 sp()
 count = 0
 list_of_id = []
 while count < num_of_annotations:
+    nested_list = ()
     annotation_id = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-    # print annotation_id
-    list_of_id.append(annotation_id)
+    slot_ref1 = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+    slot_ref2 = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+    annotation_v = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+    nested_list = nested_list + (annotation_id,)
+    nested_list = nested_list + (slot_ref1,)
+    nested_list = nested_list + (slot_ref2,)
+    nested_list = nested_list + (annotation_v,)
+    list_of_id.append(nested_list)
+    del nested_list
     count += 1
 
-# print list_of_id
-
+for i in list_of_id:
+    print(i)
+sp()
 # -------------------------------------------------------------------
 
-# # Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
-# #   for our cut_id
-# # Let's use a for-loop with out list_of_id and create and empty dict as
-# #   the value and the key will be the list_of_id
-# # THIS IS FINISHED!!!! DO NOT TOUCH!!!!
-#
+# Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
+#   for our cut_id
+# Let's use a for-loop with out list_of_id and create and empty dict as
+#   the value and the key will be the list_of_id
+# THIS IS FINISHED!!!! DO NOT TOUCH!!!!
+
+# 4/3
+# Since you are creating you're final dict, should you also input the other
+#   information while you're at it?
+# Maybe consider a nested for-loop to use the key from the final_product
+#   as a means to pull the time value from your time_order_dict (code up top)
 final_product = {}
 
-for i in list_of_id:
-    final_product[i] = {}
 
-print(final_product)
-print(len(final_product))
-print(type(final_product))
-print('final_product[\'a20\'] should be empty:', final_product['a20'])
+for id_index in list_of_id:
+    cut_id = id_index[0]
+    time_ref1 = id_index[1]
+    time_ref2 = id_index[2]
+    annotation_text = id_index[3]
+    print(cut_id)
+    final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
+                            'end_cut_ref':time_ref2,'end_cut_value':0,
+                            'annotation_value':annotation_text}
+    
+
+sp()
+
+# print(final_product)
+# print(len(final_product))
+# print(type(final_product))
+# print('final_product[\'a20\'] should be empty:', final_product['a20'])
 
 sp()
 
