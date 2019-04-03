@@ -109,8 +109,8 @@ while count < num_of_annotations:
     del nested_list
     count += 1
 
-for i in list_of_id:
-    print(i)
+# for i in list_of_id:
+#     print(i)
 sp()
 # -------------------------------------------------------------------
 
@@ -133,11 +133,29 @@ for id_index in list_of_id:
     time_ref1 = id_index[1]
     time_ref2 = id_index[2]
     annotation_text = id_index[3]
-    print(cut_id)
+    #print(cut_id)
     final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
                             'end_cut_ref':time_ref2,'end_cut_value':0,
                             'annotation_value':annotation_text}
-    
+
+# Now that we have filled our final_product dict with the keys and
+#   default values we want to use our time_order_dict as a reference to
+#   fill the values in our final_product dict
+# Let's create a separate loop that will populate the values in
+#   final_product
+# Let's loop through the final_product and grab the the value (e.g. 'ts1','ts4',etc.)
+#   for the following keys: 'start_cut_ref' and 'end_cut_ref'
+# When we have the value, let's check it with the keys in our time_order_dict,
+#   grab the value, store it in a variable as an int, and fill in the
+#   value portion ('start_cut_value' and 'end_cut_value').
+
+
+for start_cut in final_product:
+    print(start_cut[0])
+
+
+
+
 
 sp()
 
