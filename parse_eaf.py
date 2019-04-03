@@ -9,20 +9,25 @@ with open('0204_000609_uclacurt_vetting.eaf') as fd:
 
 # -----------------------------------------------------------------------
 
-# Let's start with the time order tags and separate the time_slot_id (e.g. ts1)
-#   from the time_value (e.g. 32343)
-# We can either create 2 list, one storing the time_slot_id and the other for
-#   the time_value or we can directly put it into a dict
+# DO NOT TOUCH THIS !!!! FINISHED WITH COMPLETED COMMENTS !!!!!
+# Let's start with the TIME_ORDER tag and extract the
+#   TIME_SLOT_ID values (e.g. "ts1", "ts3", etc.) and
+#   TIME_VALUE values (e.g. 10305, 25532, etc.)
+
+# time_order_obj will store TIME_SLOT_ID and TIME_VALUE as an OrderedDict
 time_order_obj = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
-keys_list = []
-values_list = []
-sp()
 
-for i in time_order_obj:
-    keys_list.append(i.values()[0])
-    values_list.append(i.values()[1])
-
-time_order_dict = dict(zip(keys_list,values_list))
+# using time_order_obj in an for-loop, we can extract the values from
+#   TIME_SLOT_ID and TIME_VALUE and store them in our time_order_dict
+# Our time_order_dict keys will contain the following examples:
+#   "ts1", "ts3", etc.
+#   and the time_order_dict values will contain the following examples:
+#   10305, 25532, etc.
+time_order_dict = {}
+for time_slot in time_order_obj:
+    time_id = time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
+    time_value = time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
+    time_order_dict[time_id] = int(time_value)
 
 # -----------------------------------------------------------------------
 
@@ -75,10 +80,6 @@ num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
 #   the cut_id or can be used for the cut_id
 # print(len(list_of_annotation_objs[0]['ANNOTATION']))
 
-# 4/2
-# Since you're grabbing the ANNOTATION_ID, you may as well grab the
-#   TIME_SLOT_REF's and ANNOTATION_VALUE
-# I'm debating whether I should continuously create and delete my tuple
 path_to_annotation_info = list_of_annotation_objs[0]['ANNOTATION']
 sp()
 count = 0
@@ -97,39 +98,30 @@ while count < num_of_annotations:
     del nested_list
     count += 1
 
-# for i in list_of_id:
-#     print(i)
 sp()
 # -------------------------------------------------------------------
 
-# Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
-#   for our cut_id
-# Let's use a for-loop with our list_of_id and create and empty dict as
-#   the value and the key will be the list_of_id
 # THIS IS FINISHED!!!! DO NOT TOUCH!!!!
 
-# 4/3
-# Since you are creating you're final dict, should you also input the other
-#   information while you're at it?
+# This part of the code will extract all values from the list of tuples
+#   (list_of_id) which contains: ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2,
+#   and ANNOTATION_VALUE, and place it into our final_product dict
 final_product = {}
 
-
 for id_index in list_of_id:
-    cut_id = id_index[0]
-    time_ref1 = id_index[1]
-    time_ref2 = id_index[2]
-    annotation_text = id_index[3]
-    #print(cut_id)
+    cut_id = id_index[0]                # cut_id = ANNOTATION_ID
+    time_ref1 = id_index[1]             # time_ref1 = TIME_SLOT_REF1
+    time_ref2 = id_index[2]             # time_ref2 = TIME_SLOT_REF2
+    annotation_text = id_index[3]       # annotation_text = ANNOTATION_VALUE
     final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
                             'end_cut_ref':time_ref2,'end_cut_value':0,
                             'annotation_value':annotation_text}
 
-# Now that we have filled our final_product dict with the keys and
+# Now that we have filled our final_product dict with keys and
 #   default values we want to use our time_order_dict as a reference to
 #   fill the values in our final_product dict
 # Let's create a separate loop that will populate the values in
 #   final_product
-
 
 for cut_refs in final_product.values():
     # Let's loop through the final_product keys and grab the values for
@@ -153,7 +145,7 @@ for cut_refs in final_product.values():
     cut_refs['start_cut_value'] = start_value
     cut_refs['end_cut_value'] = end_value
 
-print final_product
+# print final_product
 
 sp()
 
