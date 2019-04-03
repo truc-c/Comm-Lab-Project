@@ -29,61 +29,34 @@ for time_slot in time_order_obj:
     time_value = time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
     time_order_dict[time_id] = int(time_value)
 
-# -----------------------------------------------------------------------
 
-# Extract relevant annotation values to build dictionary
-# Let's move to the annotation tag and grab the annotation_id (e.g. a1),
-#   time_slot_ref1 (e.g. ts1), and time_slot_ref2 (e.g. ts2)
-
-# The reason we might need ref1 and ref2 is so that we can use these to
-#   reference our time_order object (which contains the time selection)
-
-# list_of_annotation_objs allows us to access the tiers (e.g. cut or bookmark)
-# annotation_obj contains the first tier (in this case 'cut' tier)..
-#   this was possible by indexing ([0]) with list_of_annotation_objs
-list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER'] # iterate over this eventually
-annotation_obj = list_of_annotation_objs[0]# <--IMPORTANT
-
-#print list_of_annotation_objs
-#print annotation_obj
-
-sp()
-
-# cut_dict gives us our first of many annotations.  We need to use the
-#   index ([0]) to reference the first annotation.  Our next tag
-#   ALIGNABLE_ANNOTATION brings us to our final step where we can start
-#   extracting values
-cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
-# print cut_dict
-
-# cut_id will be the very first key in our dict.  The value for cut_id
-#   is another dict consisting of references to start and end objects and
-#   its values.  These start and end objects are time_slot_id's that we
-#   will use to reference back to our time_order_dict
 
 # --------------------------------------------------------------------
 
 # DO NOT TOUCH THIS!!!!! FINISHED!!!!
-# Let's try finding how many annotations there are first so that we
-#   can use it in a loop
-# print('How many annotations are there? ',len(list_of_annotation_objs[0]['ANNOTATION']))
-# sp()
-num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
-# print(type(num_of_annotations))
-# print num_of_annotations
 
-# Now that we have found how many there are we can probably use it
-#   in a while-loop, but first we need to get to the annotations
-# Let's use the list_of annotation_obj from earlier to
-# FINISHED !!!!!!!!!! DO NOT CHANGE THIS CODE!!!
-# Be sure to move this part of the code up top because we have extracted
-#   the cut_id or can be used for the cut_id
-# print(len(list_of_annotation_objs[0]['ANNOTATION']))
+# This part of the code takes us to the ANNOTATION tags
+# Since there are many annotations we need to be able to loop through each
+#   ANNOTATION tag and extract the following:
+#       ANNOTATION_ID (e.g. "a2", "a10", etc.)
+#       TIME_SLOT_REF1 (e.g. "ts1", "ts3", "ts5", etc.)
+#       TIME_SLOT_REF2 (e.g. "ts2", "ts4", "ts6", etc.)
+#       ANNOTATION_VALUE (e.g. "annotation notes")
+
+
+list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 
 path_to_annotation_info = list_of_annotation_objs[0]['ANNOTATION']
-sp()
+# print(path_to_annotation_info)
+
+# You want to do something with this, but you don't know what yet
+# Maybe you should write it out first
+# for i in path_to_annotation_info:
+#     print i['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+
 count = 0
 list_of_id = []
+num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
 while count < num_of_annotations:
     nested_list = ()
     annotation_id = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
@@ -145,7 +118,7 @@ for cut_refs in final_product.values():
     cut_refs['start_cut_value'] = start_value
     cut_refs['end_cut_value'] = end_value
 
-# print final_product
+#print final_product
 
 sp()
 
