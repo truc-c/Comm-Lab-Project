@@ -24,8 +24,6 @@ for i in time_order_obj:
 
 time_order_dict = dict(zip(keys_list,values_list))
 
-# print time_order_dict
-
 # -----------------------------------------------------------------------
 
 # Extract relevant annotation values to build dictionary
@@ -57,16 +55,6 @@ cut_dict = annotation_obj['ANNOTATION'][0]['ALIGNABLE_ANNOTATION']
 #   is another dict consisting of references to start and end objects and
 #   its values.  These start and end objects are time_slot_id's that we
 #   will use to reference back to our time_order_dict
-# start_cut_ref gives us 'ts1','ts2', etc.
-# cut_id = cut_dict['@ANNOTATION_ID']
-# start_cut_ref = cut_dict['@TIME_SLOT_REF1']
-# end_cut_ref = cut_dict['@TIME_SLOT_REF2']
-# annotation_value = cut_dict['ANNOTATION_VALUE']
-#
-# print('cut_id = ',cut_id)
-# print('start_cut_ref = ',start_cut_ref)
-# print('end_cut_ref = ',end_cut_ref)
-# print('annotation_value = ',annotation_value)
 
 # --------------------------------------------------------------------
 
@@ -116,15 +104,13 @@ sp()
 
 # Here we are going to use list_of_id (contains ANNOTATION_ID: a1, a2, a3)
 #   for our cut_id
-# Let's use a for-loop with out list_of_id and create and empty dict as
+# Let's use a for-loop with our list_of_id and create and empty dict as
 #   the value and the key will be the list_of_id
 # THIS IS FINISHED!!!! DO NOT TOUCH!!!!
 
 # 4/3
 # Since you are creating you're final dict, should you also input the other
 #   information while you're at it?
-# Maybe consider a nested for-loop to use the key from the final_product
-#   as a means to pull the time value from your time_order_dict (code up top)
 final_product = {}
 
 
@@ -143,55 +129,42 @@ for id_index in list_of_id:
 #   fill the values in our final_product dict
 # Let's create a separate loop that will populate the values in
 #   final_product
-# Let's loop through the final_product and grab the the value (e.g. 'ts1','ts4',etc.)
-#   for the following keys: 'start_cut_ref' and 'end_cut_ref'
-# When we have the value, let's check it with the keys in our time_order_dict,
-#   grab the value, store it in a variable as an int, and fill in the
-#   value portion ('start_cut_value' and 'end_cut_value').
 
 
-for start_cut in final_product:
-    print(start_cut[0])
+for cut_refs in final_product.values():
+    # Let's loop through the final_product keys and grab the values for
+    #   'start_cut_ref' and 'end_cut_ref' and place it variables that we
+    #   can use when looking for time values in our time_order_dict
+    start_ref = cut_refs['start_cut_ref']
+    end_ref = cut_refs['end_cut_ref']
 
+    # After extracting values (e.g. 'ts1','ts2',etc.) from 'start_cut_ref' and
+    #   'end_cut_ref' we can now look in time_order_dict and grab the values
+    #   (10049,38505, etc.) that correspond, and at the same time we can store
+    #   it in variables 'start_value' and 'end_value'
+    if start_ref in time_order_dict:
+        start_value = int(time_order_dict[start_ref])
+        #print('key:',start_ref,' ','value:',start_value)
+    if end_ref in time_order_dict:
+        end_value = int(time_order_dict[end_ref])
 
+    # Now let's store the values into 'start_cut_value' and 'end_cut_value' in
+    #   our final_product dict
+    cut_refs['start_cut_value'] = start_value
+    cut_refs['end_cut_value'] = end_value
 
-
-
-sp()
-
-# print(final_product)
-# print(len(final_product))
-# print(type(final_product))
-# print('final_product[\'a20\'] should be empty:', final_product['a20'])
+print final_product
 
 sp()
 
 
 # -------------------------------------------------------------------
 
-
-# sp()
-# # final_product consist of:
-# # cut_id (e.g. 'a1','a2', etc.)
-# # start_cut_ref (e.g. 'ts1','ts3', etc.)
-# # end_cut_ref (e.g. 'ts2', 'ts4', etc.)
-# # start_cut_value (e.g. 1000)
-# # end_cut_value (e.g. 1010)
-# # we might want to think about adding annotation and its value
 # final_product = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
 #                 'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
 #                 'annotation_value':annotation_value}
-# }
 #
-# start_cut_value = time_order_dict[final_product['a1']['start_cut_ref']]
-# end_cut_value = time_order_dict[final_product['a1']['end_cut_ref']]
-# final_product['a1']['start_cut_value'] = start_cut_value
-# final_product['a1']['end_cut_value'] = end_cut_value
 
-
-# print final_product
-#
-# #print final_product['a1']['start_cut_ref']
 
 
 
