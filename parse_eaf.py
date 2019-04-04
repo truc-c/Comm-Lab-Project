@@ -55,6 +55,9 @@ list_of_tuples = []
 #   to the next
 annotation_index = 0
 
+# final_product is a dictionary that will later contain another dictionary
+final_product = {}
+
 # This for-loop is to iterate through the ANNOTATIONS while extracting values
 #   from:   @ANNOTATION_ID      (e.g. 'a1','a7','a22', etc.)
 #           @TIME_SLOT_REF1     (e.g. 'ts1','ts3','ts7', etc.)
@@ -69,14 +72,24 @@ annotation_index = 0
 #   any accidential changes
 # We call the append() to add the tuple_of_values to our list_of_tuples
 # Lastly, we increment annotation_index to move to the next index
-for i in annotation_objs:
-        annotation_id = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-        slot_ref1 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-        slot_ref2 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-        annotation_v = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-        tuple_of_values = (annotation_id, slot_ref1, slot_ref2, annotation_v)
-        list_of_tuples.append(tuple_of_values)
-        annotation_index += 1
+for each_annotation in annotation_objs:
+    # print(i['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID'])
+    # print(i['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1'])
+    annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+    slot_ref1 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+    slot_ref2 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+    annotation_text = each_annotation['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+    final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
+                            'end_cut_ref':slot_ref2,'end_cut_value':0,
+                            'annotation_value':annotation_text}
+        # annotation_id = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+        # slot_ref1 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+        # slot_ref2 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+        # annotation_v = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+        # tuple_of_values = (annotation_id, slot_ref1, slot_ref2, annotation_v)
+        # list_of_tuples.append(tuple_of_values)
+        # annotation_index += 1
+        # print(annotation_id, slot_ref1, slot_ref2, annotation_v)
 
 # -------------------------------------------------------------------
 
@@ -86,8 +99,7 @@ for i in annotation_objs:
 #   contains the values of: ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2,
 #   and ANNOTATION_VALUE, and place it into our final_product dict
 
-# final_product is a dictionary that will later contain another dictionary
-final_product = {}
+
 
 # This for-loop will loop through our list_of_tuples to extract and store
 #   values for our final_product
@@ -95,14 +107,14 @@ final_product = {}
 #   this way we avoid the assumption that index[0] is the ANNOTATION_ID
 #   or that id_index[1] is TIME_SLOT_REF1
 
-for id_index in list_of_tuples:
-    cut_id = id_index[0]                # cut_id = ANNOTATION_ID ('a1','a3', etc.)
-    time_ref1 = id_index[1]             # time_ref1 = TIME_SLOT_REF1 ('ts1','ts3', etc.)
-    time_ref2 = id_index[2]             # time_ref2 = TIME_SLOT_REF2 ('ts2','ts4', etc.)
-    annotation_text = id_index[3]       # annotation_text = ANNOTATION_VALUE ('some text')
-    final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
-                            'end_cut_ref':time_ref2,'end_cut_value':0,
-                            'annotation_value':annotation_text}
+# for id_index in list_of_tuples:
+#     cut_id = id_index[0]                # cut_id = ANNOTATION_ID ('a1','a3', etc.)
+#     time_ref1 = id_index[1]             # time_ref1 = TIME_SLOT_REF1 ('ts1','ts3', etc.)
+#     time_ref2 = id_index[2]             # time_ref2 = TIME_SLOT_REF2 ('ts2','ts4', etc.)
+#     annotation_text = id_index[3]       # annotation_text = ANNOTATION_VALUE ('some text')
+#     final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
+#                             'end_cut_ref':time_ref2,'end_cut_value':0,
+#                             'annotation_value':annotation_text}
 
 # Now that we have filled our final_product dict with keys and
 #   default values we want to use our time_order_dict as a reference to
@@ -133,16 +145,16 @@ for cut_refs in final_product.values():
     cut_refs['end_cut_value'] = end_value
 
 print(len(final_product))
-
+print(final_product)
 sp()
 
 
 # -------------------------------------------------------------------
 
-# final_product = {cut_id: {'start_cut_ref': start_cut_ref, 'start_cut_value': 0,
-#                 'end_cut_ref': end_cut_ref, 'end_cut_value': 0,
-#                 'annotation_value':annotation_value}
-#
+# final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
+#                         'end_cut_ref':slot_ref2,'end_cut_value':0,
+#                         'annotation_value':annotation_text}
+
 
 
 
