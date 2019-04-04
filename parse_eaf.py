@@ -1,4 +1,5 @@
 import xmltodict
+import pprint
 
 def sp():
     print ''
@@ -104,8 +105,9 @@ for cut_refs in final_product.values():
     cut_refs['end_cut_value'] = end_value
 
 sp()
-
 # -------------------------------------------------------------------
+
+pprint.pprint(final_product)
 
 # final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
 #                         'end_cut_ref':slot_ref2,'end_cut_value':0,
