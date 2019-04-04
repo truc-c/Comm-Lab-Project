@@ -8,8 +8,6 @@ with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
 # -----------------------------------------------------------------------
-
-# DO NOT TOUCH THIS !!!! FINISHED WITH COMPLETED COMMENTS !!!!!
 # Let's start with the TIME_ORDER tag and extract the
 #   TIME_SLOT_ID values (e.g. "ts1", "ts3", etc.) and
 #   TIME_VALUE values (e.g. 10305, 25532, etc.)
@@ -32,9 +30,6 @@ for time_slot in time_order_obj:
 
 
 # --------------------------------------------------------------------
-
-# DO NOT TOUCH THIS!!!!! FINISHED!!!!
-
 # This part of the code takes us to the ANNOTATION tags
 # Since there are many annotations we need to be able to loop through each
 #   ANNOTATION tag and extract the following:
@@ -43,49 +38,68 @@ for time_slot in time_order_obj:
 #       TIME_SLOT_REF2 (e.g. "ts2", "ts4", "ts6", etc.)
 #       ANNOTATION_VALUE (e.g. "annotation notes")
 
+# list_of_tier_objs holds the different TIER tags
+list_of_tier_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 
-list_of_annotation_objs = doc['ANNOTATION_DOCUMENT']['TIER']
+# annotation_objs are the many ANNOTATION tags in each TIER
+# tier_number indicates which TIER we want, in this case we are indexing
+#   the TIER_ID="cut"
+tier_number = 0
+annotation_objs = list_of_tier_objs[tier_number]['ANNOTATION']
 
-path_to_annotation_info = list_of_annotation_objs[0]['ANNOTATION']
-# print(path_to_annotation_info)
+# list_of_tuples is a list that will hold tuples that contain values from
+#   ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2 and ANNOTATION_VALUE
+list_of_tuples = []
 
-# You want to do something with this, but you don't know what yet
-# Maybe you should write it out first
-# for i in path_to_annotation_info:
-#     print i['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+# This annotation_index variable will help us move from one annotation
+#   to the next
+annotation_index = 0
 
-count = 0
-list_of_id = []
-num_of_annotations = len(list_of_annotation_objs[0]['ANNOTATION'])
-while count < num_of_annotations:
-    nested_list = ()
-    annotation_id = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-    slot_ref1 = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-    slot_ref2 = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-    annotation_v = path_to_annotation_info[count]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-    nested_list = nested_list + (annotation_id,)
-    nested_list = nested_list + (slot_ref1,)
-    nested_list = nested_list + (slot_ref2,)
-    nested_list = nested_list + (annotation_v,)
-    list_of_id.append(nested_list)
-    del nested_list
-    count += 1
+# This for-loop is to iterate through the ANNOTATIONS while extracting values
+#   from:   @ANNOTATION_ID      (e.g. 'a1','a7','a22', etc.)
+#           @TIME_SLOT_REF1     (e.g. 'ts1','ts3','ts7', etc.)
+#           @TIME_SLOT_REF2     (e.g. 'ts2','ts4','ts8', etc.)
+#           ANNOTATION_VALUE    (e.g. 'some text')
 
-sp()
+# annotation_id, slot_ref1, slot_ref2, and annotation_v are the variables
+#   that we are using to store the values
+
+# for-loop will iterate through each ANNOTATION tag and extract values
+# tuple_of_values variable will hold the values; we use tuple to avoid
+#   any accidential changes
+# We call the append() to add the tuple_of_values to our list_of_tuples
+# Lastly, we increment annotation_index to move to the next index
+for i in annotation_objs:
+        annotation_id = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+        slot_ref1 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+        slot_ref2 = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+        annotation_v = annotation_objs[annotation_index]['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+        tuple_of_values = (annotation_id, slot_ref1, slot_ref2, annotation_v)
+        list_of_tuples.append(tuple_of_values)
+        annotation_index += 1
+
 # -------------------------------------------------------------------
 
 # THIS IS FINISHED!!!! DO NOT TOUCH!!!!
 
-# This part of the code will extract all values from the list of tuples
-#   (list_of_id) which contains: ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2,
+# This part of the code will extract all values from list_of_tuples which
+#   contains the values of: ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2,
 #   and ANNOTATION_VALUE, and place it into our final_product dict
+
+# final_product is a dictionary that will later contain another dictionary
 final_product = {}
 
-for id_index in list_of_id:
-    cut_id = id_index[0]                # cut_id = ANNOTATION_ID
-    time_ref1 = id_index[1]             # time_ref1 = TIME_SLOT_REF1
-    time_ref2 = id_index[2]             # time_ref2 = TIME_SLOT_REF2
-    annotation_text = id_index[3]       # annotation_text = ANNOTATION_VALUE
+# This for-loop will loop through our list_of_tuples to extract and store
+#   values for our final_product
+# Maybe instead of using indexes you can use the same variables from above,
+#   this way we avoid the assumption that index[0] is the ANNOTATION_ID
+#   or that id_index[1] is TIME_SLOT_REF1
+
+for id_index in list_of_tuples:
+    cut_id = id_index[0]                # cut_id = ANNOTATION_ID ('a1','a3', etc.)
+    time_ref1 = id_index[1]             # time_ref1 = TIME_SLOT_REF1 ('ts1','ts3', etc.)
+    time_ref2 = id_index[2]             # time_ref2 = TIME_SLOT_REF2 ('ts2','ts4', etc.)
+    annotation_text = id_index[3]       # annotation_text = ANNOTATION_VALUE ('some text')
     final_product[cut_id] = {'start_cut_ref': time_ref1,'start_cut_value':0,
                             'end_cut_ref':time_ref2,'end_cut_value':0,
                             'annotation_value':annotation_text}
@@ -118,7 +132,7 @@ for cut_refs in final_product.values():
     cut_refs['start_cut_value'] = start_value
     cut_refs['end_cut_value'] = end_value
 
-#print final_product
+print(len(final_product))
 
 sp()
 
