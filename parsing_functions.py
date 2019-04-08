@@ -15,14 +15,20 @@ def extract_timeOrder(*time_order_list):
         time_order_dict[time_id] = int(time_value)
     return time_order_dict
 
-def get_TIER(tier_name, *list_of_tiers):
+def get_TIER_idx(tier_name, *list_of_tiers): # get_tier_index
     index_number = 0
     for i in list_of_tiers:
         if i['@TIER_ID'] == tier_name:
             index_number = index_number
             break
         index_number += 1
-    return index_number
+    return index_number #return list of TIER_ID
+    #
+def get_unique_TIER_ID(list_of_tiers):
+    my_list = []
+    for i in list_of_tiers:
+        my_list.append(i['@TIER_ID'])
+    return my_list #return list of TIER_ID
 
 def get_annotation_values(*annotation_objs):
     final_product = {}
@@ -35,3 +41,24 @@ def get_annotation_values(*annotation_objs):
                                         'end_cut_ref':slot_ref2,'end_cut_value':0,
                                         'annotation_value':annotation_text}
     return final_product
+
+def fill_time_values(my_product,time_order_dict):
+    for cut_refs in my_product.values():
+        # Let's loop through the final_product keys and grab the values for
+        #   'start_cut_ref' and 'end_cut_ref' and place it into variables that we
+        #   can use when looking for time values in our time_order_dict
+        start_ref = cut_refs['start_cut_ref']
+        end_ref = cut_refs['end_cut_ref']
+
+        # After extracting the start and end references (e.g. 'ts1','ts2',etc.)
+        #   we can now look for the associated time in our time_order_dict
+        if start_ref in time_order_dict:
+            start_value = int(time_order_dict[start_ref])
+        if end_ref in time_order_dict:
+            end_value = int(time_order_dict[end_ref])
+
+        # Now that we have the time, we can replace the default values (0) with
+        #   the times that are associated with the reference
+        cut_refs['start_cut_value'] = start_value
+        cut_refs['end_cut_value'] = end_value
+    return my_product
