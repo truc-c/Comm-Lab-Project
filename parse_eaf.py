@@ -2,37 +2,48 @@ import xmltodict
 import pprint
 import parsing_functions
 import os
-print(os.getcwd())
 with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
+# List of all TIERs, each one can be accessed by indexing followed by
+#   keys() and values() function
+# Ex: list_of_TIER_objs[0].keys()
+#   output: [u'@LINGUISTIC_TYPE_REF', u'@TIER_ID', u'ANNOTATION']
+list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 
-# list_of_tier_objs holds the different TIER tags
+# List of all TIME_SLOTs, each acan be accessed by indexing followed
+#   by keys() and values() function
+# Ex: list_of_TIME_SLOT_objs[1].keys()
+#   output: [u'@TIME_SLOT_ID', u'@TIME_VALUE']
+list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
-# print(list_of_tier_objs['@TIER_ID'])
-# pprint.pprint(list_of_tier_objs)
-# annotation_objs are the many ANNOTATION tags in each TIER
-# tier_number indicates which TIER we want, in this case we are indexing
-#   the TIER_ID="cut"
-tier_name_user_input = input('Enter tier name: ')
-list_of_tier_objs = doc['ANNOTATION_DOCUMENT']['TIER']
-list_of_TIER_IDs = parsing_functions.get_unique_TIER_ID(list_of_tier_objs)
+# Ask user for for name of TIER (e.g. cut, bookmark)
+user_input_tier_name = raw_input('Enter a tier name: ')
 
-if tier_name_user_input in list_of_TIER_IDs:
-    print("Processing the [%s" %tier_name_user_input + "] tier")
-    time_order_obj = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
-    time_order_dict = parsing_functions.extract_timeOrder(time_order_obj)
+# get_unique_TIER_ID function returns a list of all TIER_ID names using
+#   the list_of_TIER_objs that we passed in as an argument
+# This list is helpful for checking the users input
+all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 
-    tier_idx = parsing_functions.get_TIER_idx(tier_name_user_input, list_of_tier_objs)
+# This if-else statement checks the users input
+# If the input is valid then the program will run
+#   else, an error message will appear providing a list of names
+#   of available TIERs
+if user_input_tier_name in all_TIER_ID_names:
+    print("Processing the [%s" %user_input_tier_name + "] tier")
+    time_order_dict = parsing_functions.extract_timeOrder(list_of_TIME_SLOT_objs)
+    tier_idx = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
 
-    annotation_objs = list_of_tier_objs[tier_idx]['ANNOTATION'] # maybe turn into function
+    annotation_objs = list_of_TIER_objs[tier_idx]['ANNOTATION'] # maybe turn into function
     my_product = parsing_functions.get_annotation_values(annotation_objs)
     my_product = parsing_functions.fill_time_values(my_product, time_order_dict)
     pprint.pprint(my_product)
     # save my_product to disk
 
 else:
-    print("Please enter one of the following TIER_IDs", list_of_TIER_IDs)
+    print("Please enter one of the following TIER_IDs:")
+    for names in all_TIER_ID_names:
+        print(names)
 
 # check if user input , then error message, these are the 4 available
 
