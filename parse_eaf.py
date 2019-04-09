@@ -2,10 +2,6 @@ import xmltodict
 import pprint
 import parsing_functions
 
-def sp():
-    print ''
-# read in elan file (xml)
-# convert to dict using xmltodict
 with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
@@ -47,7 +43,7 @@ with open('0204_000609_uclacurt_vetting.eaf') as fd:
 # annotation_objs are the many ANNOTATION tags in each TIER
 # tier_number indicates which TIER we want, in this case we are indexing
 #   the TIER_ID="cut"
-tier_name_user_input = raw_input('Enter tier name: ')
+tier_name_user_input = input('Enter tier name: ')
 list_of_tier_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 list_of_TIER_IDs = parsing_functions.get_unique_TIER_ID(list_of_tier_objs)
 
@@ -59,7 +55,7 @@ if tier_name_user_input in list_of_TIER_IDs:
     tier_idx = parsing_functions.get_TIER_idx(tier_name_user_input, *list_of_tier_objs)
 
     annotation_objs = list_of_tier_objs[tier_idx]['ANNOTATION'] # maybe turn into function
-    my_product = parsing_functions.get_annotation_values(*annotation_objs)
+    my_product = parsing_functions.get_annotation_values(annotation_objs)
     my_product = parsing_functions.fill_time_values(my_product, time_order_dict)
     pprint.pprint(my_product)
     # save my_product to disk
@@ -76,71 +72,6 @@ else:
 # run code if it passes
 # then get_TIER
 
-
-#pprint.pprint(my_product)
-# sp()
-# # final_product is a dictionary that will later contain another dictionary
-# # final_product = {}
-# #
-# # # annotation_id, slot_ref1, slot_ref2, and annotation_text are the variables
-# # #   that we are using to store the values in
-# #
-# # # for-loop will iterate through each ANNOTATION tag and extract values
-# # #   and place them into the variables mentioned above
-# # # We can then start using the variables in our final_product dictionary
-# # # Our final_product dictionary will contain another dictionary that will
-# # #   contain values associated with the annotation_id (e.g. 'a1','a2','a3', etc.)
-# # # For the moment we will leave the values to the keys, 'start_cut_value' and
-# # #   'end_cut_value', as a default value (0)
-# # # for each_annotation in annotation_objs:
-# # #     annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-# # #     slot_ref1 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-# # #     slot_ref2 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-# # #     annotation_text = each_annotation['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-# # #     final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
-# # #                                     'end_cut_ref':slot_ref2,'end_cut_value':0,
-# # #                                     'annotation_value':annotation_text}
-# #
-# # # -------------------------------------------------------------------
-# #
-# #
-# # Now that we have filled our final_product dictionary with keys and
-# #   default values we want to use our time_order_dict as a reference to
-# #   fill the start and end cut values in our final_product dictionary
-#
-# # for cut_refs in my_product.values():
-# #     # Let's loop through the final_product keys and grab the values for
-# #     #   'start_cut_ref' and 'end_cut_ref' and place it into variables that we
-# #     #   can use when looking for time values in our time_order_dict
-# #     start_ref = cut_refs['start_cut_ref']
-# #     end_ref = cut_refs['end_cut_ref']
-# #
-# #     # After extracting the start and end references (e.g. 'ts1','ts2',etc.)
-# #     #   we can now look for the associated time in our time_order_dict
-# #     if start_ref in time_order_dict:
-# #         start_value = int(time_order_dict[start_ref])
-# #     if end_ref in time_order_dict:
-# #         end_value = int(time_order_dict[end_ref])
-# #
-# #     # Now that we have the time, we can replace the default values (0) with
-# #     #   the times that are associated with the reference
-# #     cut_refs['start_cut_value'] = start_value
-# #     cut_refs['end_cut_value'] = end_value
-#
-# sp()
-# # -------------------------------------------------------------------
-#
-# pprint.pprint(my_product)
-#
-# # final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
-# #                         'end_cut_ref':slot_ref2,'end_cut_value':0,
-# #                         'annotation_value':annotation_text}
-#
-#
-#
-#
-#
-#
 
 
 

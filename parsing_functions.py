@@ -30,7 +30,7 @@ def get_unique_TIER_ID(list_of_tiers):
         my_list.append(i['@TIER_ID'])
     return my_list #return list of TIER_ID
 
-def get_annotation_values(*annotation_objs):
+def get_annotation_values(annotation_objs):
     final_product = {}
     for each_annotation in annotation_objs:
         annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
