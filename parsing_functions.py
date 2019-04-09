@@ -16,14 +16,16 @@ def get_unique_TIER_ID(list_of_tiers):
         tier_name_list.append(tier_name['@TIER_ID'])
     return tier_name_list #return list of TIER_ID names
 
-
-def extract_timeOrder(time_order_list):
-    time_order_dict = {}
-    for time_slot in time_order_list:
-        time_id = time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
-        time_value = time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
-        time_order_dict[time_id] = int(time_value)
-    return time_order_dict
+# extract_TIME_ID_and_VALUE function creates a dictionary of
+#   TIME_SLOT_ID value as the key, and TIME_VALUE as the
+#   its value
+def extract_TIME_ID_and_VALUE(time_slot_list):
+    time_slot_dict = {}
+    for each_time_slot in time_slot_list:
+        time_id = each_time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
+        time_value = each_time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
+        time_slot_dict[time_id] = int(time_value)
+    return time_slot_dict
 
 def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
     index_number = 0
@@ -46,14 +48,14 @@ def get_annotation_values(annotation_objs):
                                         'annotation_value':annotation_text}
     return final_product
 
-def fill_time_values(my_product,time_order_dict):
+def fill_time_values(my_product,time_slot_dict):
     for cut_refs in my_product.values():
         start_ref = cut_refs['start_cut_ref']
         end_ref = cut_refs['end_cut_ref']
-        if start_ref in time_order_dict:
-            start_value = int(time_order_dict[start_ref])
-        if end_ref in time_order_dict:
-            end_value = int(time_order_dict[end_ref])
+        if start_ref in time_slot_dict:
+            start_value = int(time_slot_dict[start_ref])
+        if end_ref in time_slot_dict:
+            end_value = int(time_slot_dict[end_ref])
         cut_refs['start_cut_value'] = start_value
         cut_refs['end_cut_value'] = end_value
     return my_product

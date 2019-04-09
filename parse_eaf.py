@@ -31,12 +31,12 @@ all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 #   of available TIERs
 if user_input_tier_name in all_TIER_ID_names:
     print("Processing the [%s" %user_input_tier_name + "] tier")
-    time_order_dict = parsing_functions.extract_timeOrder(list_of_TIME_SLOT_objs)
+    time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
     tier_idx = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
 
     annotation_objs = list_of_TIER_objs[tier_idx]['ANNOTATION'] # maybe turn into function
     my_product = parsing_functions.get_annotation_values(annotation_objs)
-    my_product = parsing_functions.fill_time_values(my_product, time_order_dict)
+    my_product = parsing_functions.fill_time_values(my_product, time_id_and_value_dict)
     pprint.pprint(my_product)
     # save my_product to disk
 
