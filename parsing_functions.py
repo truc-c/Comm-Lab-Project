@@ -1,6 +1,6 @@
 import pprint
 
-def extract_timeOrder(*time_order_list):
+def extract_timeOrder(time_order_list):
     # using time_order_list in an for-loop, we can extract the values from
     #   TIME_SLOT_ID and TIME_VALUE and store them in our time_order_dict
     # Our time_order_dict-keys will contain the following examples:
@@ -15,7 +15,7 @@ def extract_timeOrder(*time_order_list):
         time_order_dict[time_id] = int(time_value)
     return time_order_dict
 
-def get_TIER_idx(tier_name, *list_of_tiers): # get_tier_index
+def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
     index_number = 0
     for i in list_of_tiers:
         if i['@TIER_ID'] == tier_name:
@@ -23,7 +23,7 @@ def get_TIER_idx(tier_name, *list_of_tiers): # get_tier_index
             break
         index_number += 1
     return index_number #return list of TIER_ID
-    #
+
 def get_unique_TIER_ID(list_of_tiers):
     my_list = []
     for i in list_of_tiers:
