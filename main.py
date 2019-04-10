@@ -19,6 +19,15 @@ user_input_tier_name = raw_input('Enter a tier name: ')
 # all_TIER_ID_names contains a list of TIER_ID names
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 
+# Maybe you can try and limit or make it more convenient for the user
+#   by providing a list of tier names depending on the file they provide
+# Or you can also provide an option for them to type it in
+# for ex:
+#   Enter a tier name or choose a number from the following selection:
+#   1) cut
+#   2) bookmark
+#   0) exit
+
 # This if-else statement checks the users input with list of all
 #   TIER_ID names
 # If the input is valid then the program will run
@@ -46,14 +55,9 @@ if user_input_tier_name in all_TIER_ID_names:
     # save final_product to disk
 
 else:
-    print("Please enter one of the following TIER_IDs:")
-    for names in all_TIER_ID_names:
-        print(names)
+    parsing_functions.no_valid_results(all_TIER_ID_names)
 
 # check if user input , then error message, these are the 4 available
-
-
-# write if statement to check user input, else don't run rest of code
 
 # check user input with this list
 # run code if it passes

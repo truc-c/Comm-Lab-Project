@@ -4,9 +4,6 @@ import pprint
 # think about the purpose of the variable, name should sugges purpose
 # single responsibility rule
 
-def user_input_valid(input, TIER_ID_names):
-    pass
-
 # get_unique_TIER_ID function takes in a list of all TIERs
 #   and extracts the TIER_ID name
 # The names are added to a list and returns the list
@@ -29,7 +26,7 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
 
 # extract_ANNOTATION_values function creates and returns a nested
 #   dictionary that contains the ANNOTATION time slots ref's, the time,
-#   and text 
+#   and text
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
     for each_annotation in annotation_objs:
@@ -52,3 +49,8 @@ def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
         cut_refs['end_cut_value'] = end_value
 
     return result
+
+def no_valid_results(list_of_tiers):
+    print("Tier name does not exist. Please enter one of the following tier names:")
+    for names in list_of_tiers:
+        print(names)
