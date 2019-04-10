@@ -18,7 +18,7 @@ user_input_tier_name = raw_input('Enter a tier name: ')
 
 # all_TIER_ID_names contains a list of TIER_ID names
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
-print(all_TIER_ID_names)
+
 # This if-else statement checks the users input with list of all
 #   TIER_ID names
 # If the input is valid then the program will run
@@ -33,7 +33,7 @@ if user_input_tier_name in all_TIER_ID_names:
 
     # tier_idx_number is the number associated with the TIER name
     #   prompted by the user
-    tier_idx_number = parsing_functions.get_TIER_idx(user_input_tier_name, all_TIER_ID_names)
+    tier_idx_number = all_TIER_ID_names.index(user_input_tier_name)
 
     # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
     #   specific TIER

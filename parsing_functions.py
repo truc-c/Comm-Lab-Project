@@ -27,12 +27,9 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
         time_slot_dict[time_id] = int(time_value)
     return time_slot_dict
 
-# get_TIER_index associates user input and tier number index and
-#   returns the index number 
-def get_TIER_idx(tier_name, list_of_tiers):
-    index_number = list_of_tiers.index(tier_name)
-    return index_number
-
+# extract_ANNOTATION_values function creates and returns a nested
+#   dictionary that contains the ANNOTATION time slots ref's, the time,
+#   and text 
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
     for each_annotation in annotation_objs:
