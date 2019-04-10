@@ -16,9 +16,7 @@ list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 # Ask user for for name of TIER (e.g. cut, bookmark)
 user_input_tier_name = raw_input('Enter a tier name: ')
 
-# get_unique_TIER_ID function returns a list of all TIER_ID names using
-#   the list_of_TIER_objs that we passed in as an argument
-# This list is helpful for checking the users input
+# all_TIER_ID_names contains a list of TIER_ID names
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 
 # This if-else statement checks the users input
@@ -27,11 +25,16 @@ all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 #   of available TIERs
 if user_input_tier_name in all_TIER_ID_names:
     print("Processing the [%s" %user_input_tier_name + "] tier")
+
+    # time_id_and_value_dict is a dictionary that holds the TIME_SLOT_ID
+    #   and TIME_VALUE
     time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
+
+    # tier_idx the index number
     tier_idx = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
 
-    annotation_objs = list_of_TIER_objs[tier_idx]['ANNOTATION'] # maybe turn into function
-    my_product = parsing_functions.get_annotation_values(annotation_objs)
+    list_of_ANNOTATIION_objs = list_of_TIER_objs[tier_idx]['ANNOTATION'] # maybe turn into function
+    my_product = parsing_functions.get_annotation_values(list_of_ANNOTATIION_objs)
     my_product = parsing_functions.fill_time_values(my_product, time_id_and_value_dict)
     pprint.pprint(my_product)
     # save my_product to disk

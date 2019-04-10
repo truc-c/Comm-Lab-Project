@@ -9,7 +9,7 @@ def user_input_valid(input, TIER_ID_names):
 
 # get_unique_TIER_ID function takes in a list of all TIERs
 #   and extracts the TIER_ID name
-# The names are added to a list and returned to main
+# The names are added to a list and returns the list
 def get_unique_TIER_ID(list_of_tiers):
     tier_name_list = []
     for tier_name in list_of_tiers:
