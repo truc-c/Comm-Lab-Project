@@ -40,8 +40,7 @@ if user_input_tier_name in all_TIER_ID_names:
 
     # final_product is a nested dictionary containing all the ANNOTATION
     #   values
-    final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs)
-    final_product = parsing_functions.fill_time_values(final_product, time_id_and_value_dict)
+    final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
     pprint.pprint(final_product)
     # save final_product to disk
 

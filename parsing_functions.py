@@ -27,6 +27,7 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
         time_slot_dict[time_id] = int(time_value)
     return time_slot_dict
 
+# get_TIER_index
 def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
     index_number = 0
     for i in list_of_tiers:
@@ -36,7 +37,7 @@ def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
         index_number += 1
     return index_number #return list of TIER_ID
 
-def extract_ANNOTATION_values(annotation_objs):
+def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
     for each_annotation in annotation_objs:
         annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
@@ -46,10 +47,8 @@ def extract_ANNOTATION_values(annotation_objs):
         result[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
                                         'end_cut_ref':slot_ref2,'end_cut_value':0,
                                         'annotation_value':annotation_text}
-    return result
 
-def fill_time_values(my_product,time_slot_dict):
-    for cut_refs in my_product.values():
+    for cut_refs in result.values():
         start_ref = cut_refs['start_cut_ref']
         end_ref = cut_refs['end_cut_ref']
         if start_ref in time_slot_dict:
@@ -58,4 +57,5 @@ def fill_time_values(my_product,time_slot_dict):
             end_value = int(time_slot_dict[end_ref])
         cut_refs['start_cut_value'] = start_value
         cut_refs['end_cut_value'] = end_value
-    return my_product
+
+    return result
