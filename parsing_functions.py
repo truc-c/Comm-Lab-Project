@@ -36,17 +36,17 @@ def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
         index_number += 1
     return index_number #return list of TIER_ID
 
-def get_annotation_values(annotation_objs):
-    final_product = {}
+def extract_ANNOTATION_values(annotation_objs):
+    result = {}
     for each_annotation in annotation_objs:
         annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
         slot_ref1 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
         slot_ref2 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
         annotation_text = each_annotation['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-        final_product[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
+        result[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
                                         'end_cut_ref':slot_ref2,'end_cut_value':0,
                                         'annotation_value':annotation_text}
-    return final_product
+    return result
 
 def fill_time_values(my_product,time_slot_dict):
     for cut_refs in my_product.values():

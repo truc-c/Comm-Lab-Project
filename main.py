@@ -14,7 +14,7 @@ list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
 # Ask user for for name of TIER (e.g. cut, bookmark)
-user_input_tier_name = raw_input('Enter a tier name: ')
+user_input_tier_name = input('Enter a tier name: ')
 
 # all_TIER_ID_names contains a list of TIER_ID names
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
@@ -26,18 +26,24 @@ all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 if user_input_tier_name in all_TIER_ID_names:
     print("Processing the [%s" %user_input_tier_name + "] tier")
 
-    # time_id_and_value_dict is a dictionary that holds the TIME_SLOT_ID
-    #   and TIME_VALUE
+    # time_id_and_value_dict is a dictionary that contains
+    #   the values of TIME_SLOT_ID and TIME_VALUE
     time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
 
-    # tier_idx the index number
-    tier_idx = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
+    # tier_idx_number is the number associated with the TIER name
+    #   prompted by the user
+    tier_idx_number = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
 
-    list_of_ANNOTATIION_objs = list_of_TIER_objs[tier_idx]['ANNOTATION'] # maybe turn into function
-    my_product = parsing_functions.get_annotation_values(list_of_ANNOTATIION_objs)
-    my_product = parsing_functions.fill_time_values(my_product, time_id_and_value_dict)
-    pprint.pprint(my_product)
-    # save my_product to disk
+    # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
+    #   specific TIER
+    list_of_ANNOTATIION_objs = list_of_TIER_objs[tier_idx_number]['ANNOTATION'] # maybe turn into function
+
+    # final_product is a nested dictionary containing all the ANNOTATION
+    #   values
+    final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs)
+    final_product = parsing_functions.fill_time_values(final_product, time_id_and_value_dict)
+    pprint.pprint(final_product)
+    # save final_product to disk
 
 else:
     print("Please enter one of the following TIER_IDs:")
