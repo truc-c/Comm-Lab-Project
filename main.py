@@ -7,14 +7,10 @@ with open('0204_000609_uclacurt_vetting.eaf') as fd:
 
 # List of all TIERs, each one can be accessed by indexing followed by
 #   keys() and values() function
-# Ex: list_of_TIER_objs[0].keys()
-#   output: [u'@LINGUISTIC_TYPE_REF', u'@TIER_ID', u'ANNOTATION']
 list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 
-# List of all TIME_SLOTs, each acan be accessed by indexing followed
+# List of all TIME_SLOTs, each can be accessed by indexing followed
 #   by keys() and values() function
-# Ex: list_of_TIME_SLOT_objs[1].keys()
-#   output: [u'@TIME_SLOT_ID', u'@TIME_VALUE']
 list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
 # Ask user for for name of TIER (e.g. cut, bookmark)
