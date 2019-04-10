@@ -27,15 +27,11 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
         time_slot_dict[time_id] = int(time_value)
     return time_slot_dict
 
-# get_TIER_index
-def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
-    index_number = 0
-    for i in list_of_tiers:
-        if i['@TIER_ID'] == tier_name:
-            index_number = index_number
-            break
-        index_number += 1
-    return index_number #return list of TIER_ID
+# get_TIER_index associates user input and tier number index and
+#   returns the index number 
+def get_TIER_idx(tier_name, list_of_tiers):
+    index_number = list_of_tiers.index(tier_name)
+    return index_number
 
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}

@@ -14,17 +14,18 @@ list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
 # Ask user for for name of TIER (e.g. cut, bookmark)
-user_input_tier_name = input('Enter a tier name: ')
+user_input_tier_name = raw_input('Enter a tier name: ')
 
 # all_TIER_ID_names contains a list of TIER_ID names
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
-
-# This if-else statement checks the users input
+print(all_TIER_ID_names)
+# This if-else statement checks the users input with list of all
+#   TIER_ID names
 # If the input is valid then the program will run
 #   else, an error message will appear providing a list of names
 #   of available TIERs
 if user_input_tier_name in all_TIER_ID_names:
-    print("Processing the [%s" %user_input_tier_name + "] tier")
+    print("Process the results for [%s" %user_input_tier_name + "] tier")
 
     # time_id_and_value_dict is a dictionary that contains
     #   the values of TIME_SLOT_ID and TIME_VALUE
@@ -32,7 +33,7 @@ if user_input_tier_name in all_TIER_ID_names:
 
     # tier_idx_number is the number associated with the TIER name
     #   prompted by the user
-    tier_idx_number = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
+    tier_idx_number = parsing_functions.get_TIER_idx(user_input_tier_name, all_TIER_ID_names)
 
     # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
     #   specific TIER
