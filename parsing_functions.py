@@ -10,11 +10,17 @@ def user_input_valid(input, TIER_ID_names):
 # get_unique_TIER_ID function takes in a list of all TIERs
 #   and extracts the TIER_ID name
 # The names are added to a list and returns the list
-def get_unique_TIER_ID(list_of_tiers):
+def get_unique_TIER_ID(tier_name, list_of_tiers):
     tier_name_list = []
-    for tier_name in list_of_tiers:
-        tier_name_list.append(tier_name['@TIER_ID'])
-    return tier_name_list #return list of TIER_ID names
+    for each_tier_name in list_of_tiers:
+        tier_name_list.append(each_tier_name['@TIER_ID'])
+
+    print(tier_name_list)
+
+    if tier_name in tier_name_list:
+        index_number = tier_name_list.index(tier_name)
+    print(index_number)
+    return index_number, tier_name_list
 
 # extract_TIME_ID_and_VALUE function creates a dictionary of
 #   TIME_SLOT_ID value as the key, and TIME_VALUE as the
@@ -26,16 +32,6 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
         time_value = each_time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
         time_slot_dict[time_id] = int(time_value)
     return time_slot_dict
-
-# get_TIER_index
-def get_TIER_idx(tier_name, list_of_tiers): # get_tier_index
-    index_number = 0
-    for i in list_of_tiers:
-        if i['@TIER_ID'] == tier_name:
-            index_number = index_number
-            break
-        index_number += 1
-    return index_number #return list of TIER_ID
 
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
