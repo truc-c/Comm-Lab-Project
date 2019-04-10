@@ -14,11 +14,10 @@ list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
 # Ask user for for name of TIER (e.g. cut, bookmark)
-user_input_tier_name = raw_input('Enter a tier name: ')
+user_input_tier_name = input('Enter a tier name: ')
 
 # all_TIER_ID_names contains a list of TIER_ID names
-# tier_idx_number holds the index of the TIER name provided by the user
-tier_idx_number, all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(user_input_tier_name, list_of_TIER_objs)
+all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 
 # This if-else statement checks the users input
 # If the input is valid then the program will run
@@ -30,6 +29,10 @@ if user_input_tier_name in all_TIER_ID_names:
     # time_id_and_value_dict is a dictionary that contains
     #   the values of TIME_SLOT_ID and TIME_VALUE
     time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
+
+    # tier_idx_number is the number associated with the TIER name
+    #   prompted by the user
+    tier_idx_number = parsing_functions.get_TIER_idx(user_input_tier_name, list_of_TIER_objs)
 
     # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
     #   specific TIER
