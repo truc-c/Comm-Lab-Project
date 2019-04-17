@@ -25,7 +25,7 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
     return time_slot_dict
 
 # extract_ANNOTATION_values function creates and returns a nested
-#   dictionary that contains the ANNOTATION time slots ref's, the time,
+#   dictionary that contains the ANNOTATION time slots refs', the time,
 #   and text
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
