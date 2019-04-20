@@ -12,7 +12,7 @@ Contributors:
 Kyle MacDonald
 
 Vicky Chen
-Double Major: Business Economics and Communiction
+Double Major: Business Economics and Communication
 
 Curt Chang
 Major: Commuications w/ Computing Specialization
