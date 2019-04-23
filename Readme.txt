@@ -13,7 +13,7 @@ Kyle MacDonald
 
 Vicky Chen
 Double Major: Business Economics and Communication
-UCLA Anderson School of Management: Masters of Science Business Analytics
+UCLA Anderson School of Management: Masters of Science in Business Analytics
 
 Curt Chang
 Major: Commuications w/ Computing Specialization
