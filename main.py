@@ -98,23 +98,27 @@ import pyautogui
 
 # or
 
-wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
-subprocess.call(['open','-a','Audacity',wav_location])
-pyautogui.PAUSE = 5.0
+# wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
+my_wav = '/Users/curt/desktop/my_test.wav'
+subprocess.call(['open','-a','Audacity',my_wav])
+pyautogui.PAUSE = 3.0
 # 2. wait for a bit while Audacity opens and loads
 # time.sleep(5)
 # pyautogui.PAUSE = 5.0
 x,y = pyautogui.position()
 print(x,y)
-pyautogui.PAUSE = 5.0
+pyautogui.PAUSE = 3.0
 pyautogui.moveTo(1221,701)
-pyautogui.PAUSE = 5.0
+pyautogui.PAUSE = 3.0
 pyautogui.click()
-pyautogui.PAUSE = 5.0
-pyautogui.press('enter')
+pyautogui.PAUSE = 3.0
+
 # 3. then select ok
 #
+pyautogui.press('enter')
 
+# 4. hit tab and use right arrow key 5 times to move to front
+#   to enter beginning of time  
 #pyautogui.press('enter')
 
 
