@@ -1,21 +1,25 @@
 import pprint
 
-# helps to identify the responsibilities of each part of code
-# think about the purpose of the variable, name should sugges purpose
-# single responsibility rule
+'''
+helps to identify the responsibilities of each part of code
+think about the purpose of the variable, name should sugges purpose
+single responsibility rule
 
-# get_unique_TIER_ID function takes in a list of all TIERs
-#   and extracts the TIER_ID name
-# The names are added to a list and returns the list
+get_unique_TIER_ID function takes in a list of all TIERs
+  and extracts the TIER_ID name
+The names are added to a list and returns the list
+'''
 def get_unique_TIER_ID(list_of_tiers):
     tier_name_list = []
     for tier_name in list_of_tiers:
         tier_name_list.append(tier_name['@TIER_ID'])
     return tier_name_list #return list of TIER_ID names
 
-# extract_TIME_ID_and_VALUE function creates a dictionary of
-#   TIME_SLOT_ID value as the key, and TIME_VALUE as the
-#   its value
+'''
+extract_TIME_ID_and_VALUE function creates a dictionary of
+  TIME_SLOT_ID value as the key, and TIME_VALUE as the
+  its value
+'''
 def extract_TIME_ID_and_VALUE(time_slot_list):
     time_slot_dict = {}
     for each_time_slot in time_slot_list:
@@ -24,9 +28,11 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
         time_slot_dict[time_id] = int(time_value)
     return time_slot_dict
 
-# extract_ANNOTATION_values function creates and returns a nested
-#   dictionary that contains the ANNOTATION time slots refs', the time,
-#   and text
+'''
+extract_ANNOTATION_values function creates and returns a nested
+  dictionary that contains the ANNOTATION time slots refs', the time,
+  and text
+'''
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
     for each_annotation in annotation_objs:

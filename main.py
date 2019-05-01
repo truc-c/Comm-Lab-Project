@@ -49,29 +49,29 @@ if user_input_tier_name in all_TIER_ID_names:
 
     '''
     time_id_and_value_dict is a dictionary that contains
-    the values of TIME_SLOT_ID and TIME_VALUE
+        the values of TIME_SLOT_ID and TIME_VALUE
     '''
     time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
 
     '''
     tier_idx_number is the number associated with the TIER name
-    prompted by the user
+        prompted by the user
     '''
     tier_idx_number = all_TIER_ID_names.index(user_input_tier_name)
 
     '''
     list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
-      specific TIER
+        specific TIER
     '''
     list_of_ANNOTATIION_objs = list_of_TIER_objs[tier_idx_number]['ANNOTATION'] # maybe turn into function
 
     '''
     final_product is a nested dictionary containing all the ANNOTATION
-    values
+        values
     '''
     final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
     pprint.pprint(final_product)
-    
+
     # save final_product to disk
 
 else:
