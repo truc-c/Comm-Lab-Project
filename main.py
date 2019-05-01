@@ -5,18 +5,26 @@ import os
 with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
-# List of all TIERs, each one can be accessed by indexing followed by
-#   keys() and values() function
+'''
+List of all TIERs, each one can be accessed by indexing followed by
+keys() and values() function
+'''
 list_of_TIER_objs = doc['ANNOTATION_DOCUMENT']['TIER']
 
-# List of all TIME_SLOTs, each can be accessed by indexing followed
-#   by keys() and values() function
+'''
+List of all TIME_SLOTs, each can be accessed by indexing followed
+by keys() and values() function
+'''
 list_of_TIME_SLOT_objs = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
-# Ask user for for name of TIER (e.g. cut, bookmark)
-user_input_tier_name = raw_input('Enter a tier name: ')
+'''
+Ask user for for name of TIER (e.g. cut, bookmark)
+'''
+user_input_tier_name = input('Enter a tier name: ')
 
-# all_TIER_ID_names contains a list of TIER_ID names
+'''
+all_TIER_ID_names contains a list of TIER_ID names
+'''
 all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 
 # Maybe you can try and limit or make it more convenient for the user
@@ -28,30 +36,42 @@ all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(list_of_TIER_objs)
 #   2) bookmark
 #   0) exit
 
-# This if-else statement checks the users input with list of all
-#   TIER_ID names
-# If the input is valid then the program will run
-#   else, an error message will appear providing a list of names
-#   of available TIERs
+'''
+This if-else statement checks the users input with list of all
+  TIER_ID names
+
+If the input is valid then the program will run
+  else, an error message will appear providing a list of names
+  of available TIERs
+'''
 if user_input_tier_name in all_TIER_ID_names:
     print("Process the results for [%s" %user_input_tier_name + "] tier")
 
-    # time_id_and_value_dict is a dictionary that contains
-    #   the values of TIME_SLOT_ID and TIME_VALUE
+    '''
+    time_id_and_value_dict is a dictionary that contains
+    the values of TIME_SLOT_ID and TIME_VALUE
+    '''
     time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(list_of_TIME_SLOT_objs)
 
-    # tier_idx_number is the number associated with the TIER name
-    #   prompted by the user
+    '''
+    tier_idx_number is the number associated with the TIER name
+    prompted by the user
+    '''
     tier_idx_number = all_TIER_ID_names.index(user_input_tier_name)
 
-    # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
-    #   specific TIER
+    '''
+    list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
+      specific TIER
+    '''
     list_of_ANNOTATIION_objs = list_of_TIER_objs[tier_idx_number]['ANNOTATION'] # maybe turn into function
 
-    # final_product is a nested dictionary containing all the ANNOTATION
-    #   values
+    '''
+    final_product is a nested dictionary containing all the ANNOTATION
+    values
+    '''
     final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
     pprint.pprint(final_product)
+    
     # save final_product to disk
 
 else:
@@ -63,6 +83,12 @@ else:
 # run code if it passes
 # then get_TIER
 # just a test change
+
+# import subprocess
+# subprocess.call(['open','-a','Audacity'])
+# 1. you can also look for and open for the .wav file
+#   for ex: open -a Audacity /Users/curt/desktop/my_test.wav
+# 2. then select ok
 
 
 
