@@ -132,6 +132,47 @@ import pyautogui
 # enter cmd+l to silence the selection
 
 # repeat until you've silenced all parts of the audio
+#
+# pyautogui.press('enter')
+# pyautogui.PAUSE = 7.0
+# # 4. Use bracket keys to select left and right selection boundaries
+# #   for silencing
+# # enter left bracket key and push right arrow once, enter the time,
+# #   then hit ok
+# # Enter right bracket key and push right arrow once, enter the time,
+# #   then hit ok
+#
+# pyautogui.press(['[','right'])
+print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
+time = final_product['a11']['start_cut_value']
+seconds_format = str(time)
+seconds_to_convert = seconds_format[:-3]
+convert_this = int(seconds_to_convert)
+import time
+result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
+print(result)       # result is a string
+hours = result[:2]
+minutes = result[3:5]
+seconds = result[6:]
+print(hours, minutes, seconds)
+# print(seconds_format[:-3])
+
+
+
+# import datetime
+# print(datetime.timedelta(seconds=))
+
+# hours =
+# minutes =
+# seconds =
+
+
+# enter right bracket key and push left arrow once, enter the time,
+#   then hit ok
+
+# enter cmd+l to silence the selection
+
+# repeat until you've silenced all parts of the audio
 #pyautogui.press('enter')
 
 
