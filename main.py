@@ -71,7 +71,6 @@ if user_input_tier_name in all_TIER_ID_names:
     '''
     final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
     # pprint.pprint(final_product)
-
     # save final_product to disk
 
 else:
@@ -121,18 +120,6 @@ import pyautogui
 # #
 # pyautogui.press('enter')
 
-# 4. Use bracket keys to select left and right selection boundaries
-#   for silencing
-# enter left bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter right bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter cmd+l to silence the selection
-
-# repeat until you've silenced all parts of the audio
-#
 # pyautogui.press('enter')
 # pyautogui.PAUSE = 7.0
 # # 4. Use bracket keys to select left and right selection boundaries
@@ -142,20 +129,36 @@ import pyautogui
 # # Enter right bracket key and push right arrow once, enter the time,
 # #   then hit ok
 #
+
+# This is an idea
+my_tuple_list = ()
+for i in final_product:
+    start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
+    my_tuple_list = my_tuple_list + (start_end_value_pairs,)
+
+print(my_tuple_list[0])
+print(my_tuple_list[0][0],my_tuple_list[0][1])
+
+
+
 # pyautogui.press(['[','right'])
 # print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
-time = final_product['a11']['start_cut_value']
-seconds_format = str(time)
-seconds_to_convert = seconds_format[:-3]
-convert_this = int(seconds_to_convert)
-import time
-result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
-print(result)       # result is a string
-hours = result[:2]
-minutes = result[3:5]
-seconds = result[6:]
-print(hours, minutes, seconds)
-# print(seconds_format[:-3])
+# time = final_product['a11']['start_cut_value']
+# # print(time)
+# seconds_format = str(time)
+#
+# # seconds_to_convert holds all values of the time except the last 3 digits
+# seconds_to_convert = seconds_format[:-3]
+# convert_this = int(seconds_to_convert)
+#
+# import time
+# result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
+# print(result)       # result is a string
+# hours = result[:2]
+# minutes = result[3:5]
+# seconds = result[6:]
+# mili_seconds = seconds_format[-3:]
+# print(hours, minutes, seconds,mili_seconds)
 
 
 
