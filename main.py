@@ -1,6 +1,7 @@
 import xmltodict
 import pprint
 import parsing_functions
+import time
 import os
 with open('0204_000609_uclacurt_vetting.eaf') as fd:
     doc = xmltodict.parse(fd.read())
@@ -88,7 +89,6 @@ else:
 # just a test change
 
 import subprocess
-import time
 import pyautogui
 # 1. you can also look for and open for the .wav file
 #   for ex: open -a Audacity /Users/curt/desktop/my_test.wav
@@ -98,7 +98,9 @@ import pyautogui
 #   the apps location
 
 # subprocess.call(['open','-a','Audacity'])
-
+# subprocess.call(['open','-a','TextEdit'])
+# pyautogui.PAUSE = 2.0
+# pyautogui.press(['0','1','2','3'])
 # or
 
 # wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
@@ -131,44 +133,67 @@ import pyautogui
 #
 
 # This is an idea
-my_tuple_list = ()
-for i in final_product:
-    start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
-    my_tuple_list = my_tuple_list + (start_end_value_pairs,)
+# my_tuple_list = ()
+# for i in final_product:
+#     start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
+#     my_tuple_list = my_tuple_list + (start_end_value_pairs,)
+#
+# count = 0
+#
+# while count < len(my_tuple_list):
+#     print(my_tuple_list[count])
+#     count += 1
 
-print(my_tuple_list[0])
-print(my_tuple_list[0][0],my_tuple_list[0][1])
+# str_result = str(my_tuple_list[0][0])
+
+# full_time = time.strftime('%H:%M:%S',time.gmtime(str_result))
+# mili_seconds = str_result[-3:]
+# print(mili_seconds)
+
+'''
+2 options:
+
+1. you can convert your time to a string and then int
+
+2. create a for loop and take it apart and create more variables to store
+and hold the h:m:s values
+
+i think your best option is to convert
+'''
+
 
 
 
 # pyautogui.press(['[','right'])
-# print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
-# time = final_product['a11']['start_cut_value']
-# # print(time)
-# seconds_format = str(time)
-#
-# # seconds_to_convert holds all values of the time except the last 3 digits
-# seconds_to_convert = seconds_format[:-3]
-# convert_this = int(seconds_to_convert)
-#
+print(final_product['a23']['start_cut_value'],final_product['a23']['end_cut_value'])
+my_time = final_product['a23']['start_cut_value']
+print(my_time)
+seconds_format = str(my_time)
+
+# seconds_to_convert holds all values of the time except the last 3 digits
+seconds_to_convert = seconds_format[:-3]
+convert_this = int(seconds_to_convert)
+# #
 # import time
-# result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
-# print(result)       # result is a string
-# hours = result[:2]
-# minutes = result[3:5]
-# seconds = result[6:]
-# mili_seconds = seconds_format[-3:]
-# print(hours, minutes, seconds,mili_seconds)
+result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
+print(result)       # result is a string
+result = result.replace(':','')
+print(result)
+print(type(result))
+# for i in result:
+#     # pyautogui.press(i)
+hours = result[:2]
+minutes = result[3:5]
+seconds = result[6:]
+mili_seconds = seconds_format[-3:]
+print(hours, minutes, seconds,mili_seconds)
 
-
-
-# import datetime
-# print(datetime.timedelta(seconds=))
 
 # hours =
 # minutes =
 # seconds =
-
+# time = '11:03:33'.split(':')
+# print(time)
 
 # enter right bracket key and push left arrow once, enter the time,
 #   then hit ok
