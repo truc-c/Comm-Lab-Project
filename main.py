@@ -133,15 +133,21 @@ import pyautogui
 #
 
 # This is an idea
-# my_tuple_list = ()
-# for i in final_product:
-#     start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
-#     my_tuple_list = my_tuple_list + (start_end_value_pairs,)
+my_tuple_list = ()
+for i in final_product:
+    start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
+    my_tuple_list = my_tuple_list + (start_end_value_pairs,)
 #
 # count = 0
 #
 # while count < len(my_tuple_list):
-#     print(my_tuple_list[count])
+#     # 1. separate the start and end time and convert to string
+#     start_time = str(my_tuple_list[count][0])
+#     end_time = str(my_tuple_list[count][1])
+#
+#     # 2. Extract the last 3 digits because those are the mili-seconds
+#     start_time_mili = start_time[]
+#
 #     count += 1
 
 # str_result = str(my_tuple_list[0][0])
@@ -150,58 +156,67 @@ import pyautogui
 # mili_seconds = str_result[-3:]
 # print(mili_seconds)
 
-'''
-2 options:
+print(my_tuple_list[0])
+start_time = str(my_tuple_list[0][0])
+end_time = str(my_tuple_list[0][1])
+print('start:'+ start_time)
+print('end:'+ end_time)
 
-1. you can convert your time to a string and then int
+# We need to hold on to the mili seconds until later when we add it on to
+#   part of our list that we will use in the press() function
+start_time_mili = start_time[-3:]
+end_time_mili = end_time[-3:]
+print('start mili:'+start_time_mili)
+print('end mili:'+end_time_mili)
 
-2. create a for loop and take it apart and create more variables to store
-and hold the h:m:s values
+# We will use these seconds for the time converting function
+# We also need to convert it back to an int in order for it to work with
+#   the converting function
+start_convert = int(start_time[:-3])
+end_convert = int(end_time[:-3])
 
-i think your best option is to convert
-'''
+# Now we have convert seconds to hours, minutes, seconds
+start_result = time.strftime('%H:%M:%S',time.gmtime(start_convert))
+end_result = time.strftime('%H:%M:%S',time.gmtime(end_convert))
+print('start (hh:mm:ss) - ' + start_result)
+print('end (hh:mm:ss) - ' + end_result)
+
+# Lets remove the colons (:) from our results
+start_result = start_result.replace(':','')
+end_result = end_result.replace(':','')
+print('start (removed colons) - ' + start_result)
+print('end (removed colons) - '+ end_result)
+
+# Let's create our list that we are going to use with the press() function
+start_press_list = []
+for i in start_result:
+    start_press_list.append(i)
+
+end_press_list = []
+for i in end_result:
+    end_press_list.append(i)
+
+print('start (press list) - ' ,start_press_list)
+print('end (press list) - ' ,end_press_list)
+
+# Now let's add our mili-seconds to the end of our list
+for i in start_time_mili:
+    start_press_list.append(i)
+
+for i in end_time_mili:
+    end_press_list.append(i)
+
+print('start final product = ', start_press_list)
+print('end final product = ', end_press_list)
+
 
 
 
 
 # pyautogui.press(['[','right'])
-print(final_product['a23']['start_cut_value'],final_product['a23']['end_cut_value'])
-my_time = final_product['a23']['start_cut_value']
-print(my_time)
-seconds_format = str(my_time)
-
-# seconds_to_convert holds all values of the time except the last 3 digits
-seconds_to_convert = seconds_format[:-3]
-convert_this = int(seconds_to_convert)
-# #
-# import time
-result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
-print(result)       # result is a string
-result = result.replace(':','')
-print(result)
-print(type(result))
-# for i in result:
-#     # pyautogui.press(i)
-hours = result[:2]
-minutes = result[3:5]
-seconds = result[6:]
-mili_seconds = seconds_format[-3:]
-print(hours, minutes, seconds,mili_seconds)
 
 
-# hours =
-# minutes =
-# seconds =
-# time = '11:03:33'.split(':')
-# print(time)
 
-# enter right bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter cmd+l to silence the selection
-
-# repeat until you've silenced all parts of the audio
-#pyautogui.press('enter')
 
 
 
