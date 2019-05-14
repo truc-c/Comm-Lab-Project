@@ -70,16 +70,16 @@ if user_input_tier_name in all_TIER_ID_names:
         values
     '''
     final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
-    pprint.pprint(final_product)
+    # pprint.pprint(final_product)
 
     # save final_product to disk
 
 else:
     parsing_functions.no_valid_results(all_TIER_ID_names)
-
-print('annotation_id =',final_product['a11'])
-print('start time =',final_product['a11']['start_cut_value'])
-print('end time =',final_product['a11']['end_cut_value'])
+#
+# print('annotation_id =',final_product['a11'])
+# print('start time =',final_product['a11']['start_cut_value'])
+# print('end time =',final_product['a11']['end_cut_value'])
 
 # check if user input , then error message, these are the 4 available
 #
@@ -143,7 +143,7 @@ import pyautogui
 # #   then hit ok
 #
 # pyautogui.press(['[','right'])
-print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
+# print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
 time = final_product['a11']['start_cut_value']
 seconds_format = str(time)
 seconds_to_convert = seconds_format[:-3]
