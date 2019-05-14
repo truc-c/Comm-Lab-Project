@@ -97,11 +97,6 @@ import pyautogui
 # -a allows us to open Audacity without having to navigate to
 #   the apps location
 
-# subprocess.call(['open','-a','Audacity'])
-# subprocess.call(['open','-a','TextEdit'])
-# pyautogui.PAUSE = 2.0
-# pyautogui.press(['0','1','2','3'])
-# or
 
 # wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
 # # my_wav = '/Users/curt/desktop/my_test.wav'
@@ -117,20 +112,10 @@ import pyautogui
 # pyautogui.PAUSE = 3.0
 # pyautogui.click()
 # pyautogui.PAUSE = 3.0
-#
-# # 3. then select ok
-# #
 # pyautogui.press('enter')
 
 # pyautogui.press('enter')
 # pyautogui.PAUSE = 7.0
-# # 4. Use bracket keys to select left and right selection boundaries
-# #   for silencing
-# # enter left bracket key and push right arrow once, enter the time,
-# #   then hit ok
-# # Enter right bracket key and push right arrow once, enter the time,
-# #   then hit ok
-#
 
 # This is an idea
 my_tuple_list = ()
@@ -140,21 +125,12 @@ for i in final_product:
 #
 # count = 0
 #
-# while count < len(my_tuple_list):
-#     # 1. separate the start and end time and convert to string
-#     start_time = str(my_tuple_list[count][0])
-#     end_time = str(my_tuple_list[count][1])
-#
-#     # 2. Extract the last 3 digits because those are the mili-seconds
-#     start_time_mili = start_time[]
-#
-#     count += 1
+while count < len(my_tuple_list):
+    pass
 
-# str_result = str(my_tuple_list[0][0])
+    count += 1
 
 # full_time = time.strftime('%H:%M:%S',time.gmtime(str_result))
-# mili_seconds = str_result[-3:]
-# print(mili_seconds)
 
 print(my_tuple_list[0])
 start_time = str(my_tuple_list[0][0])
