@@ -186,10 +186,7 @@ print('start final product = ', start_press_list)
 print('end final product = ', end_press_list)
 
 
-
-
-
-# pyautogui.press(['[','right'])
+# test change
 
 
 
