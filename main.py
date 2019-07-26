@@ -1,6 +1,7 @@
 import xmltodict
 import pprint
 import parsing_functions
+import time
 import os
 with open('/users/curt/desktop/elan_test.eaf') as fd:
     doc = xmltodict.parse(fd.read())
@@ -70,16 +71,15 @@ if user_input_tier_name in all_TIER_ID_names:
         values
     '''
     final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
-    pprint.pprint(final_product)
-
+    # pprint.pprint(final_product)
     # save final_product to disk
 
 else:
     parsing_functions.no_valid_results(all_TIER_ID_names)
-
-print('annotation_id =',final_product['a11'])
-print('start time =',final_product['a11']['start_cut_value'])
-print('end time =',final_product['a11']['end_cut_value'])
+#
+# print('annotation_id =',final_product['a11'])
+# print('start time =',final_product['a11']['start_cut_value'])
+# print('end time =',final_product['a11']['end_cut_value'])
 
 # check if user input , then error message, these are the 4 available
 #
@@ -88,6 +88,111 @@ print('end time =',final_product['a11']['end_cut_value'])
 # then get_TIER
 # just a test change
 
+<<<<<<< HEAD
+=======
+import subprocess
+import pyautogui
+# 1. you can also look for and open for the .wav file
+#   for ex: open -a Audacity /Users/curt/desktop/my_test.wav
+# Here we are send a command to terminal to open our file
+#   with Audacity
+# -a allows us to open Audacity without having to navigate to
+#   the apps location
+
+
+# wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
+# # my_wav = '/Users/curt/desktop/my_test.wav'
+# subprocess.call(['open','-a','Audacity',my_wav])
+# pyautogui.PAUSE = 3.0
+# # 2. wait for a bit while Audacity opens and loads
+# # time.sleep(5)
+# # pyautogui.PAUSE = 5.0
+# x,y = pyautogui.position()
+# print(x,y)
+# pyautogui.PAUSE = 3.0
+# pyautogui.moveTo(1221,701)
+# pyautogui.PAUSE = 3.0
+# pyautogui.click()
+# pyautogui.PAUSE = 3.0
+# pyautogui.press('enter')
+
+# pyautogui.press('enter')
+# pyautogui.PAUSE = 7.0
+
+# This is an idea
+my_tuple_list = ()
+for i in final_product:
+    start_end_value_pairs = (final_product[i]['start_cut_value'],final_product[i]['end_cut_value'])
+    my_tuple_list = my_tuple_list + (start_end_value_pairs,)
+#
+# count = 0
+#
+while count < len(my_tuple_list):
+    pass
+
+    count += 1
+
+# full_time = time.strftime('%H:%M:%S',time.gmtime(str_result))
+
+print(my_tuple_list[0])
+start_time = str(my_tuple_list[0][0])
+end_time = str(my_tuple_list[0][1])
+print('start:'+ start_time)
+print('end:'+ end_time)
+
+# We need to hold on to the mili seconds until later when we add it on to
+#   part of our list that we will use in the press() function
+start_time_mili = start_time[-3:]
+end_time_mili = end_time[-3:]
+print('start mili:'+start_time_mili)
+print('end mili:'+end_time_mili)
+
+# We will use these seconds for the time converting function
+# We also need to convert it back to an int in order for it to work with
+#   the converting function
+start_convert = int(start_time[:-3])
+end_convert = int(end_time[:-3])
+
+# Now we have convert seconds to hours, minutes, seconds
+start_result = time.strftime('%H:%M:%S',time.gmtime(start_convert))
+end_result = time.strftime('%H:%M:%S',time.gmtime(end_convert))
+print('start (hh:mm:ss) - ' + start_result)
+print('end (hh:mm:ss) - ' + end_result)
+
+# Lets remove the colons (:) from our results
+start_result = start_result.replace(':','')
+end_result = end_result.replace(':','')
+print('start (removed colons) - ' + start_result)
+print('end (removed colons) - '+ end_result)
+
+# Let's create our list that we are going to use with the press() function
+start_press_list = []
+for i in start_result:
+    start_press_list.append(i)
+
+end_press_list = []
+for i in end_result:
+    end_press_list.append(i)
+
+print('start (press list) - ' ,start_press_list)
+print('end (press list) - ' ,end_press_list)
+
+# Now let's add our mili-seconds to the end of our list
+for i in start_time_mili:
+    start_press_list.append(i)
+
+for i in end_time_mili:
+    end_press_list.append(i)
+
+print('start final product = ', start_press_list)
+print('end final product = ', end_press_list)
+
+
+# test change
+
+
+
+>>>>>>> 7530d2af0bfaf34d1d848536ea00923b34aaa39e
 
 
 
