@@ -2,7 +2,7 @@ import xmltodict
 import pprint
 import parsing_functions
 import os
-with open('0204_000609_uclacurt_vetting.eaf') as fd:
+with open('/users/curt/desktop/elan_test.eaf') as fd:
     doc = xmltodict.parse(fd.read())
 
 '''
@@ -88,92 +88,6 @@ print('end time =',final_product['a11']['end_cut_value'])
 # then get_TIER
 # just a test change
 
-import subprocess
-import time
-import pyautogui
-# 1. you can also look for and open for the .wav file
-#   for ex: open -a Audacity /Users/curt/desktop/my_test.wav
-# Here we are send a command to terminal to open our file
-#   with Audacity
-# -a allows us to open Audacity without having to navigate to
-#   the apps location
-
-# subprocess.call(['open','-a','Audacity'])
-
-# or
-
-# wav_location = '/Users/curtchang/desktop/eaf_files/0204_000609/0204_000609.wav'
-# # my_wav = '/Users/curt/desktop/my_test.wav'
-# subprocess.call(['open','-a','Audacity',my_wav])
-# pyautogui.PAUSE = 3.0
-# # 2. wait for a bit while Audacity opens and loads
-# # time.sleep(5)
-# # pyautogui.PAUSE = 5.0
-# x,y = pyautogui.position()
-# print(x,y)
-# pyautogui.PAUSE = 3.0
-# pyautogui.moveTo(1221,701)
-# pyautogui.PAUSE = 3.0
-# pyautogui.click()
-# pyautogui.PAUSE = 3.0
-#
-# # 3. then select ok
-# #
-# pyautogui.press('enter')
-
-# 4. Use bracket keys to select left and right selection boundaries
-#   for silencing
-# enter left bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter right bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter cmd+l to silence the selection
-
-# repeat until you've silenced all parts of the audio
-#
-# pyautogui.press('enter')
-# pyautogui.PAUSE = 7.0
-# # 4. Use bracket keys to select left and right selection boundaries
-# #   for silencing
-# # enter left bracket key and push right arrow once, enter the time,
-# #   then hit ok
-# # Enter right bracket key and push right arrow once, enter the time,
-# #   then hit ok
-#
-# pyautogui.press(['[','right'])
-print(final_product['a11']['start_cut_value'],final_product['a11']['end_cut_value'])
-time = final_product['a11']['start_cut_value']
-seconds_format = str(time)
-seconds_to_convert = seconds_format[:-3]
-convert_this = int(seconds_to_convert)
-import time
-result = time.strftime('%H:%M:%S',time.gmtime(convert_this))
-print(result)       # result is a string
-hours = result[:2]
-minutes = result[3:5]
-seconds = result[6:]
-print(hours, minutes, seconds)
-# print(seconds_format[:-3])
-
-
-
-# import datetime
-# print(datetime.timedelta(seconds=))
-
-# hours =
-# minutes =
-# seconds =
-
-
-# enter right bracket key and push left arrow once, enter the time,
-#   then hit ok
-
-# enter cmd+l to silence the selection
-
-# repeat until you've silenced all parts of the audio
-#pyautogui.press('enter')
 
 
 
