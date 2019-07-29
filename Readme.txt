@@ -4,6 +4,9 @@ Lab of Professor Anne Warlaumont
 https://www.annewarlaumont.org
 
 Mentor:
+Anne Warlaumont (UCLA Professor)
+Communications Department
+
 Kyle MacDonald
 UCLA Postdoc Researcher
 https://kemacdonald.com
