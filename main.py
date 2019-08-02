@@ -84,7 +84,12 @@ else:
 
 wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
 final_sound = parsing_functions.silence_segments(final_product,wav_object)
-play(final_sound)
+# play(final_sound)
+
+'''
+This last part we need to export our wave object to a wav file.
+'''
+# another_list.export('final_sound.wav', format='wav')
 
 # check if user input , then error message, these are the 4 available
 #
@@ -93,45 +98,8 @@ play(final_sound)
 # then get_TIER
 # just a test change
 
-# from pydub import AudioSegment
-# from pydub.playback import play
 
 
-
-
-
-# segment_counter = len(final_product)
-# holder = 0000
-# print(type(holder))
-# my_list = []
-#
-# for key,value in final_product.items():
-#     print(key,value['start_cut_value'], value['end_cut_value'])
-#     start = wav_object[holder:value['start_cut_value']]
-#     silence = wav_object[value['start_cut_value']:value['end_cut_value']]
-#     silence = wav_object.silent(duration=len(silence))
-#     my_list.append(start)
-#     my_list.append(silence)
-#     holder = value['end_cut_value']
-#     segment_counter -= 1
-#     if(segment_counter == 0):
-#         end = wav_object[value['end_cut_value']:]
-#         my_list.append(end)
-
-'''
-my_list contains objects of audio segments.  This part of the code is to combine
-    those audio segments and create an audio object so that you can export it.
-
-Is there a way you can implement this into your function or replace some of the code
-    in your silence_segments function?
-'''
-# another_list = my_list[0]
-# print(type(another_list))
-#
-# for i in my_list[1:]:
-#     another_list += i
-
-# another_list.export('final_sound.wav', format='wav')
 
 
 
