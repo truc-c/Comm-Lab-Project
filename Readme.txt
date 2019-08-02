@@ -3,7 +3,7 @@ Communications Department
 Lab of Professor Anne Warlaumont
 https://www.annewarlaumont.org
 
-Mentor:
+Mentors:
 Anne Warlaumont (UCLA Professor)
 Communications Department
 

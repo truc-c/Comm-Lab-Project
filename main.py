@@ -51,21 +51,12 @@ Example:
         ('@TIME_SLOT_REF1', 'ts1'), ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))])
     ... # additional output excluded
 
-Indexing tier_elements returns a tier (cut, bookmark) with the annotations
+Indexing tier_elements returns a tier (cut, bookmark) with all annotations
     and time slot references
 
 Example:
+
     print(tier_elements[0])
-
-    output:
-
-    OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'), ('ANNOTATION',
-    [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'), ('@TIME_SLOT_REF1', 'ts1'),
-    ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))]),
-    OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a2'), ('@TIME_SLOT_REF1', 'ts5'),
-    ('@TIME_SLOT_REF2', 'ts6'), ('ANNOTATION_VALUE', '...some annotation...')]))]),
-    OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a3'), ('@TIME_SLOT_REF1', 'ts11'),
-    ('@TIME_SLOT_REF2', 'ts12'), ('ANNOTATION_VALUE', '...some annotation...')]))])])])
 '''
 
 time_order_elements = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
