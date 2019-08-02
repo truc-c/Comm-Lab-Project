@@ -17,6 +17,8 @@ time_order_elements returns an OrderedDict with with two TIME_SLOT_ID's
 
 Here is a sample:
 
+print(time_order_elements)
+
 [OrderedDict([('@TIME_SLOT_ID', 'ts1'), ('@TIME_VALUE', '4670')]),
     OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
 ... # additional output excluded
@@ -34,9 +36,42 @@ Example:
     output:
 
     ts2
+
+
+
+
+
+
+tier_elements returns an OrderedDict with ANNOTATION_ID, TIME_SLOT_REF1,
+    TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
+
+Here is a sample:
+
+print(tier_elements)
+
+[OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'),
+    ('ANNOTATION', [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'),
+    ('@TIME_SLOT_REF1', 'ts1'), ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))])
+... # additional output excluded
+
+Indexing tier_elements returns a tier (cut, bookmark) with the annotations and
+    and time slot references.
+
+Example:
+    print(tier_elements[0])
+
+    output:
+
+    OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'), ('ANNOTATION',
+    [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'), ('@TIME_SLOT_REF1', 'ts1'),
+    ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))]),
+    OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a2'), ('@TIME_SLOT_REF1', 'ts5'),
+    ('@TIME_SLOT_REF2', 'ts6'), ('ANNOTATION_VALUE', '...some annotation...')]))]),
+    OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a3'), ('@TIME_SLOT_REF1', 'ts11'),
+    ('@TIME_SLOT_REF2', 'ts12'), ('ANNOTATION_VALUE', '...some annotation...')]))])])])
 '''
+
 time_order_elements = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
-print(time_order_elements[1]['@TIME_SLOT_ID'])
 tier_elements = doc['ANNOTATION_DOCUMENT']['TIER']
 
 user_input_tier_name = input('Enter a tier name: ')
