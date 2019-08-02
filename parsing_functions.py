@@ -1,4 +1,6 @@
 import pprint
+from pydub import AudioSegment
+from pydub.playback import play
 
 '''
 helps to identify the responsibilities of each part of code
@@ -60,3 +62,27 @@ def no_valid_results(list_of_tiers):
     print("Tier name does not exist. Please enter one of the following tier names:")
     for names in list_of_tiers:
         print(names)
+
+def silence_segments(final_product, wav_object):
+    holder = 0000
+    segment_counter = len(final_product)
+    list_of_segments = []
+
+    for key,value in final_product.items():
+        begin = wav_object[holder:value['start_cut_value']]
+        sensitive_info = wav_object[value['start_cut_value']:value['end_cut_value']]
+        sensitive_info = wav_object.silent(duration=len(sensitive_info))
+        list_of_segments.append(begin)
+        list_of_segments.append(sensitive_info)
+        holder = value['end_cut_value']
+        segment_counter -= 1
+        if(segment_counter == 0):
+            end_segment = wav_object[value['end_cut_value']:]
+            list_of_segments.append(end_segment)
+
+    final_list = list_of_segments[0]
+
+    for i in list_of_segments[1:]:
+        final_list += i
+
+    return final_list
