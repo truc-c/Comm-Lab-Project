@@ -1,4 +1,3 @@
-import pprint
 import os
 
 source = '/users'
@@ -6,7 +5,7 @@ myList = []
 
 # enter the name of file you are annotating
 
-filename = raw_input("Enter file name incuding .eaf at the end: ")
+filename = input("Enter file name incuding .eaf at the end: ")
 
 # walk through the directories and look for the file specified
 #	"folderPath" now contains the directory path
