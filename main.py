@@ -21,21 +21,22 @@ Here is a sample:
     OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
 ... # additional output excluded
 
-
-Indexing time_order_elements provides us with a pair of TIME_SLOT_ID
-    and TIME_VALUE
-
-For example:
+Example:
     print(time_order_elements[1])
 
     output:
 
     OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
-...
 
+Example:
+    print(time_order_elements[1]['@TIME_SLOT_ID'])
+
+    output:
+
+    ts2
 '''
 time_order_elements = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
-
+print(time_order_elements[1]['@TIME_SLOT_ID'])
 tier_elements = doc['ANNOTATION_DOCUMENT']['TIER']
 
 user_input_tier_name = input('Enter a tier name: ')
