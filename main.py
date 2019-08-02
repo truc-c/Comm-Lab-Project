@@ -15,13 +15,13 @@ with open('/users/curt/desktop/elan_test.eaf') as fd:
 time_order_elements returns an OrderedDict with with two TIME_SLOT_ID's
     as well as, the TIME_VALUE for each TIME_SLOT_ID.
 
-Here is a sample:
+Example:
 
-print(time_order_elements)
+    print(time_order_elements)
 
-[OrderedDict([('@TIME_SLOT_ID', 'ts1'), ('@TIME_VALUE', '4670')]),
-    OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
-... # additional output excluded
+    [OrderedDict([('@TIME_SLOT_ID', 'ts1'), ('@TIME_VALUE', '4670')]),
+        OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
+    ... # additional output excluded
 
 Example:
     print(time_order_elements[1])
@@ -39,23 +39,20 @@ Example:
 
 
 
-
-
-
 tier_elements returns an OrderedDict with ANNOTATION_ID, TIME_SLOT_REF1,
     TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
 
-Here is a sample:
+Example:
 
-print(tier_elements)
+    print(tier_elements)
 
-[OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'),
-    ('ANNOTATION', [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'),
-    ('@TIME_SLOT_REF1', 'ts1'), ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))])
-... # additional output excluded
+    [OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'),
+        ('ANNOTATION', [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'),
+        ('@TIME_SLOT_REF1', 'ts1'), ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))])
+    ... # additional output excluded
 
-Indexing tier_elements returns a tier (cut, bookmark) with the annotations and
-    and time slot references.
+Indexing tier_elements returns a tier (cut, bookmark) with the annotations
+    and time slot references
 
 Example:
     print(tier_elements[0])
