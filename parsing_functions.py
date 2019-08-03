@@ -2,6 +2,7 @@ import pprint
 from pydub import AudioSegment
 from pydub.playback import play
 
+
 '''
 helps to identify the responsibilities of each part of code
 think about the purpose of the variable, name should sugges purpose

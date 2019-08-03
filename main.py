@@ -2,11 +2,13 @@ import xmltodict
 import pprint
 import os
 import sys
+import platform
 from pydub import AudioSegment
 from pydub.playback import play
 import parsing_functions as pf
 
 eaf_file = sys.argv[1]
+python_version = int(platform.python_version()[0])
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
 
@@ -42,7 +44,12 @@ tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1
 
 time_order_slots = eaf_obj['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 tier_elements = eaf_obj['ANNOTATION_DOCUMENT']['TIER']
-tier_name_input = input('Enter a tier name: ')
+
+if(python_version == 3):
+    tier_name_input = input('Enter a tier name: ')
+else:
+    tier_name_input = raw_input('Enter a tier name: ')
+
 all_TIER_ID_names = pf.get_unique_TIER_ID(tier_elements)
 
 
