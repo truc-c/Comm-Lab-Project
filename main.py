@@ -3,13 +3,9 @@ import pprint
 import os
 from pydub import AudioSegment
 from pydub.playback import play
-import parsing_functions
-
+import parsing_functions as pf
 with open('/users/curt/desktop/elan_test.eaf') as fd:
     doc = xmltodict.parse(fd.read())
-
-# with open('0204_000609_uclacurt_vetting.eaf') as fd:
-#     doc = xmltodict.parse(fd.read())
 
 '''
 time_order_elements returns an OrderedDict with with two TIME_SLOT_ID's
@@ -37,87 +33,40 @@ Example:
 
     ts2
 
-
-
-tier_elements returns an OrderedDict with ANNOTATION_ID, TIME_SLOT_REF1,
+tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1,
     TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
-
-Example:
-
-    print(tier_elements)
-
-    [OrderedDict([('@LINGUISTIC_TYPE_REF', 'default-lt'), ('@TIER_ID', 'cut'),
-        ('ANNOTATION', [OrderedDict([('ALIGNABLE_ANNOTATION', OrderedDict([('@ANNOTATION_ID', 'a1'),
-        ('@TIME_SLOT_REF1', 'ts1'), ('@TIME_SLOT_REF2', 'ts2'), ('ANNOTATION_VALUE', '...some annotation...')]))])
-    ... # additional output excluded
-
-Indexing tier_elements returns a tier (cut, bookmark) with all annotations
-    and time slot references
-
-Example:
-
-    print(tier_elements[0])
 '''
 
 time_order_elements = doc['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 tier_elements = doc['ANNOTATION_DOCUMENT']['TIER']
+tier_name_input = input('Enter a tier name: ')
 
-user_input_tier_name = input('Enter a tier name: ')
+all_TIER_ID_names = pf.get_unique_TIER_ID(tier_elements)
 
-all_TIER_ID_names = parsing_functions.get_unique_TIER_ID(tier_elements)
+# if-else statement checks the users input with list of all TIER_ID names
+if tier_name_input in all_TIER_ID_names:
+    print("Process the results for [%s" %tier_name_input + "] tier")
 
+    # time_id_and_value_dict holds values of TIME_SLOT_ID and TIME_VALUE
+    time_id_and_value_dict = pf.extract_TIME_ID_and_VALUE(time_order_elements)
 
-# Maybe you can try and limit or make it more convenient for the user
-#   by providing a list of tier names depending on the file they provide
-# Or you can also provide an option for them to type it in
-# for ex:
-#   Enter a tier name or choose a number from the following selection:
-#   1) cut
-#   2) bookmark
-#   0) exit
+    # tier_idx_number is the number associated with the TIER name
+    tier_idx_number = all_TIER_ID_names.index(tier_name_input)
 
-'''
-This if-else statement checks the users input with list of all
-  TIER_ID names
-
-If the input is valid then the program will run
-  else, an error message will appear providing a list of names
-  of available TIERs
-'''
-if user_input_tier_name in all_TIER_ID_names:
-    print("Process the results for [%s" %user_input_tier_name + "] tier")
-
-    '''
-    time_id_and_value_dict is a dictionary that contains
-        the values of TIME_SLOT_ID and TIME_VALUE
-    '''
-    time_id_and_value_dict = parsing_functions.extract_TIME_ID_and_VALUE(time_order_elements)
-
-    '''
-    tier_idx_number is the number associated with the TIER name
-        prompted by the user
-    '''
-    tier_idx_number = all_TIER_ID_names.index(user_input_tier_name)
-
-    '''
-    list_of_ANNOTATIION_objs contains all ANNOTATIONS to a
-        specific TIER
-    '''
+    # list_of_ANNOTATIION_objs contains all ANNOTATIONS to a specific TIER
     list_of_ANNOTATIION_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
 
-    '''
-    final_product is a nested dictionary containing all the ANNOTATION
-        values
-    '''
-    final_product = parsing_functions.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
-    # pprint.pprint(final_product)
+    # final_product is a nested dictionary containing all the annotation values of a tier
+    final_product = pf.extract_ANNOTATION_values(list_of_ANNOTATIION_objs, time_id_and_value_dict)
+
+    pprint.pprint(final_product)
     # save final_product to disk
 
 else:
-    parsing_functions.no_valid_results(all_TIER_ID_names)
+    pf.no_valid_results(all_TIER_ID_names)
 
 wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
-final_sound = parsing_functions.silence_segments(final_product,wav_object)
+final_sound = pf.silence_segments(final_product,wav_object)
 # play(final_sound)
 
 '''
@@ -131,6 +80,22 @@ This last part we need to export our wave object to a wav file.
 # run code if it passes
 # then get_TIER
 # just a test change
+
+# Suggestions for improvement ---------------------
+
+'''
+# Maybe you can try and limit or make it more convenient for the user
+#   by providing a list of tier names depending on the file they provide
+# Or you can also provide an option for them to type it in
+# for ex:
+#   Enter a tier name or choose a number from the following selection:
+#   1) cut
+#   2) bookmark
+#   0) exit
+
+
+'''
+
 
 
 
