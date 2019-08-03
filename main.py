@@ -1,10 +1,13 @@
 import xmltodict
 import pprint
 import os
+import sys
 from pydub import AudioSegment
 from pydub.playback import play
 import parsing_functions as pf
-with open('/users/curt/desktop/elan_test.eaf') as file_obj:
+
+eaf_file = sys.argv[1]
+with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
 
 """
@@ -75,6 +78,8 @@ final_sound = pf.silence_segments(final_product,wav_object)
 # play(final_sound)
 
 file_obj.close()
+
+
 '''
 This last part we need to export our wave object to a wav file.
 '''
