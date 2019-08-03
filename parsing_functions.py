@@ -6,7 +6,9 @@ from pydub.playback import play
 helps to identify the responsibilities of each part of code
 think about the purpose of the variable, name should sugges purpose
 single responsibility rule
+'''
 
+'''
 get_unique_TIER_ID function takes in a list of all TIERs
   and extracts the TIER_ID name
 The names are added to a list and returns the list
@@ -31,9 +33,8 @@ def extract_TIME_ID_and_VALUE(time_slot_list):
     return time_slot_dict
 
 '''
-extract_ANNOTATION_values function creates and returns a nested
-  dictionary that contains the ANNOTATION time slots refs', the time,
-  and text
+extract_ANNOTATION_values returns a nested dictionary that containing
+    the ANNOTATION_ID, TIME_SLOT_REF's, and ANNOTATION_VALUE
 '''
 def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     result = {}
