@@ -3,5 +3,3 @@ __pycache__/
 *.eaf
 
 *.pyc
-
-locate_file.py
