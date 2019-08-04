@@ -17,8 +17,9 @@ time_order_slots returns an OrderedDict with with two TIME_SLOT_ID's
     as well as, the TIME_VALUE for each TIME_SLOT_ID.
 
 Example:
-
     print(time_order_slots)
+
+    output:
 
     [OrderedDict([('@TIME_SLOT_ID', 'ts1'), ('@TIME_VALUE', '4670')]),
         OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
@@ -42,15 +43,16 @@ tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1
     TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
 """
 
+valid_input = True
 time_order_slots = eaf_obj['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 tier_elements = eaf_obj['ANNOTATION_DOCUMENT']['TIER']
+all_TIER_ID_names = pf.get_unique_TIER_ID(tier_elements)
 
 if(python_version == 3):
-    tier_name_input = input('Enter a tier name: ')
+    tier_name_input = input('\nEnter a tier name: ')
 else:
-    tier_name_input = raw_input('Enter a tier name: ')
+    tier_name_input = raw_input('\nEnter a tier name: ')
 
-all_TIER_ID_names = pf.get_unique_TIER_ID(tier_elements)
 
 
 """
@@ -66,19 +68,47 @@ annotation_objs holds annotations in a tier
 final_product is a nested dictionary containing all the annotation values of a tier
 """
 
-if tier_name_input in all_TIER_ID_names:
-    print("Process the results for [%s" %tier_name_input + "] tier")
+while(valid_input):
+    if tier_name_input in all_TIER_ID_names:
+        print("\nProcess the results for [%s" %tier_name_input + "] tier\n")
 
-    time_id_and_value = pf.extract_TIME_ID_and_VALUE(time_order_slots)
-    tier_idx_number = all_TIER_ID_names.index(tier_name_input)
-    annotation_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
-    final_product = pf.extract_ANNOTATION_values(annotation_objs, time_id_and_value)
+        time_id_and_value = pf.extract_TIME_ID_and_VALUE(time_order_slots)
+        tier_idx_number = all_TIER_ID_names.index(tier_name_input)
+        annotation_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
+        final_product = pf.extract_ANNOTATION_values(annotation_objs, time_id_and_value)
 
-    pprint.pprint(final_product)
-    # save final_product to disk?
+        pprint.pprint(final_product)
+        if(python_version == 3):
+            tier_response = input('\nWould you like to select another tier? (y/n) ')
+        else:
+            tier_response = raw_input('\nWould you like to select another tier? (y/n) ')
 
-else:
-    pf.no_valid_results(all_TIER_ID_names)
+        if(tier_response == 'y'):
+            if(python_version == 3):
+                tier_name_input = input('\nEnter a tier name: ')
+            else:
+                tier_name_input = raw_input('\nEnter a tier name: ')
+            continue
+        else:
+            valid_input = False
+            break
+
+        # save final_product to disk?
+
+    else:
+        pf.no_valid_results(all_TIER_ID_names)
+
+        if(python_version == 3):
+            tier_name_input = input('\nEnter a tier name: ')
+        else:
+            tier_name_input = raw_input('\nEnter a tier name: ')
+
+        if(tier_name_input == '0'):
+            valid_input = False
+            sys.exit()
+
+        continue
+
 
 wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
 final_sound = pf.silence_segments(final_product,wav_object)

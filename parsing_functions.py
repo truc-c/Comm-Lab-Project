@@ -1,6 +1,5 @@
 import pprint
 from pydub import AudioSegment
-from pydub.playback import play
 
 
 '''
@@ -61,7 +60,7 @@ def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
     return result
 
 def no_valid_results(list_of_tiers):
-    print("Tier name does not exist. Please enter one of the following tier names:")
+    print("\nTier name does not exist. Please enter one of the following tier names or enter 0 to exit:")
     for names in list_of_tiers:
         print(names)
 
