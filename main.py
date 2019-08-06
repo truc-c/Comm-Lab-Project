@@ -16,29 +16,6 @@ with open(eaf_file) as file_obj:
 time_order_slots returns an OrderedDict with with two TIME_SLOT_ID's
     as well as, the TIME_VALUE for each TIME_SLOT_ID.
 
-Example:
-    print(time_order_slots)
-
-    output:
-
-    [OrderedDict([('@TIME_SLOT_ID', 'ts1'), ('@TIME_VALUE', '4670')]),
-        OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
-    ... # additional output excluded
-
-Example:
-    print(time_order_slots[1])
-
-    output:
-
-    OrderedDict([('@TIME_SLOT_ID', 'ts2'), ('@TIME_VALUE', '7310')])
-
-Example:
-    print(time_order_slots[1]['@TIME_SLOT_ID'])
-
-    output:
-
-    ts2
-
 tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1,
     TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
 """
@@ -48,10 +25,8 @@ time_order_slots = eaf_obj['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 tier_elements = eaf_obj['ANNOTATION_DOCUMENT']['TIER']
 all_TIER_ID_names = pf.get_unique_TIER_ID(tier_elements)
 
-if(python_version == 3):
-    tier_name_input = input('\nEnter a tier name: ')
-else:
-    tier_name_input = raw_input('\nEnter a tier name: ')
+tier_name_prompt = 'Enter a tier name: '
+tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
 
 
 
@@ -78,16 +53,12 @@ while(valid_input):
         final_product = pf.extract_ANNOTATION_values(annotation_objs, time_id_and_value)
 
         pprint.pprint(final_product)
-        if(python_version == 3):
-            tier_response = input('\nWould you like to select another tier? (y/n) ')
-        else:
-            tier_response = raw_input('\nWould you like to select another tier? (y/n) ')
+
+        select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
+        tier_response = pf.py_version_input(python_version, select_diff_tier)
 
         if(tier_response == 'y'):
-            if(python_version == 3):
-                tier_name_input = input('\nEnter a tier name: ')
-            else:
-                tier_name_input = raw_input('\nEnter a tier name: ')
+            tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
             continue
         else:
             valid_input = False
@@ -97,14 +68,9 @@ while(valid_input):
 
     else:
         pf.no_valid_results(all_TIER_ID_names)
-
-        if(python_version == 3):
-            tier_name_input = input('\nEnter a tier name: ')
-        else:
-            tier_name_input = raw_input('\nEnter a tier name: ')
+        tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
 
         if(tier_name_input == '0'):
-            valid_input = False
             sys.exit()
 
         continue

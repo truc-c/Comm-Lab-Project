@@ -64,6 +64,14 @@ def no_valid_results(list_of_tiers):
     for names in list_of_tiers:
         print(names)
 
+def py_version_input(py_version, question):
+    if(py_version == 3):
+        tier_name_input = input('\n%s' % question)
+    else:
+        tier_name_input = raw_input('\n%s' % question)
+
+    return tier_name_input
+
 def silence_segments(final_product, wav_object):
     holder = 0000
     segment_counter = len(final_product)
