@@ -49,13 +49,25 @@ while(valid_input):
         time_id_and_value = pf.extract_TIME_ID_and_VALUE(time_order_slots)
         tier_idx_number = all_TIER_ID_names.index(tier_name_input)
 
-        # you need to account for no annotations in a tier 
-        annotation_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
+        # you need to account for no annotations in a tier
+        try:
+            annotation_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
+        except:
+            print('There are no annotations in the tier: ' + tier_name_input)
+
+            select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
+            tier_response = pf.py_version_input(python_version, select_diff_tier)
+            if(tier_response == 'y'):
+                tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
+                continue
+            else:
+                break
+
         final_product = pf.extract_ANNOTATION_values(annotation_objs, time_id_and_value)
 
         pprint.pprint(final_product)
 
-        select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
+        # select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
         tier_response = pf.py_version_input(python_version, select_diff_tier)
 
         if(tier_response == 'y'):
