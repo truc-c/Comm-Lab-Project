@@ -29,7 +29,6 @@ tier_name_prompt = 'Enter a tier name: '
 tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
 
 
-
 """
 if statement checks the input with of all TIER_ID names
     else, it prints the TIER_ID's available
@@ -63,9 +62,6 @@ while(valid_input):
         else:
             valid_input = False
             break
-
-        # save final_product to disk?
-
     else:
         pf.no_valid_results(all_TIER_ID_names)
         tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
@@ -75,9 +71,7 @@ while(valid_input):
 
         continue
 
-
-# silence_segments function works.  Next, you need find a way to use your modify_filename function and export the
-#   .wav file
+# -- Silencing Portion --
 
 silence_this_wav = input('\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: ')
 if(silence_this_wav == 'n'):
@@ -92,44 +86,6 @@ print('\n==== ! Silencing Process Finished ! ====\n')
 # silenced_wav_obj.export(new_full_pathname, format='wav')
 
 
-# silence_audio_prompt = 'Would you like to silence the audio? (y = yes , n = no): '
-# silence_audio_answer = pf.py_version_input(py_version, silence_audio_prompt)
-# if(silence_audio_prompt == 'y'):
-#     wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
-#     final_sound = pf.silence_segments(final_product,wav_object)
-#     # play(final_sound)
-# else:
-#     sys.exit()
-
-# file_obj.close()
-
-
-'''
-This last part we need to export our wave object to a wav file.
-'''
-# another_list.export('final_sound.wav', format='wav')
-
-# check if user input , then error message, these are the 4 available
-#
-# check user input with this list
-# run code if it passes
-# then get_TIER
-# just a test change
-
-# Suggestions for improvement ---------------------
-
-'''
-# Maybe you can try and limit or make it more convenient for the user
-#   by providing a list of tier names depending on the file they provide
-# Or you can also provide an option for them to type it in
-# for ex:
-#   Enter a tier name or choose a number from the following selection:
-#   1) cut
-#   2) bookmark
-#   0) exit
-
-
-'''
 
 
 

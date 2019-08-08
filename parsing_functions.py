@@ -57,6 +57,7 @@ def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
 
     return result
 
+# provides list of possible tier names if the user input is incorrect
 def no_valid_results(list_of_tiers):
     print("\nTier name does not exist. Please enter one of the following tier names or enter 0 to exit:")
     for names in list_of_tiers:
@@ -70,6 +71,7 @@ def py_version_input(py_version, question):
 
     return tier_name_input
 
+# silence sections/time provided by the .eaf file and returns an AudioSegment object
 def silence_segments(final_product, wav_object):
     holder = 0000
     segment_counter = len(final_product)
@@ -94,6 +96,7 @@ def silence_segments(final_product, wav_object):
 
     return final_list
 
+# add '_scrubbed' to name of .wav file and returns path of .wav file
 def modify_filename(filename_path):
     scrubbed_string = '_scrubbed'
     split_string = filename_path.split('/')
@@ -103,4 +106,5 @@ def modify_filename(filename_path):
     dot_wav_ext = last_index[-4:]   # .wav part
     new_name = file_name + scrubbed_string + dot_wav_ext
     reuse_file_path = reuse_file_path + new_name
+
     return reuse_file_path
