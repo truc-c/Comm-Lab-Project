@@ -12,13 +12,13 @@ python_version = int(platform.python_version()[0])
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
 
-"""
-time_order_slots returns an OrderedDict with with two TIME_SLOT_ID's
-    as well as, the TIME_VALUE for each TIME_SLOT_ID.
 
-tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1,
-    TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
-"""
+# time_order_slots returns an OrderedDict with with two TIME_SLOT_ID's
+#     as well as, the TIME_VALUE for each TIME_SLOT_ID.
+
+# tier_elements returns an OrderedDict with TIER_ID, ANNOTATION_ID, TIME_SLOT_REF1,
+#   TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
+
 
 valid_input = True
 time_order_slots = eaf_obj['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
@@ -29,18 +29,18 @@ tier_name_prompt = 'Enter a tier name: '
 tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
 
 
-"""
-if statement checks the input with of all TIER_ID names
-    else, it prints the TIER_ID's available
 
-time_id_and_value holds values of TIME_SLOT_ID and TIME_VALUE
+# if statement checks the input with of all TIER_ID names
+#     else, it prints the TIER_ID's available
 
-tier_idx_number is the number associated with the TIER name
+# time_id_and_value holds values of TIME_SLOT_ID and TIME_VALUE
 
-annotation_objs holds annotations in a tier
+# tier_idx_number is the number associated with the TIER name
 
-final_product is a nested dictionary containing all the annotation values of a tier
-"""
+# annotation_objs holds annotations in a tier
+
+# final_product is a nested dictionary containing all the annotation values of a tier
+
 
 while(valid_input):
     if tier_name_input in all_TIER_ID_names:
