@@ -73,13 +73,14 @@ while(valid_input):
 
 # -- Silencing Portion --
 
-silence_this_wav = input('\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: ')
+silence_instruction = '\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: '
+silence_this_wav = pf.py_version_input(python_version, silence_instruction)
 if(silence_this_wav == 'n'):
     sys.exit()
 
-wav_object = AudioSegment.from_wav(silence_this_wav.strip())
-silenced_wav_obj = pf.silence_segments(final_product,wav_object)
-new_full_pathname = pf.modify_filename(silence_this_wav.strip())
+# wav_object = AudioSegment.from_wav(silence_this_wav.strip())
+# silenced_wav_obj = pf.silence_segments(final_product,wav_object)
+# new_full_pathname = pf.modify_filename(silence_this_wav.strip())
 
 print('\n==== ! Silencing Process Finished ! ====\n')
 

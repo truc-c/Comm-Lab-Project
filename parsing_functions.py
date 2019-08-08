@@ -1,15 +1,8 @@
 from pydub import AudioSegment
 
 '''
-helps to identify the responsibilities of each part of code
-think about the purpose of the variable, name should sugges purpose
-single responsibility rule
-'''
-
-'''
 get_unique_TIER_ID function takes in a list of all TIERs
   and extracts the TIER_ID name
-The names are added to a list and returns the list
 '''
 def get_unique_TIER_ID(list_of_tiers):
     tier_name_list = []
@@ -60,6 +53,7 @@ def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
 # provides list of possible tier names if the user input is incorrect
 def no_valid_results(list_of_tiers):
     print("\nTier name does not exist. Please enter one of the following tier names or enter 0 to exit:")
+
     for names in list_of_tiers:
         print(names)
 
