@@ -76,11 +76,32 @@ while(valid_input):
         continue
 
 
-wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
-final_sound = pf.silence_segments(final_product,wav_object)
-# play(final_sound)
+# silence_segments function works.  Next, you need find a way to use your modify_filename function and export the
+#   .wav file
 
-file_obj.close()
+silence_this_wav = input('\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: ')
+if(silence_this_wav == 'n'):
+    sys.exit()
+
+wav_object = AudioSegment.from_wav(silence_this_wav.strip())
+silenced_wav_obj = pf.silence_segments(final_product,wav_object)
+new_full_pathname = pf.modify_filename(silence_this_wav.strip())
+
+print('\n==== ! Silencing Process Finished ! ====\n')
+
+# silenced_wav_obj.export(new_full_pathname, format='wav')
+
+
+# silence_audio_prompt = 'Would you like to silence the audio? (y = yes , n = no): '
+# silence_audio_answer = pf.py_version_input(py_version, silence_audio_prompt)
+# if(silence_audio_prompt == 'y'):
+#     wav_object = AudioSegment.from_wav('/users/curt/desktop/real_sound.wav')
+#     final_sound = pf.silence_segments(final_product,wav_object)
+#     # play(final_sound)
+# else:
+#     sys.exit()
+
+# file_obj.close()
 
 
 '''

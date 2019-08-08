@@ -1,6 +1,4 @@
-import pprint
 from pydub import AudioSegment
-
 
 '''
 helps to identify the responsibilities of each part of code
@@ -95,3 +93,14 @@ def silence_segments(final_product, wav_object):
         final_list += i
 
     return final_list
+
+def modify_filename(filename_path):
+    scrubbed_string = '_scrubbed'
+    split_string = filename_path.split('/')
+    reuse_file_path = '/'.join(split_string[:-1]) + '/'
+    last_index = split_string[-1]   # name of sound wav
+    file_name = last_index[:-4]     # file name without the .wav extension
+    dot_wav_ext = last_index[-4:]   # .wav part
+    new_name = file_name + scrubbed_string + dot_wav_ext
+    reuse_file_path = reuse_file_path + new_name
+    return reuse_file_path
