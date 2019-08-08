@@ -48,6 +48,8 @@ while(valid_input):
 
         time_id_and_value = pf.extract_TIME_ID_and_VALUE(time_order_slots)
         tier_idx_number = all_TIER_ID_names.index(tier_name_input)
+
+        # you need to account for no annotations in a tier 
         annotation_objs = tier_elements[tier_idx_number]['ANNOTATION'] # maybe turn into function
         final_product = pf.extract_ANNOTATION_values(annotation_objs, time_id_and_value)
 
