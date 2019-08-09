@@ -67,7 +67,7 @@ while(valid_input):
 
         pprint.pprint(final_product)
 
-        # select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
+        select_diff_tier = 'Would you like to select another tier? (y = yes , n = no): '
         tier_response = pf.py_version_input(python_version, select_diff_tier)
 
         if(tier_response == 'y'):
