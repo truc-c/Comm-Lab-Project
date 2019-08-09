@@ -1,28 +1,28 @@
 # Silence .eaf Audio Segments
 
-**University of California, Los Angeles**
-Communications Department
-Lab of Professor Anne Warlaumont
+**University of California, Los Angeles**\
+Communications Department\
+Lab of Professor Anne Warlaumont\
 https://www.annewarlaumont.org
 
-**Mentors:**
-Anne Warlaumont (UCLA Professor)
+**Mentors:**\
+Anne Warlaumont (UCLA Professor)\
 Communications Department
 
-Kyle MacDonald
-UCLA Postdoc Researcher
+Kyle MacDonald\
+UCLA Postdoc Researcher\
 https://kemacdonald.com
 
-**Contributors:**
+**Contributors:**\
 Anne Warlaumont
 
 Kyle MacDonald
 
 Vicky Chen
-Double Major: Business Economics and Communication
+Double Major: Business Economics and Communication\
 UCLA Anderson School of Management: Masters of Science in Business Analytics
 
-Curt Chang:
+Curt Chang:\
 Major: Commuications w/ Computing Specialization
 
 
