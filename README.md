@@ -35,11 +35,10 @@ a software tool that we utilize to annotate time selections of the sensitive inf
 extension of type (.eaf) is created, containing annotations and their associated time segments.  
 
 Opening the file (.eaf) with a text editor displays the ELAN information (annotation and time selections) in XML format.  We
-utilize Python and the module/package https://pypi.org/project/xmltodict/ to extract this information, such as annotated
-text, selected tiers, time slots, etc.  
+utilize Python and the module/package [xmltodict](https://pypi.org/project/xmltodict/) to extract this information, such as annotated text, selected tiers, time slots, etc.  
 
 After we have extracted the time segments (from the .eaf file) that contain the sensitive information of the
-participants, we use the module/package https://pypi.org/project/pydub/ to silence out those time segments.
+participants, we use the module/package [pydub](https://pypi.org/project/pydub/) to silence out those time segments.
 
 P.S.
 
