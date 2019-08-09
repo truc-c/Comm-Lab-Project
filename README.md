@@ -1,14 +1,11 @@
 # Silence .eaf Audio Segments
 
 **University of California, Los Angeles**
-
 Communications Department
-
 Lab of Professor Anne Warlaumont
-
 https://www.annewarlaumont.org
 
-Mentors
+**Mentors:**
 Anne Warlaumont (UCLA Professor)
 Communications Department
 
@@ -16,7 +13,9 @@ Kyle MacDonald
 UCLA Postdoc Researcher
 https://kemacdonald.com
 
-Contributors
+**Contributors:**
+Anne Warlaumont
+
 Kyle MacDonald
 
 Vicky Chen
