@@ -42,3 +42,13 @@ participants, we use the module/package [pydub](https://pypi.org/project/pydub/)
 P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module/package.
+
+
+## Module/Packages Used:
+- [xmltodict](https://pypi.org/project/xmltodict/)
+- [pydub](https://pypi.org/project/pydub/)
+- os
+- sys
+- platform
+- pprint
+- [parsing_function](https://github.com/truc-c/Comm-Lab-Project/blob/master/parsing_functions.py)
