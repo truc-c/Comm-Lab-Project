@@ -1,14 +1,25 @@
 from pydub import AudioSegment
 
+def get_TIME_ORDER(eaf_object):
+    time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
+
+    return time_order_object
+
+def get_TIERs(eaf_object):
+    tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
+
+    return tier_object
+
 '''
-get_unique_TIER_ID function takes in a list of all TIERs
+get_TIER_ID function takes in a list of all TIERs
   and extracts the TIER_ID name
 '''
-def get_unique_TIER_ID(list_of_tiers):
-    tier_name_list = []
-    for tier_name in list_of_tiers:
-        tier_name_list.append(tier_name['@TIER_ID'])
-    return tier_name_list #return list of TIER_ID names
+def get_TIER_ID(eaf_object):
+    tier_object = get_TIERs(eaf_object)
+    tier_names = []
+    for tier_name in tier_object:
+        tier_names.append(tier_name['@TIER_ID'])
+    return tier_names #return list of TIER_ID names
 
 '''
 extract_TIME_ID_and_VALUE function creates a dictionary of
