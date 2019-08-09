@@ -51,4 +51,3 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 - sys
 - platform
 - pprint
-- [parsing_function](https://github.com/truc-c/Comm-Lab-Project/blob/master/parsing_functions.py)
