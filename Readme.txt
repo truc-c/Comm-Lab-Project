@@ -35,4 +35,4 @@ After we have extracted the time segments (from the .eaf file) that contain the 
 
 P.S.
 
-Special thank you to James Robert (http://jiaaro.com) for his guidance.
+Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module/package.
