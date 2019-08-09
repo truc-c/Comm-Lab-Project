@@ -18,7 +18,7 @@ Anne Warlaumont
 
 Kyle MacDonald
 
-Vicky Chen
+Vicky Chen\
 Double Major: Business Economics and Communication\
 UCLA Anderson School of Management: Masters of Science in Business Analytics
 
