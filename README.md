@@ -21,11 +21,11 @@ Vicky Chen\
 Double Major: Business Economics and Communication\
 UCLA Anderson School of Management: Masters of Science in Business Analytics
 
-Curt Chang:\
+Curt Chang\
 Major: Commuications w/ Computing Specialization
 
 
-Hello Everybody,
+Greetings,
 
 Thank you for taking the time to take a look at our project!
 
