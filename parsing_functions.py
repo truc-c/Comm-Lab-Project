@@ -10,25 +10,36 @@ def get_TIERs(eaf_object):
 
     return tier_object
 
+
+
 '''
-get_TIER_ID function takes in a list of all TIERs
+get_tier_names function takes in a list of all TIERs
   and extracts the TIER_ID name
 '''
-def get_TIER_ID(eaf_object):
+def get_tier_names(eaf_object):
     tier_object = get_TIERs(eaf_object)
     tier_names = []
     for tier_name in tier_object:
         tier_names.append(tier_name['@TIER_ID'])
     return tier_names #return list of TIER_ID names
 
+
+
 '''
 extract_TIME_ID_and_VALUE function creates a dictionary of
   TIME_SLOT_ID value as the key, and TIME_VALUE as the
   its value
 '''
-def extract_TIME_ID_and_VALUE(time_slot_list):
+def extract_TIME_ID_and_VALUE(eaf_object):  # old parameter is time_slot_list which is connected to time_order in main.py
+
+    # this is new code
+    # by putting in this part of the code, we can eliminate time_order = pf.get_TIME_ORDER(eaf_obj) in main.py
+    # so what you'll need to do is move the code on line 23 in main inside here
+    # then you'll need to change the parameter (time_slot_list) to take in a eaf_object
+    time_order = get_TIME_ORDER(eaf_object)
+
     time_slot_dict = {}
-    for each_time_slot in time_slot_list:
+    for each_time_slot in time_order:   # old code 'in time_slot_list'
         time_id = each_time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
         time_value = each_time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
         time_slot_dict[time_id] = int(time_value)
