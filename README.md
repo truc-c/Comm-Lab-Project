@@ -30,8 +30,8 @@ Greetings,
 Thank you for taking the time to take a look at our project!
 
 Our most important task as Research Assistants is to ensure the privacy of particpants as we vet audio recordings.  ELAN is
-a software tool that we utilize to annotate time selections of the sensitive information during the vetting process.  A file
-extension of type (.eaf) is created, containing annotations and their associated time segments.  
+a software tool that we utilize to annotate time selections of the sensitive information during the vetting process.  ELAN
+creates a A file extension of type (.eaf) that containing annotations and their associated time segments.  
 
 Opening the file (.eaf) with a text editor displays the ELAN information (annotation and time selections) in XML format.  We
 utilize Python and the module [xmltodict](https://pypi.org/project/xmltodict/) to extract this information, such as annotated text, selected tiers, time slots, etc.  
