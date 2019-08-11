@@ -19,12 +19,10 @@ with open(eaf_file) as file_obj:
 #   TIME_SLOT_REF2, ANNOTATION_VALUE of each tier (e.g., cut, bookmark)
 
 valid_input = True
-tier_elements = pf.get_TIERs(eaf_obj)       # this is used to get the annotations.. you need this for code line 52
-# print('tier_elements: ', tier_elements)
-# This is new code..you need this for code line 29
-all_TIER_ID_names = pf.get_tier_names(eaf_obj)     #
-tier_name_prompt = 'Enter a tier name: '                # leave this alone
-tier_name_input = pf.py_version_input(python_version, tier_name_prompt) # leave this alone
+tier_elements = pf.get_TIERs(eaf_obj)
+all_TIER_ID_names = pf.get_tier_names(eaf_obj)
+tier_name_prompt = 'Enter a tier name: '
+tier_name_input = pf.py_version_input(python_version, tier_name_prompt)
 
 
 # if statement checks the input with of all TIER_ID names
