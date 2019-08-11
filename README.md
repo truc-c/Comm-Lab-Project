@@ -51,3 +51,8 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 - sys
 - platform
 - pprint
+
+## Sample audio:
+- [sample] (https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
+
+The sample_audio.wav provided is a simple of Curt Chang counting from 1 to 30.
