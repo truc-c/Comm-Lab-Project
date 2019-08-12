@@ -53,6 +53,6 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 - pprint
 
 ## Sample audio:
-- [sample](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
+- [sample audio](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
 
 The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.
