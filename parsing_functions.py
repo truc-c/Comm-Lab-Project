@@ -1,5 +1,10 @@
 from pydub import AudioSegment
 
+def wrapper_time_order(eaf_object):
+    time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
+
+    return time_order_object
+
 def wrapper_tier_name(eaf_obj,tier_name):
     list_of_tiers = pf.get_TIERs(eaf_obj)
 
@@ -42,9 +47,6 @@ def extract_annotations(eaf_obj):
 
     return annotations_results
 
-annotation_table = extract_annotations(eaf_obj)
-slot_ids_and_values = pf.extract_TIME_ID_and_VALUE(eaf_obj)
-
 def fill_time_values(cut_ids, annotation_dict):
     cut = cut_ids
     for i in annotation_dict.values():
@@ -52,9 +54,6 @@ def fill_time_values(cut_ids, annotation_dict):
         end_ref = i['end_cut_ref']
         i['start_cut_value'] = cut_ids.get(start_ref)
         i['end_cut_value'] = cut_ids.get(end_ref)
-
-def get_TIME_ORDER(eaf_object):
-    time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
     return time_order_object
 
@@ -84,10 +83,8 @@ extract_TIME_ID_and_VALUE function creates a dictionary of
 def extract_TIME_ID_and_VALUE(eaf_object):  # old parameter is time_slot_list which is connected to time_order in main.py
 
     # this is new code
-    # by putting in this part of the code, we can eliminate time_order = pf.get_TIME_ORDER(eaf_obj) in main.py
-    # so what you'll need to do is move the code on line 23 in main inside here
-    # then you'll need to change the parameter (time_slot_list) to take in a eaf_object
-    time_order = get_TIME_ORDER(eaf_object)
+    # by putting in this part of the code, we can replace time_order = pf.wrapper_time_order(eaf_obj) in main.py
+    time_order = wrapper_time_order(eaf_object)
 
     time_slot_dict = {}
     for each_time_slot in time_order:   # old code 'in time_slot_list'
