@@ -4,7 +4,7 @@ import os
 import sys
 import platform
 from pydub import AudioSegment
-from pydub.playback import play
+# from pydub.playback import play
 import parsing_functions as pf
 
 eaf_file = sys.argv[1]

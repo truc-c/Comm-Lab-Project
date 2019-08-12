@@ -1,5 +1,58 @@
 from pydub import AudioSegment
 
+def wrapper_tier_name(eaf_obj,tier_name):
+    list_of_tiers = pf.get_TIERs(eaf_obj)
+
+    for each_tier in list_of_tiers:
+        if each_tier['@TIER_ID'] == tier_name:
+            requested_tier = each_tier
+
+
+    return requested_tier
+
+def wrapper_annotations(eaf_obj):
+    list_of_annotations = wrapper_tier_name(eaf_obj,'cut')['ANNOTATION']
+    each_annotation = [anno for anno in list_of_annotations]
+
+    return each_annotation
+
+def wrapper_align_annotation(eaf_obj):
+    annotations = wrapper_annotations(eaf_obj)
+
+    align_anno_list = []
+    for each_annotation in annotations:
+        align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
+
+    return align_anno_list
+
+def extract_annotations(eaf_obj):
+
+    annotations_results = {}
+
+    test_wrapper = wrapper_align_annotation(eaf_obj)
+
+    for i in test_wrapper:
+        annotation_id = i['@ANNOTATION_ID']
+        time_slot_ref1 = i['@TIME_SLOT_REF1']
+        time_slot_ref2 = i['@TIME_SLOT_REF2']
+        annotation_value = i['ANNOTATION_VALUE']
+        annotations_results[annotation_id] = {'start_cut_ref': time_slot_ref1,'start_cut_value':0,
+                                                'end_cut_ref':time_slot_ref2,'end_cut_value':0,
+                                                'annotation_value':annotation_value}
+
+    return annotations_results
+
+annotation_table = extract_annotations(eaf_obj)
+slot_ids_and_values = pf.extract_TIME_ID_and_VALUE(eaf_obj)
+
+def fill_time_values(cut_ids, annotation_dict):
+    cut = cut_ids
+    for i in annotation_dict.values():
+        start_ref = i['start_cut_ref']
+        end_ref = i['end_cut_ref']
+        i['start_cut_value'] = cut_ids.get(start_ref)
+        i['end_cut_value'] = cut_ids.get(end_ref)
+
 def get_TIME_ORDER(eaf_object):
     time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
@@ -9,8 +62,6 @@ def get_TIERs(eaf_object):
     tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
 
     return tier_object
-
-
 
 '''
 get_tier_names function takes in a list of all TIERs
