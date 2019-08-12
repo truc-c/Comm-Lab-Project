@@ -5,35 +5,65 @@ def wrapper_time_order(eaf_object):
 
     return time_order_object
 
+def get_TIERs(eaf_object):
+    tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
+
+    return tier_object
+
 def wrapper_tier_name(eaf_obj,tier_name):
-    list_of_tiers = pf.get_TIERs(eaf_obj)
+    list_of_tiers = get_TIERs(eaf_obj)
 
     for each_tier in list_of_tiers:
         if each_tier['@TIER_ID'] == tier_name:
             requested_tier = each_tier
 
-
     return requested_tier
 
-def wrapper_annotations(eaf_obj):
-    list_of_annotations = wrapper_tier_name(eaf_obj,'cut')['ANNOTATION']
-    each_annotation = [anno for anno in list_of_annotations]
+# def wrapper_annotations(eaf_obj):
+#     list_of_annotations = wrapper_tier_name(eaf_obj,'bookmark')['ANNOTATION']
+#     each_annotation = [anno for anno in list_of_annotations]
+#
+#     return each_annotation
+
+def wrapper_annotations(eaf_obj, tier_name=None):
+    each_annotation = []
+
+    if(tier_name == None):
+        list_of_annotations = get_TIERs(eaf_obj)
+
+        for anno in list_of_annotations:
+            each_annotation.append(anno['ANNOTATION'])
+    else:
+        list_of_annotations = wrapper_tier_name(eaf_obj, tier_name)['ANNOTATION']
+        each_annotation = [anno for anno in list_of_annotations]
 
     return each_annotation
 
-def wrapper_align_annotation(eaf_obj):
-    annotations = wrapper_annotations(eaf_obj)
+# def wrapper_align_annotation(eaf_obj):
+#     annotations = wrapper_annotations(eaf_obj)
+#
+#     align_anno_list = []
+#     for each_annotation in annotations:
+#         align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
+#
+#     return align_anno_list
 
+def wrapper_align_annotation(eaf_obj,tier_name=None):
+    annotations = wrapper_annotations(eaf_obj,tier_name)
     align_anno_list = []
-    for each_annotation in annotations:
-        align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
+
+    if(tier_name == None):
+        for each_index in annotations:
+            for each_align in each_index:
+                align_anno_list.append(each_align['ALIGNABLE_ANNOTATION'])
+    else:
+        for each_annotation in annotations:
+            align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
 
     return align_anno_list
 
 def extract_annotations(eaf_obj):
-
     annotations_results = {}
-
     test_wrapper = wrapper_align_annotation(eaf_obj)
 
     for i in test_wrapper:
@@ -55,12 +85,7 @@ def fill_time_values(cut_ids, annotation_dict):
         i['start_cut_value'] = cut_ids.get(start_ref)
         i['end_cut_value'] = cut_ids.get(end_ref)
 
-    return time_order_object
-
-def get_TIERs(eaf_object):
-    tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
-
-    return tier_object
+    # return time_order_object
 
 '''
 get_tier_names function takes in a list of all TIERs
@@ -91,6 +116,7 @@ def extract_TIME_ID_and_VALUE(eaf_object):  # old parameter is time_slot_list wh
         time_id = each_time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
         time_value = each_time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
         time_slot_dict[time_id] = int(time_value)
+
     return time_slot_dict
 
 '''
@@ -119,6 +145,24 @@ def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
         cut_refs['end_cut_value'] = end_value
 
     return result
+
+def extract_annotations(eaf_obj):
+
+    annotations_results = {}
+
+    test_wrapper = wrapper_align_annotation(eaf_obj)
+
+    for i in test_wrapper:
+        annotation_id = i['@ANNOTATION_ID']
+        time_slot_ref1 = i['@TIME_SLOT_REF1']
+        time_slot_ref2 = i['@TIME_SLOT_REF2']
+        annotation_value = i['ANNOTATION_VALUE']
+        annotations_results[annotation_id] = {'start_cut_ref': time_slot_ref1,'start_cut_value':0,
+                                                'end_cut_ref':time_slot_ref2,'end_cut_value':0,
+                                                'annotation_value':annotation_value}
+
+    return annotations_results
+
 
 '''
 provides list of possible tier names if the user input is incorrect
