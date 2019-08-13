@@ -54,5 +54,8 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 
 ## Sample audio:
 - [sample audio](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
+- [sample .eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf)
 
-The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.
+The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
+The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
+The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/)
