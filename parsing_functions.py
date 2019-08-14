@@ -5,13 +5,15 @@ def wrapper_time_order(eaf_object):
 
     return time_order_object
 
-def get_TIERs(eaf_object):
+
+def wrapper_tiers(eaf_object):
     tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
 
     return tier_object
 
-def wrapper_tier_name(eaf_obj,tier_name):
-    list_of_tiers = get_TIERs(eaf_obj)
+
+def wrapper_tier_name(eaf_obj,tier_name=None):
+    list_of_tiers = wrapper_tiers(eaf_obj)
 
     for each_tier in list_of_tiers:
         if each_tier['@TIER_ID'] == tier_name:
@@ -19,17 +21,12 @@ def wrapper_tier_name(eaf_obj,tier_name):
 
     return requested_tier
 
-# def wrapper_annotations(eaf_obj):
-#     list_of_annotations = wrapper_tier_name(eaf_obj,'bookmark')['ANNOTATION']
-#     each_annotation = [anno for anno in list_of_annotations]
-#
-#     return each_annotation
 
 def wrapper_annotations(eaf_obj, tier_name=None):
     each_annotation = []
 
     if(tier_name == None):
-        list_of_annotations = get_TIERs(eaf_obj)
+        list_of_annotations = wrapper_tiers(eaf_obj)
 
         for anno in list_of_annotations:
             each_annotation.append(anno['ANNOTATION'])
@@ -39,14 +36,6 @@ def wrapper_annotations(eaf_obj, tier_name=None):
 
     return each_annotation
 
-# def wrapper_align_annotation(eaf_obj):
-#     annotations = wrapper_annotations(eaf_obj)
-#
-#     align_anno_list = []
-#     for each_annotation in annotations:
-#         align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
-#
-#     return align_anno_list
 
 def wrapper_align_annotation(eaf_obj,tier_name=None):
     annotations = wrapper_annotations(eaf_obj,tier_name)
@@ -62,9 +51,10 @@ def wrapper_align_annotation(eaf_obj,tier_name=None):
 
     return align_anno_list
 
-def extract_annotations(eaf_obj):
+
+def extract_annotations(eaf_obj,tier_name=None):
     annotations_results = {}
-    test_wrapper = wrapper_align_annotation(eaf_obj)
+    test_wrapper = wrapper_align_annotation(eaf_obj,tier_name)
 
     for i in test_wrapper:
         annotation_id = i['@ANNOTATION_ID']
@@ -76,6 +66,7 @@ def extract_annotations(eaf_obj):
                                                 'annotation_value':annotation_value}
 
     return annotations_results
+
 
 def fill_time_values(cut_ids, annotation_dict):
     cut = cut_ids
@@ -85,30 +76,25 @@ def fill_time_values(cut_ids, annotation_dict):
         i['start_cut_value'] = cut_ids.get(start_ref)
         i['end_cut_value'] = cut_ids.get(end_ref)
 
-    # return time_order_object
 
 '''
 get_tier_names function takes in a list of all TIERs
   and extracts the TIER_ID name
 '''
 def get_tier_names(eaf_object):
-    tier_object = get_TIERs(eaf_object)
+    tier_object = wrapper_tiers(eaf_object)
     tier_names = []
     for tier_name in tier_object:
         tier_names.append(tier_name['@TIER_ID'])
     return tier_names #return list of TIER_ID names
 
 
-
 '''
-extract_TIME_ID_and_VALUE function creates a dictionary of
+extract_timeid_and_value function creates a dictionary of
   TIME_SLOT_ID value as the key, and TIME_VALUE as the
   its value
 '''
-def extract_TIME_ID_and_VALUE(eaf_object):  # old parameter is time_slot_list which is connected to time_order in main.py
-
-    # this is new code
-    # by putting in this part of the code, we can replace time_order = pf.wrapper_time_order(eaf_obj) in main.py
+def extract_timeid_and_value(eaf_object):
     time_order = wrapper_time_order(eaf_object)
 
     time_slot_dict = {}
@@ -118,50 +104,6 @@ def extract_TIME_ID_and_VALUE(eaf_object):  # old parameter is time_slot_list wh
         time_slot_dict[time_id] = int(time_value)
 
     return time_slot_dict
-
-'''
-extract_ANNOTATION_values returns a nested dictionary that containing
-    the ANNOTATION_ID, TIME_SLOT_REF's, and ANNOTATION_VALUE
-'''
-def extract_ANNOTATION_values(annotation_objs, time_slot_dict):
-    result = {}
-    for each_annotation in annotation_objs:
-        annotation_id = each_annotation['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
-        slot_ref1 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
-        slot_ref2 = each_annotation['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
-        annotation_text = each_annotation['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
-        result[annotation_id] = {'start_cut_ref': slot_ref1,'start_cut_value':0,
-                                        'end_cut_ref':slot_ref2,'end_cut_value':0,
-                                        'annotation_value':annotation_text}
-
-    for cut_refs in result.values():
-        start_ref = cut_refs['start_cut_ref']
-        end_ref = cut_refs['end_cut_ref']
-        if start_ref in time_slot_dict:
-            start_value = int(time_slot_dict[start_ref])
-        if end_ref in time_slot_dict:
-            end_value = int(time_slot_dict[end_ref])
-        cut_refs['start_cut_value'] = start_value
-        cut_refs['end_cut_value'] = end_value
-
-    return result
-
-def extract_annotations(eaf_obj):
-
-    annotations_results = {}
-
-    test_wrapper = wrapper_align_annotation(eaf_obj)
-
-    for i in test_wrapper:
-        annotation_id = i['@ANNOTATION_ID']
-        time_slot_ref1 = i['@TIME_SLOT_REF1']
-        time_slot_ref2 = i['@TIME_SLOT_REF2']
-        annotation_value = i['ANNOTATION_VALUE']
-        annotations_results[annotation_id] = {'start_cut_ref': time_slot_ref1,'start_cut_value':0,
-                                                'end_cut_ref':time_slot_ref2,'end_cut_value':0,
-                                                'annotation_value':annotation_value}
-
-    return annotations_results
 
 
 '''
@@ -180,6 +122,7 @@ def py_version_input(py_version, question):
         tier_name_input = raw_input('\n%s' % question)
 
     return tier_name_input
+
 
 '''
 silence sections/time provided by the .eaf file and returns an AudioSegment object
@@ -207,6 +150,7 @@ def silence_segments(final_product, wav_object):
         final_list += i
 
     return final_list
+
 
 '''
 add '_scrubbed' to name of .wav file and returns path of .wav file
