@@ -41,7 +41,7 @@ participants, we use the module [pydub](https://pypi.org/project/pydub/) to sile
 
 P.S.
 
-Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module/package.
+Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
 
 ## Modules used:
