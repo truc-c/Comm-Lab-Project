@@ -1,5 +1,7 @@
-from pydub import AudioSegment
-
+'''
+The functions that start with wrapper help to navigate
+    through the XML root and sub elements
+'''
 def wrapper_time_order(eaf_object):
     time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
@@ -52,6 +54,43 @@ def wrapper_align_annotation(eaf_obj,tier_name=None):
     return align_anno_list
 
 
+'''
+get_tier_names function takes an xml object as its argument.
+
+The function returns a list of all the tier names.
+'''
+def get_tier_names(eaf_object):
+    tier_object = wrapper_tiers(eaf_object)
+    tier_names = []
+    for tier_name in tier_object:
+        tier_names.append(tier_name['@TIER_ID'])
+
+    return tier_names
+
+
+'''
+extract_timeid_and_value function takes an xml object as its argument.
+
+This function returns a dictionary of {TIME_SLOT_ID : TIME_VALUE}
+
+In the ANNOTATION section, there are 2 TIME_SLOT_REF's which are used by
+    TIME_SLOT_ID to reference the time of the annotation.
+'''
+def extract_timeid_and_value(eaf_object):
+    time_order = wrapper_time_order(eaf_object)
+
+    time_slot_dict = {}
+    for each_time_slot in time_order:
+        time_id = each_time_slot['@TIME_SLOT_ID']
+        time_value = each_time_slot['@TIME_VALUE']
+        time_slot_dict[time_id] = int(time_value)
+
+    return time_slot_dict
+
+
+'''
+
+'''
 def extract_annotations(eaf_obj,tier_name=None):
     annotations_results = {}
     test_wrapper = wrapper_align_annotation(eaf_obj,tier_name)
@@ -75,35 +114,6 @@ def fill_time_values(cut_ids, annotation_dict):
         end_ref = i['end_cut_ref']
         i['start_cut_value'] = cut_ids.get(start_ref)
         i['end_cut_value'] = cut_ids.get(end_ref)
-
-
-'''
-get_tier_names function takes in a list of all TIERs
-  and extracts the TIER_ID name
-'''
-def get_tier_names(eaf_object):
-    tier_object = wrapper_tiers(eaf_object)
-    tier_names = []
-    for tier_name in tier_object:
-        tier_names.append(tier_name['@TIER_ID'])
-    return tier_names #return list of TIER_ID names
-
-
-'''
-extract_timeid_and_value function creates a dictionary of
-  TIME_SLOT_ID value as the key, and TIME_VALUE as the
-  its value
-'''
-def extract_timeid_and_value(eaf_object):
-    time_order = wrapper_time_order(eaf_object)
-
-    time_slot_dict = {}
-    for each_time_slot in time_order:   # old code 'in time_slot_list'
-        time_id = each_time_slot['@TIME_SLOT_ID']        # time_id = TIME_SLOT_ID
-        time_value = each_time_slot['@TIME_VALUE']       # time_value = TIME_VALUE
-        time_slot_dict[time_id] = int(time_value)
-
-    return time_slot_dict
 
 
 '''
