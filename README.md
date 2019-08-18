@@ -90,3 +90,10 @@ tier_name_list = pf.get_tier_names(eaf_obj)
 
 print(tier_name_list)             # output: [cut,bookmark]
 ```
+
+py_version_input(python_version,tier_name_prompt) selects the input format depending on the python version and returns a string
+```python
+python_version = int(platform.python_version()[0])
+tier_name_prompt = 'Enter tier name: '
+user_input = pf.py_version_input(python_version,tier_name_prompt)
+```
