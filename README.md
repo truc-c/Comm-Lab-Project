@@ -52,9 +52,10 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 - platform
 - pprint
 
-## Sample audio:
+## Sample audio, Sample .eaf file, and Sample code :
 - [sample audio](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
 - [sample .eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf)
+- [sample code](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_code.py)
 
 The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
 The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
