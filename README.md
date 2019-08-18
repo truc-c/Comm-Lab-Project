@@ -66,3 +66,27 @@ The sample coded provided is ran in MacOS terminal along with .eaf file name.
 
 ## Documentation:
 Here are some examples of how to use the functions and their output.
+
+### imports:
+```python
+from myproject import parsing_functions as pf
+import xmltodict
+import pprint
+import sys
+import platform
+```
+
+- myproject is a folder where we stored our parsing_functions.py
+- `xmltodict` module is used to create a xml object from our .eaf file
+- `pprint` module helps with the format of the output
+- `sys` module is used to provide an additional argument (path to eaf file) when running our python code in terminal
+- `platform` is used to check our python version
+
+### code example of functions and their output:
+get_tier_names(eaf_obj) returns a list of all the TIER_ID's in the .eaf file\
+(e.g.,[ELAN_sample.eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf) contains 2 TIER_ID's, cut and bookmark)
+```python
+tier_name_list = pf.get_tier_names(eaf_obj)
+
+print(tier_name_list)             # output: [cut,bookmark]
+```
