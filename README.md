@@ -121,6 +121,7 @@ extract_annotations(eaf_obj,user_input)
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
 user_input = pf.py_version_input(python_version,tier_name_prompt)
+
 annotation_values = pf.extract_annotations(eaf_obj,user_input)
 
 pprint.pprint(annotation_values)
@@ -130,4 +131,24 @@ pprint.pprint(annotation_values)
 #        'end_cut_value': 0,
 #        'start_cut_ref': 'ts1',
 #        'start_cut_value': 0},
+#        ...
+```
+
+fill_time_values(time_ids_and_values,annotation_values)
+- ! IMPORTANT ! before using this function REQUIRES the dict returned from the function extract_timeid_and_value(eaf_obj)
+- this function does not return anything, but only fills the values inside our annotation_values object from the extract_annotations(eaf_obj,user_input) function
+```python
+with open(eaf_file) as file_obj:
+    eaf_obj = xmltodict.parse(file_obj.read())
+time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
+annotation_values = pf.extract_annotations(eaf_obj,user_input)
+
+pf.fill_time_values(time_ids_and_values,annotation_values)
+
+# output: {'a1': {'annotation_value': 'cc: five six seven',
+#        'end_cut_ref': 'ts2',
+#        'end_cut_value': 7310,
+#        'start_cut_ref': 'ts1',
+#        'start_cut_value': 4670},
+#        ...
 ```
