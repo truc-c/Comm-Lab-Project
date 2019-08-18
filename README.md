@@ -69,7 +69,7 @@ Here are some examples of how to use the functions and their output.
 
 ### imports:
 ```python
-from myproject import parsing_functions as pf
+import parsing_functions as pf
 import xmltodict
 import pprint
 import sys
@@ -87,6 +87,8 @@ get_tier_names(eaf_obj)
 - returns a list of all the TIER_ID's in the .eaf file\
 (e.g.,[ELAN_sample.eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf) contains 2 TIER_ID's, cut and bookmark)
 ```python
+with open(eaf_file) as file_obj:
+    eaf_obj = xmltodict.parse(file_obj.read())
 tier_name_list = pf.get_tier_names(eaf_obj)
 
 print(tier_name_list)             # output: [cut,bookmark]
@@ -103,7 +105,29 @@ user_input = pf.py_version_input(python_version,tier_name_prompt)
 extract_timeid_and_value(eaf_obj)
 - retrieves the values for TIME_SLOT_ID and TIME_VALUE in the TIME_ORDER tag from the .eaf file and returns a dict
 ```python
+with open(eaf_file) as file_obj:
+    eaf_obj = xmltodict.parse(file_obj.read())
 time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
 
 print(time_ids_and_values)        # output: {'ts1': 4670, 'ts2': 7310, ...,'ts11': 25605, 'ts12': 28445}
+```
+
+extract_annotations(eaf_obj,user_input)
+- creates a nested dict that contains the ANNOTATION_ID, TIME_SLOT_REF1, TIME_SLOT_REF2, and ANNOTATION_VALUE
+- this function requires 2 arguments, the eaf object and user input of the requested tier name returned from the py_version_input() function
+- in addition, we use pprint() to better format the output
+- NOTICE: the keys start_cut_value and end_cut_value are empty (0).  These values will be filled with the next function fill_time_values() 
+```python
+with open(eaf_file) as file_obj:
+    eaf_obj = xmltodict.parse(file_obj.read())
+user_input = pf.py_version_input(python_version,tier_name_prompt)
+annotation_values = pf.extract_annotations(eaf_obj,user_input)
+
+pprint.pprint(annotation_values)
+
+# output: {'a1': {'annotation_value': 'cc: five six seven',
+#        'end_cut_ref': 'ts2',
+#        'end_cut_value': 0,
+#        'start_cut_ref': 'ts1',
+#        'start_cut_value': 0},
 ```
