@@ -135,7 +135,7 @@ pprint.pprint(annotation_values)
 ```
 
 fill_time_values(time_ids_and_values,annotation_values)
-- ! IMPORTANT ! before using this function REQUIRES the dict returned from the function extract_timeid_and_value(eaf_obj)
+- ! IMPORTANT ! before using, this function REQUIRES the dict returned from the function extract_timeid_and_value(eaf_obj)
 - this function does not return anything, but only fills the values inside our annotation_values object from the extract_annotations(eaf_obj,user_input) function
 ```python
 with open(eaf_file) as file_obj:
