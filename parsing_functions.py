@@ -1,3 +1,5 @@
+from pydub import AudioSegment
+
 '''
 The functions that start with wrapper help to navigate through the XML root
     and sub elements

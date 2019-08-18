@@ -1,4 +1,4 @@
-from myproject import parsing_functions as pf
+import parsing_functions as pf
 import xmltodict
 import pprint
 import sys
