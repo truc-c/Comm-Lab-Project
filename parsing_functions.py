@@ -106,11 +106,11 @@ def extract_annotations(eaf_obj,tier_name=None):
     annotations_results = {}
     test_wrapper = wrapper_align_annotation(eaf_obj,tier_name)
 
-    for i in test_wrapper:
-        annotation_id = i['@ANNOTATION_ID']
-        time_slot_ref1 = i['@TIME_SLOT_REF1']
-        time_slot_ref2 = i['@TIME_SLOT_REF2']
-        annotation_value = i['ANNOTATION_VALUE']
+    for each_element in test_wrapper:
+        annotation_id = each_element['@ANNOTATION_ID']
+        time_slot_ref1 = each_element['@TIME_SLOT_REF1']
+        time_slot_ref2 = each_element['@TIME_SLOT_REF2']
+        annotation_value = each_element['ANNOTATION_VALUE']
         annotations_results[annotation_id] = {'start_cut_ref': time_slot_ref1,'start_cut_value':0,
                                                 'end_cut_ref':time_slot_ref2,'end_cut_value':0,
                                                 'annotation_value':annotation_value}
@@ -169,6 +169,38 @@ def py_version_input(py_version, question):
 
 
 '''
+This is a personal preference function that we use to rename our newly silenced
+    audio file.
+
+modify_filename is a function that takes 1 argument, a filename path.
+
+This filename path is split into a list using the forward slash (/) as the
+    delimiter.
+
+The return value is a path name along with the .wav file extension.
+
+For example:
+
+    /users/lab/desktop/my_test.wav (this is was the path to the .wav file to be silenced)
+
+    modify_filename returns:
+
+    /users/lab/desktop/my_test_scrubbed.wav
+'''
+def modify_filename(filename_path):
+    scrubbed_string = '_scrubbed'
+    split_string = filename_path.split('/')
+    reuse_file_path = '/'.join(split_string[:-1]) + '/'
+    last_index = split_string[-1]   # name of sound wav
+    file_name = last_index[:-4]     # file name without the .wav extension
+    dot_wav_ext = last_index[-4:]   # .wav part
+    new_name = file_name + scrubbed_string + dot_wav_ext
+    reuse_file_path = reuse_file_path + new_name
+
+    return reuse_file_path
+
+
+'''
 silence_segments is a function that takes 2 arguments.
 
 # ============  THIS PART IS A MUST FOR THIS FUNCTION TO WORK =============
@@ -205,35 +237,3 @@ def silence_segments(final_product, wav_object):
         final_audio += i
 
     return final_audio
-
-
-'''
-This is a personal preference function that we use to rename our newly silenced
-    audio file.
-
-modify_filename is a function that takes 1 argument, a filename path.
-
-This filename path is split into a list using the forward slash (/) as the
-    delimiter.
-
-The return value is a path name along with the .wav file extension.
-
-For example:
-
-    /users/lab/desktop/my_test.wav (this is was the path to the .wav file to be silenced)
-
-    modify_filename returns:
-
-    /users/lab/desktop/my_test_scrubbed.wav
-'''
-def modify_filename(filename_path):
-    scrubbed_string = '_scrubbed'
-    split_string = filename_path.split('/')
-    reuse_file_path = '/'.join(split_string[:-1]) + '/'
-    last_index = split_string[-1]   # name of sound wav
-    file_name = last_index[:-4]     # file name without the .wav extension
-    dot_wav_ext = last_index[-4:]   # .wav part
-    new_name = file_name + scrubbed_string + dot_wav_ext
-    reuse_file_path = reuse_file_path + new_name
-
-    return reuse_file_path
