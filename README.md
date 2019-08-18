@@ -83,7 +83,8 @@ import platform
 - `platform` is used to check our python version
 
 ### code example of functions and their output:
-get_tier_names(eaf_obj) returns a list of all the TIER_ID's in the .eaf file\
+get_tier_names(eaf_obj) 
+- returns a list of all the TIER_ID's in the .eaf file\
 (e.g.,[ELAN_sample.eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf) contains 2 TIER_ID's, cut and bookmark)
 ```python
 tier_name_list = pf.get_tier_names(eaf_obj)
@@ -91,9 +92,18 @@ tier_name_list = pf.get_tier_names(eaf_obj)
 print(tier_name_list)             # output: [cut,bookmark]
 ```
 
-py_version_input(python_version,tier_name_prompt) selects the input format depending on the python version and returns a string
+py_version_input(python_version,tier_name_prompt) 
+- selects the input format depending on the python version and returns a string
 ```python
 python_version = int(platform.python_version()[0])
 tier_name_prompt = 'Enter tier name: '
 user_input = pf.py_version_input(python_version,tier_name_prompt)
+```
+
+extract_timeid_and_value(eaf_obj)
+- retrieves the values for TIME_SLOT_ID and TIME_VALUE in the TIME_ORDER tag from the .eaf file and returns a dict
+```python
+time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
+
+print(time_ids_and_values)        # output: {'ts1': 4670, 'ts2': 7310, ...,'ts11': 25605, 'ts12': 28445}
 ```
