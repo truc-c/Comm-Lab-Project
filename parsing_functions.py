@@ -1,6 +1,6 @@
 '''
-The functions that start with wrapper help to navigate
-    through the XML root and sub elements
+The functions that start with wrapper help to navigate through the XML root
+    and sub elements
 '''
 def wrapper_time_order(eaf_object):
     time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
@@ -126,13 +126,13 @@ fill_time_values function takes 2 arguments.  The first argument is the object
 This function fills the empty values belonging to the keys 'start_cut_value' and
     'end_cut_value'.
 '''
-def fill_time_values(cut_ids, annotation_dict):
-    cut = cut_ids
+def fill_time_values(timeid_and_values, annotation_dict):
+    cut = timeid_and_values
     for i in annotation_dict.values():
         start_ref = i['start_cut_ref']
         end_ref = i['end_cut_ref']
-        i['start_cut_value'] = cut_ids.get(start_ref)
-        i['end_cut_value'] = cut_ids.get(end_ref)
+        i['start_cut_value'] = timeid_and_values.get(start_ref)
+        i['end_cut_value'] = timeid_and_values.get(end_ref)
 
 
 '''
@@ -172,6 +172,7 @@ def py_version_input(py_version, question):
 silence_segments is a function that takes 2 arguments.
 
 # ============  THIS PART IS A MUST FOR THIS FUNCTION TO WORK =============
+
 First argument is an xml object with the time values for 'start_cut_value'
     and 'end_cut_value' filled.
 
