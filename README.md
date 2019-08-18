@@ -2,11 +2,12 @@
 
 **University of California, Los Angeles**\
 Communications Department\
-Lab of Professor Anne Warlaumont\
-https://www.annewarlaumont.org
+Lab of Professor Anne Warlaumont
 
 **Mentors:**\
-Anne Warlaumont
+Anne Warlaumont\
+UCLA Professor\
+https://www.annewarlaumont.org
 
 Kyle MacDonald\
 UCLA Postdoc Researcher\
