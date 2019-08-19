@@ -62,7 +62,13 @@ The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
 The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
 The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/)\
 The sample coded provided is ran in MacOS terminal along with .eaf file name.
-- for example: python sample_code.py /path/to/file/name/sample.eaf
+- for example: python -W ignore sample_code.py /path/to/file/name/sample.eaf\
+
+We use '-W ignore' to ignore this warning:
+-  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
+
 
 ## Documentation:
 Here are some examples of how to use the functions and their output.
