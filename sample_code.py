@@ -3,6 +3,7 @@ import xmltodict
 import pprint
 import sys
 import platform
+from pydub import AudioSegment
 
 eaf_file = sys.argv[1]
 python_version = int(platform.python_version()[0])
@@ -48,3 +49,24 @@ while(is_input_valid):
             sys.exit()
 
         continue
+
+'''
+This portion of the code REQUIRES the functions extract_annotations() and
+    fill_time_values() to be called already on our eaf object.
+
+The silence_segments() function uses the time values from start_cut_ref and
+    end_cut_ref.
+
+We will start off with a prompt requesting the audio file that is to be silenced.
+
+Once again, we drag the audio file to the terminal upon given the prompt.
+'''
+
+audio_file_prompt = '\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: '
+selected_audio_file = pf.py_version_input(python_version,audio_file_prompt)
+if(selected_audio_file == 'n'):
+    sys.exit()
+
+audio_object = AudioSegment.from_wav(selected_audio_file.strip())
+silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
+print('\nSilenced Complete!')

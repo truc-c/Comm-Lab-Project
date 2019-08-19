@@ -216,12 +216,12 @@ The second argument is the a wav object (created from AudioSegment()).
 
 This function returns a wav object with the specified times silenced out.
 '''
-def silence_segments(final_product, wav_object):
+def silence_segments(annotations, wav_object):
     holder = 0000
-    segment_counter = len(final_product)
+    segment_counter = len(annotations)
     list_of_segments = []
 
-    for key,value in final_product.items():
+    for key,value in annotations.items():
         begin = wav_object[holder:value['start_cut_value']]
         sensitive_info = wav_object[value['start_cut_value']:value['end_cut_value']]
         sensitive_info = wav_object.silent(duration=len(sensitive_info))
