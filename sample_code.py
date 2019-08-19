@@ -70,3 +70,5 @@ if(selected_audio_file == 'n'):
 audio_object = AudioSegment.from_wav(selected_audio_file.strip())
 silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
 print('\nSilenced Complete!')
+
+file_obj.close()
