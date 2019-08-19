@@ -152,3 +152,21 @@ pf.fill_time_values(time_ids_and_values,annotation_values)
 #        'start_cut_value': 4670},
 #        ...
 ```
+
+silence_segments(annotation_values,audio_object)
+- ! IMPORTANT ! before using, this function REQUIRES the annotation dict returned from the extract_annotations() function
+- ! IMPORTANT ! before using, the function fill_time_values() must be called on the returned dict from extract_annotations()
+please see code above
+- this function takes 2 arguments, first argument is the returned dict and the second argument is audio wave object created from AudioSegment
+- this function returns the an audio object with the time segments, provided by start_cut_value and end_cut_value, silenced
+- pydub has a play() function to listen to the silenced audio
+```python
+from pydub.playback import play
+... #skipped some code
+annotation_values = pf.extract_annotations(eaf_obj,user_input)
+pf.fill_time_values(time_ids_and_values,annotation_values)
+
+audio_object = AudioSegment.from_wav(selected_audio_file.strip())
+silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
+play(silenced_audio_object)
+```
