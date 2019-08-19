@@ -214,7 +214,8 @@ First argument is an xml object with the time values for 'start_cut_value'
 
 The second argument is the a wav object (created from AudioSegment()).
 
-This function returns a wav object with the specified times silenced out.
+This function returns a wav object with the specified times
+    (start_cut_value and end_cut_value) silenced out.
 '''
 def silence_segments(annotations, wav_object):
     holder = 0000
