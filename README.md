@@ -44,14 +44,21 @@ P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
-
-## Modules used:
+## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
 - [pydub](https://pypi.org/project/pydub/)
 - os
 - sys
 - platform
 - pprint
+
+Modules os, sys, platform and pprint are built-in modules.  We used pip to install xmltodict and pydub.  In terminal (MacOS)
+or command prompt (Windows OS) you can perform a pip install.
+
+```python
+pip install xmltodict
+pip install pydub
+```
 
 ## Sample audio, Sample .eaf file, and Sample code:
 - [sample audio](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
