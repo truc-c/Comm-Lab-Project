@@ -70,8 +70,12 @@ The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
 The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/)
 
 ## Running the code in MacOS terminal:
-The sample coded provided is ran in MacOS terminal along with .eaf file name.
-- for example: python -W ignore sample_code.py /path/to/file/name/sample.eaf
+The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf file can be dragged into the terminal
+or typed in.
+- for example: 
+```python
+python -W ignore sample_code.py /path/to/file/name/sample.eaf
+```
 
 We use '-W ignore' to ignore this warning:
 -  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
