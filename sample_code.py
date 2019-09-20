@@ -1,5 +1,3 @@
-# sample branch
-
 import parsing_functions as pf
 import xmltodict
 import pprint
@@ -75,3 +73,4 @@ print('\nSilenced Complete!')
 
 file_obj.close()
 
+# test
