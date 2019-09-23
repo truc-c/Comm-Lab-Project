@@ -178,6 +178,11 @@ silence_segments(annotation_values,audio_object)
 please see code above
 - this function takes 2 arguments, first argument is the returned dict and the second argument is audio wave object created from AudioSegment
 - this function returns the an audio object with the time segments, provided by start_cut_value and end_cut_value, silenced
+- (Optional play function)
+- the module simpleaudio is need to use the play() function
+```python
+pip install simpleaudio
+```
 - pydub has a play() function to listen to the silenced audio
 ```python
 from pydub.playback import play
