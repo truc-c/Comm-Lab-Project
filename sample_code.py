@@ -4,8 +4,17 @@ import pprint
 import sys
 import platform
 from pydub import AudioSegment
+from pydub.playback import play
 
+'''
+Added features:
+- addtional sys.argv
+- show list of tiers in the beginning
+- select which tier to silence
+- pip install simpleaudio if they decided to use the play option
+'''
 eaf_file = sys.argv[1]
+selected_audio_file = sys.argv[2]
 python_version = int(platform.python_version()[0])
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
@@ -22,13 +31,14 @@ you may want to consider a function that checks the user input,
     because what if the user wants 'all' tiers and not just a
     specific one.
 '''
-while(is_input_valid):
-    if(user_input in tier_name_list):
+while is_input_valid:
+    if user_input in tier_name_list:
         try:
             print("\nProcess the results for [%s" %user_input + "] tier\n")
             time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
             annotation_values = pf.extract_annotations(eaf_obj,user_input)
             pf.fill_time_values(time_ids_and_values,annotation_values)
+            
             pprint.pprint(annotation_values)
         except:
             print('There are no annotations in the tier: ', user_input)
@@ -36,7 +46,7 @@ while(is_input_valid):
         diff_tier_prompt = 'Would you like to select another tier? (y = yes , n = no): '
         user_input = pf.py_version_input(python_version,diff_tier_prompt)
 
-        if(user_input == 'y'):
+        if user_input == 'y':
             user_input = pf.py_version_input(python_version,tier_name_prompt)
             continue
         else:
@@ -46,7 +56,7 @@ while(is_input_valid):
         pf.no_valid_results(tier_name_list)
         user_input = pf.py_version_input(python_version, tier_name_prompt)
 
-        if(user_input == '0'):
+        if user_input == '0':
             sys.exit()
 
         continue
@@ -58,21 +68,23 @@ This portion of the code REQUIRES the functions extract_annotations() and
 The silence_segments() function uses the time values from start_cut_ref and
     end_cut_ref.
 
-We will start off with a prompt requesting the audio file that is to be silenced.
+We start with a prompt to the use for the tier name to silence or the option to exit.
 
-Once again, we drag the audio file to the terminal upon given the prompt.
+We reuse some variables from above and execute a similar process to extract time values.
+    for the requested tier.
 '''
-
-audio_file_prompt = '\nDrag the .wav file here if you\'re ready to silence the audio or enter \'n\' to exit: '
-selected_audio_file = pf.py_version_input(python_version,audio_file_prompt)
-if(selected_audio_file == 'n'):
+silence_audio_prompt = '\nEnter the tier you would like to silence (type \'no\' to exit): '
+user_input = pf.py_version_input(python_version, silence_audio_prompt)
+if user_input == 'no':
     sys.exit()
 
-print('Enter the name of the tier that you would like silenced:')
-for 
-audio_object = AudioSegment.from_wav(selected_audio_file.strip())
-silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
-print('\nSilenced Complete!')
+time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
+annotation_values = pf.extract_annotations(eaf_obj,user_input)
+pf.fill_time_values(time_ids_and_values,annotation_values)
 
+audio_object = AudioSegment.from_wav(selected_audio_file)
+silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
+
+print('\nSilenced Complete!')
 file_obj.close()
 
