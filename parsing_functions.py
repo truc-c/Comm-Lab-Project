@@ -69,6 +69,10 @@ def get_tier_names(eaf_object):
 
     return tier_names
 
+def print_tiers(eaf_object):
+    tier_list = get_tier_names(eaf_object)
+    for each_item in tier_list:
+        print(each_item)
 
 '''
 extract_timeid_and_value function takes an xml object as its argument.
@@ -207,7 +211,7 @@ silence_segments is a function that takes 2 arguments.
 
 # ============  THIS PART IS A MUST FOR THIS FUNCTION TO WORK =============
 
-First argument is an xml object with the time values for 'start_cut_value'
+First argument, 'annotations', is an xml object with the time values for 'start_cut_value'
     and 'end_cut_value' filled.
 
 # =========================================================================

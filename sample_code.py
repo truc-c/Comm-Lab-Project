@@ -9,9 +9,11 @@ eaf_file = sys.argv[1]
 python_version = int(platform.python_version()[0])
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
-
 is_input_valid = True
+
 tier_name_list = pf.get_tier_names(eaf_obj)
+print('List of all tiers: ')
+pf.print_tiers(eaf_obj)
 tier_name_prompt = 'Enter tier name: '
 user_input = pf.py_version_input(python_version,tier_name_prompt)
 
@@ -40,7 +42,6 @@ while(is_input_valid):
         else:
             is_input_valid = False
             break
-
     else:
         pf.no_valid_results(tier_name_list)
         user_input = pf.py_version_input(python_version, tier_name_prompt)
@@ -67,8 +68,11 @@ selected_audio_file = pf.py_version_input(python_version,audio_file_prompt)
 if(selected_audio_file == 'n'):
     sys.exit()
 
+print('Enter the name of the tier that you would like silenced:')
+for 
 audio_object = AudioSegment.from_wav(selected_audio_file.strip())
 silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
 print('\nSilenced Complete!')
 
 file_obj.close()
+
