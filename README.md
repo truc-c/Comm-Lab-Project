@@ -69,12 +69,11 @@ The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
 The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
 The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/)
 
-## Running the code in MacOS terminal:
-The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf file can be dragged into the terminal
-or typed in.
+## Running the code in MacOS terminal and Windows:
+The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
 - for example: 
 ```python
-python -W ignore sample_code.py /path/to/file/name/sample.eaf
+python -W ignore sample_code.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
 ```
 
 We use '-W ignore' to ignore this warning:
