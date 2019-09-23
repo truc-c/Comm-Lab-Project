@@ -6,13 +6,7 @@ import platform
 from pydub import AudioSegment
 from pydub.playback import play
 
-'''
-Added features:
-- addtional sys.argv
-- show list of tiers in the beginning
-- select which tier to silence
-- pip install simpleaudio if they decided to use the play option
-'''
+
 eaf_file = sys.argv[1]
 selected_audio_file = sys.argv[2]
 python_version = int(platform.python_version()[0])
