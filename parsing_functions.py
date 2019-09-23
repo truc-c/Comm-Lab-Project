@@ -69,6 +69,9 @@ def get_tier_names(eaf_object):
 
     return tier_names
 
+'''
+simple function that prints all tiers
+'''
 def print_tiers(eaf_object):
     tier_list = get_tier_names(eaf_object)
     for each_item in tier_list:
