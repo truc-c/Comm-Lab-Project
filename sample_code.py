@@ -8,7 +8,7 @@ from pydub.playback import play
 
 
 eaf_file = sys.argv[1]
-selected_audio_file = sys.argv[2]
+# selected_audio_file = sys.argv[2]
 python_version = int(platform.python_version()[0])
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
@@ -67,18 +67,18 @@ We start with a prompt to the use for the tier name to silence or the option to 
 We reuse some variables from above and execute a similar process to extract time values.
     for the requested tier.
 '''
-silence_audio_prompt = '\nEnter the tier you would like to silence (type \'no\' to exit): '
-user_input = pf.py_version_input(python_version, silence_audio_prompt)
-if user_input == 'no':
-    sys.exit()
+# silence_audio_prompt = '\nEnter the tier you would like to silence (type \'no\' to exit): '
+# user_input = pf.py_version_input(python_version, silence_audio_prompt)
+# if user_input == 'no':
+#     sys.exit()
 
-time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
-annotation_values = pf.extract_annotations(eaf_obj,user_input)
-pf.fill_time_values(time_ids_and_values,annotation_values)
+# time_ids_and_values = pf.extract_timeid_and_value(eaf_obj)
+# annotation_values = pf.extract_annotations(eaf_obj,user_input)
+# pf.fill_time_values(time_ids_and_values,annotation_values)
 
-audio_object = AudioSegment.from_wav(selected_audio_file)
-silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
+# audio_object = AudioSegment.from_wav(selected_audio_file)
+# silenced_audio_object = pf.silence_segments(annotation_values,audio_object)
 
-print('\nSilenced Complete!')
-file_obj.close()
+# print('\nSilenced Complete!')
+# file_obj.close()
 

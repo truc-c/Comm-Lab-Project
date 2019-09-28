@@ -1,59 +1,105 @@
-from pydub import AudioSegment
+# from pydub import AudioSegment
 
 '''
-The functions that start with wrapper help to navigate through the XML root
-    and sub elements
+wrapper_time_slot() takes us to the TIME_SLOT elements.  This functions takes an
+    argument of an eaf_object and returns a type list of TIME_SLOT elements.
 '''
-def wrapper_time_order(eaf_object):
-    time_order_object = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
+def wrapper_time_slot(eaf_object):
+    time_slot_list = eaf_object['ANNOTATION_DOCUMENT']['TIME_ORDER']['TIME_SLOT']
 
-    return time_order_object
+    return time_slot_list
 
 
+'''
+wrapper_tiers() takes us to the TIER elements.  This functions takes an argument
+    of an eaf_object and returns a list or dict depending on how many TIERs there
+    are.  If there is only one TIER then this function will return a dict, else, 
+    the function returns a list.
+'''
 def wrapper_tiers(eaf_object):
     tier_object = eaf_object['ANNOTATION_DOCUMENT']['TIER']
 
     return tier_object
 
+'''
+wrapper_tier_name() checks for the TIER name provided by the user.  This function
+    takes an 2 arguments, an eaf_object and a string value for tier_name.
 
-def wrapper_tier_name(eaf_obj,tier_name=None):
-    list_of_tiers = wrapper_tiers(eaf_obj)
+The functions checks the type of the return value from the function 
+    wrapper_tiers(), then checks to see if the TIER name provided by 
+    the user is valid or not.
 
-    for each_tier in list_of_tiers:
-        if each_tier['@TIER_ID'] == tier_name:
-            requested_tier = each_tier
+The reason for checking the type of the return value from the function
+    wrapper_tiers() is so we can perform the appropriate action whether
+    it be working with a list or a dict.
+'''
+def wrapper_tier_name(eaf_obj,tier_name):
+    tier_element = wrapper_tiers(eaf_obj)
+
+    if isinstance(tier_element, dict):
+        requested_tier = tier_element['@TIER_ID']
+    else:
+        for each_tier in tier_element:
+            if each_tier['@TIER_ID'] == tier_name:
+                requested_tier = each_tier
 
     return requested_tier
 
 
-def wrapper_annotations(eaf_obj, tier_name=None):
-    each_annotation = []
+'''
+wrapper_annotations() navigates us to the ANNOTATIONS that reside in the 
+    TIERs.  There are 2 arguments provided, eaf_object and the tier_name.
 
-    if(tier_name == None):
-        list_of_annotations = wrapper_tiers(eaf_obj)
+The code inside the wrapper_annotations() function handles .eaf files
+    with one tier or multiple tiers and adds on the ANNOTATION element
+    and then returns a type dict of ANNOTATIONS or a list of ANNOTATIONS
+'''
+def wrapper_annotations(eaf_obj, tier_name):
+    tier_element = wrapper_tiers(eaf_obj)
 
-        for anno in list_of_annotations:
-            each_annotation.append(anno['ANNOTATION'])
+    if isinstance(tier_element,dict):
+        return tier_element['ANNOTATION']
+    
+    tier_list = wrapper_tier_name(eaf_obj, tier_name)['ANNOTATION']
+
+    return tier_list
+
+
+'''
+extract_annotations() pulls attribute values from the ALIGN_ANNOTATION element.
+    This function takes 2 arguments, an eaf object and a tier name provided by
+    the user.
+    
+In the body of the code the if-statement checks to see if whether the TIER element
+    is a dict or list.
+'''
+def extract_annotations(eaf_obj,tier_name):
+    annotation_element = wrapper_annotations(eaf_obj,tier_name)
+    annotation_product = {}
+    annotation_id = ''
+    time_slot_ref1 = 0
+    time_slot_ref2 = 0
+    annotation_value = ''
+
+    if isinstance(annotation_element,dict):
+        annotation_id = annotation_element['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+        time_slot_ref1 = annotation_element['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+        time_slot_ref2 = annotation_element['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+        annotation_value = annotation_element['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+        annotation_product[annotation_id] = {'start_cut_ref': time_slot_ref1, 'start_cut_value': 0,
+                                                'end_cut_ref':time_slot_ref2, 'end_cut_value':0,
+                                                'annotation_value':annotation_value}
     else:
-        list_of_annotations = wrapper_tier_name(eaf_obj, tier_name)['ANNOTATION']
-        each_annotation = [anno for anno in list_of_annotations]
+        for each_align in annotation_element:
+            annotation_id = each_align['ALIGNABLE_ANNOTATION']['@ANNOTATION_ID']
+            time_slot_ref1 = each_align['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF1']
+            time_slot_ref2 = each_align['ALIGNABLE_ANNOTATION']['@TIME_SLOT_REF2']
+            annotation_value = each_align['ALIGNABLE_ANNOTATION']['ANNOTATION_VALUE']
+            annotation_product[annotation_id] = {'start_cut_ref': time_slot_ref1, 'start_cut_value': 0,
+                                                    'end_cut_ref':time_slot_ref2, 'end_cut_value':0,
+                                                    'annotation_value':annotation_value}
 
-    return each_annotation
-
-
-def wrapper_align_annotation(eaf_obj,tier_name=None):
-    annotations = wrapper_annotations(eaf_obj,tier_name)
-    align_anno_list = []
-
-    if(tier_name == None):
-        for each_index in annotations:
-            for each_align in each_index:
-                align_anno_list.append(each_align['ALIGNABLE_ANNOTATION'])
-    else:
-        for each_annotation in annotations:
-            align_anno_list.append(each_annotation['ALIGNABLE_ANNOTATION'])
-
-    return align_anno_list
+    return annotation_product
 
 
 '''
@@ -64,18 +110,28 @@ The function returns a list of all the tier names.
 def get_tier_names(eaf_object):
     tier_object = wrapper_tiers(eaf_object)
     tier_names = []
-    for tier_name in tier_object:
-        tier_names.append(tier_name['@TIER_ID'])
 
-    return tier_names
+    if isinstance(tier_object,dict):
+        return tier_object['@TIER_ID']
+    else:
+        for tier_name in tier_object:
+            tier_names.append(tier_name['@TIER_ID'])
+
+        return tier_names    
+
 
 '''
 simple function that prints all tiers
 '''
 def print_tiers(eaf_object):
     tier_list = get_tier_names(eaf_object)
-    for each_item in tier_list:
-        print(each_item)
+
+    if isinstance(tier_list, str):
+        print(tier_list)
+    else:
+        for each_name in tier_list:
+            print(each_name)
+
 
 '''
 extract_timeid_and_value function takes an xml object as its argument.
@@ -86,7 +142,7 @@ In the ANNOTATION section, there are 2 TIME_SLOT_REF's which are used by
     TIME_SLOT_ID to reference the time of the annotation.
 '''
 def extract_timeid_and_value(eaf_object):
-    time_order = wrapper_time_order(eaf_object)
+    time_order = wrapper_time_slot(eaf_object)
 
     time_slot_dict = {}
     for each_time_slot in time_order:
@@ -95,37 +151,6 @@ def extract_timeid_and_value(eaf_object):
         time_slot_dict[time_id] = int(time_value)
 
     return time_slot_dict
-
-
-'''
-extract_annotations function takes an xml object and an optional tier name
-    (tier_name='name of tier').  Don't forget the comma after the xml object
-    if you choose to leave it blank
-
-This function returns a nested dict, ANNOTATION_ID being the first key.
-
-The nested dict contains keys and values of TIME_SLOT_REF1, TIME_SLOT_REF2,
-    and ANNOTATION_VALUE.
-
-The values for TIME_SLOT_REF1 and TIME_SLOT_REF2 will be remain empty until the
-    function fill_time_values is called on the object you assign to which you assign
-    this function to.
-'''
-def extract_annotations(eaf_obj,tier_name=None):
-    annotations_results = {}
-    test_wrapper = wrapper_align_annotation(eaf_obj,tier_name)
-
-    for each_element in test_wrapper:
-        annotation_id = each_element['@ANNOTATION_ID']
-        time_slot_ref1 = each_element['@TIME_SLOT_REF1']
-        time_slot_ref2 = each_element['@TIME_SLOT_REF2']
-        annotation_value = each_element['ANNOTATION_VALUE']
-        annotations_results[annotation_id] = {'start_cut_ref': time_slot_ref1,'start_cut_value':0,
-                                                'end_cut_ref':time_slot_ref2,'end_cut_value':0,
-                                                'annotation_value':annotation_value}
-
-    return annotations_results
-
 
 '''
 fill_time_values function takes 2 arguments.  The first argument is the object
