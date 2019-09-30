@@ -1,5 +1,3 @@
-# from pydub import AudioSegment
-
 '''
 wrapper_time_slot() takes us to the TIME_SLOT elements.  This functions takes an
     argument of an eaf_object and returns a type list of TIME_SLOT elements.
