@@ -170,6 +170,19 @@ def fill_time_values(timeid_and_values, annotation_dict):
 
 
 '''
+combined_process() function is a combination of functions.
+
+I created this function to shorten the sample_code.py
+'''
+def combined_process(eaf_obj, user_input):
+    time_ids_and_values = extract_timeid_and_value(eaf_obj)
+    annotations = extract_annotations(eaf_obj,user_input)
+    fill_time_values(time_ids_and_values,annotations)
+
+    return annotations
+
+
+'''
 no_valid_results is a function that prints a string response if a user is
     prompted to enter a tier name and the tier name does not exist
 
