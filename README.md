@@ -111,7 +111,7 @@ import platform
 ### code example of functions and their output:
 get_tier_names(eaf_obj) 
 - returns a list of all the TIER_ID's in the .eaf file\
-(e.g.,[ELAN_sample.eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf) contains 2 TIER_ID's, cut and bookmark)
+(e.g.,[ELAN_sample.eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/raw%20data/ELAN_sample.eaf) contains 2 TIER_ID's, cut and bookmark)
 ```python
 with open(eaf_file) as file_obj:
     eaf_obj = xmltodict.parse(file_obj.read())
