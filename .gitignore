@@ -1,7 +1,5 @@
 __pycache__/
 
-*.eaf
-
 *.pyc
 
 __init__.py
