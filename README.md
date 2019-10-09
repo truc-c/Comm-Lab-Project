@@ -47,13 +47,15 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 ## Download and install Python 3:
 - Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
 
-## pip install pydub and xmltodict
+## Install pip:
+- [pip](https://pip.pypa.io/en/stable/installing/)
+
+## pip install pydub and xmltodict:
 - We used pip to install xmltodict and pydub.  In terminal (MacOS) or command prompt (Windows OS) you can perform a pip install.
 
-```python
-pip install xmltodict --user
+pip install xmltodict --user\
 pip install pydub --user
-```
+
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
