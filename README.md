@@ -44,6 +44,17 @@ P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
+## Download and install Python 3:
+- Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
+
+## pip install pydub and xmltodict
+- We used pip to install xmltodict and pydub.  In terminal (MacOS) or command prompt (Windows OS) you can perform a pip install.
+
+```python
+pip install xmltodict --user
+pip install pydub --user
+```
+
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
 - [pydub](https://pypi.org/project/pydub/)
@@ -52,18 +63,13 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 - platform
 - pprint
 
-Modules os, sys, platform and pprint are built-in modules.  We used pip to install xmltodict and pydub.  In terminal (MacOS)
-or command prompt (Windows OS) you can perform a pip install.
+Modules os, sys, platform and pprint are built-in modules.  
 
-```python
-pip install xmltodict
-pip install pydub
-```
 
 ## Sample audio, Sample .eaf file, and Sample code:
-- [sample audio](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_audio.wav)
-- [sample .eaf](https://github.com/truc-c/Comm-Lab-Project/blob/master/ELAN_sample.eaf)
-- [sample code](https://github.com/truc-c/Comm-Lab-Project/blob/master/sample_code.py)
+- [sample audio](https://github.com/truc-c/Comm-Lab-Project/tree/master/raw%20data)
+- [sample .eaf](https://github.com/truc-c/Comm-Lab-Project/tree/master/raw%20data)
+- [extract_and_silence](https://github.com/truc-c/Comm-Lab-Project/blob/master/extract_and_silence.py)
 
 The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
 The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
@@ -73,7 +79,7 @@ The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla
 The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
 - for example: 
 ```python
-python -W ignore sample_code.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
+python -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
 ```
 
 We use '-W ignore' to ignore this warning:
