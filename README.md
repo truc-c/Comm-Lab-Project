@@ -63,7 +63,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ## Use pip to install pydub and xmltodict:
 - We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
 
-pip install xmltodict --user
+pip install xmltodict --user\
 pip install pydub --user
 
 
