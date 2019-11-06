@@ -44,16 +44,26 @@ P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
-## Download and install Python 3:
+## Check if Python 3 is already available on current computer
+1. Open terminal by typing cmd + spacebar
+2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
+3. Type 'python3' (without the quote) and it will reveal some text similar to this
+```python
+Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>>
+```
+## Download and install Python 3 if it is not available on current computer:
 - Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
 
 ## Install pip:
 - [pip](https://pip.pypa.io/en/stable/installing/)
 
-## pip install pydub and xmltodict:
-- We used pip to install xmltodict and pydub.  In terminal (MacOS) or command prompt (Windows OS) you can perform a pip install.
+## Use pip to install pydub and xmltodict:
+- We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
 
-pip install xmltodict --user\
+pip install xmltodict --user
 pip install pydub --user
 
 
