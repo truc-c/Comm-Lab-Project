@@ -55,16 +55,16 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 ## Download and install Python 3 if it is not available on current computer:
-- Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
+Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
 
 ## Install pip:
-- [pip](https://pip.pypa.io/en/stable/installing/)
+[pip](https://pip.pypa.io/en/stable/installing/)
 
 ## Use pip to install pydub and xmltodict:
-- We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
+We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
 
-pip install xmltodict --user\
-pip install pydub --user
+- pip install xmltodict --user\
+- pip install pydub --user
 
 
 ## Modules:
