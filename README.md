@@ -45,7 +45,7 @@ P.S.
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
 ## Check if Python 3 is already available on current computer
-1. Open terminal by typing cmd + spacebar
+1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'python3' (without the quote) and it will reveal some text similar to this
 ```python
