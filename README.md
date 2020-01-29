@@ -58,7 +58,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
 ## Setp 2: Check if pip/pip3 is installed on the computer:
-1. Open terminal by typing cmd+spacebar
+1. Open terminal (if it is not already opened) by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
@@ -70,15 +70,21 @@ However, if you receive a 'command not found' message, this means pip/pip3 is no
 command not found
 ```
 ## If pip/pip3 is not installed, please download pip/pip3
-1. Navigate to this site [pip](https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py)
-2. [link](https://bootstrap.pypa.io/get-pip.py)
+1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File.
+2. The file 'get-pip.py' should be in your Downloads folder, please move this file to the desktop.
+3. Open terminal (if it is not already opened), and navigate to your desktop with the following command, change 'AccountName' (for example, mine would be, /users/curtchang/desktop):
+- cd /users/AccountName/desktop
+4. After navigating to your desktop type:
+- python3 get-pip.py
+5. There should be a message displayed on the terminal with the text 'Successfully installed pip...something something'
 
-## Use pip to install pydub and xmltodict:
+## Step 3: Install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
+1. Open terminal (if it is not already opened) and type:
+- pip3 install pydub --user
+- pip3 install xmltodict --user
 
-- pip install xmltodict --user
-- pip install pydub --user
-
+## Step 4: 
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
