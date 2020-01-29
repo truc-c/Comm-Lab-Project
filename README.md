@@ -57,20 +57,21 @@ Type "help", "copyright", "credits" or "license" for more information.
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
-## Setp 2: Check if pip3 is installed on the computer:
+## Setp 2: Check if pip/pip3 is installed on the computer:
 1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
-3. Type pip3 --version or pip --version (double hypthens before 'version)
+3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
 ```python
 pip 19.3.1
 ```
-However, if you receive the message below, this means pip/pip3 is not installed:
+However, if you receive a 'command not found' message, this means pip/pip3 is not installed:
 ```python
 command not found
 ```
 ## If pip/pip3 is not installed, please download pip/pip3
-[pip](https://pip.pypa.io/en/stable/installing/)
+1. Navigate to this site [pip](https://pip.pypa.io/en/stable/installing/#installing-with-get-pip-py)
+2. [link](https://bootstrap.pypa.io/get-pip.py)
 
 ## Use pip to install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
