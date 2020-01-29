@@ -44,7 +44,7 @@ P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
-## Check if Python 3 is already available on current computer
+## Step 1: Check if Python 3 is already available on current computer
 1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'python3' (without the quote) and it will reveal some text similar to this
@@ -54,10 +54,22 @@ Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
-## Download and install Python 3 if it is not available on current computer:
-Python version 3 is available for download here: [python](https://www.python.org/downloads/release/python-374/)
+## If Python 3 is not on the computer, please download the latest edition of Python:
+Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
-## Install pip:
+## Setp 2: Check if pip3 is installed on the computer:
+1. Open terminal by typing cmd+spacebar
+2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
+3. Type pip3 --version or pip --version (double hypthens before 'version)
+If you receive a response such as the example below, then it is intalled:
+```python
+pip 19.3.1
+```
+However, if you receive the message below, this means pip/pip3 is not installed:
+```python
+command not found
+```
+## If pip/pip3 is not installed, please download pip/pip3
 [pip](https://pip.pypa.io/en/stable/installing/)
 
 ## Use pip to install pydub and xmltodict:
