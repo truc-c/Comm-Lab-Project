@@ -70,7 +70,7 @@ However, if you receive a 'command not found' message, this means pip/pip3 is no
 command not found
 ```
 ## If pip/pip3 is not installed, please download pip/pip3
-1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File.
+1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
 2. The file 'get-pip.py' should be in your Downloads folder, please move this file to the desktop.
 3. Open terminal (if it is not already opened), and navigate to your desktop with the following command, change 'AccountName' (for example, mine would be, /users/curtchang/desktop):
 - cd /users/AccountName/desktop
