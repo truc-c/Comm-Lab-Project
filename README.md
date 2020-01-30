@@ -73,10 +73,17 @@ command not found
 1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
 2. The file 'get-pip.py' should be in your Downloads folder, please move this file to the desktop.
 3. Open terminal (if it is not already opened), and navigate to your desktop with the following command, change 'AccountName' (for example, mine would be, /users/curtchang/desktop):
-- cd /users/AccountName/desktop
+```python
+cd /users/AccountName/desktop
+```
 4. After navigating to your desktop type:
-- python3 get-pip.py
-5. There should be a message displayed on the terminal with the text 'Successfully installed pip...something something'
+```python
+python3 get-pip.py
+```
+5. There should be a message displayed on the terminal:
+```python
+Successfully installed pip-20.0.2 wheel-0.34.1
+```
 
 ## Step 3: Install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
@@ -84,7 +91,11 @@ We will use pip to install xmltodict and pydub.  These modules will be used in t
 - pip3 install pydub --user
 - pip3 install xmltodict --user
 
-## Step 4: 
+## Step 4: Set/Edit the PATH Environment
+Now that modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
+
+## Step 5: Download Zip Folder
+
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
