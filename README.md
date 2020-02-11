@@ -88,8 +88,13 @@ Successfully installed pip-20.0.2 wheel-0.34.1
 ## Step 3: Install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
 1. Open terminal (if it is not already opened) and type:
-- pip3 install pydub --user
-- pip3 install xmltodict --user
+``` python
+pip3 install pydub --user
+```
+2. Then type:
+``` python
+pip3 install xmltodict --user
+```
 
 ## Step 4: Set/Edit the PATH Environment
 Now that modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
