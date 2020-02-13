@@ -126,8 +126,14 @@ Traceback (most recent call last):
 ModuleNotFoundError: No module named 'xmltodict'
 ```
 
-## Step 5: Download Zip Folder
-
+## Step 5: Download Zip Folder and Extract Contents
+Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
+1. Select the green 'Clone or download' pull down menu.
+2. Select 'Download ZIP'.  One of two things may happen, a folder or ZIP named 'Comm-Lab-Project-master' file will be downloaded.
+3. On the computer, find the 'Downloads' folder.  Move this folder or ZIP to your desktop.
+- If it is a ZIP (the icon will look like a file with a zipper on it) you will need to unzip the file which will then reveal the folder
+- If it is a folder icon, you don't need to do anything else.
+4. 
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
@@ -153,7 +159,7 @@ The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla
 The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
 - for example: 
 ```python
-python -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
+python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
 ```
 
 We use '-W ignore' to ignore this warning:
