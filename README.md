@@ -47,7 +47,7 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 ## Step 1: Check if Python 3 is already available on current computer
 1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
-3. Type 'python3' (without the quote) and it will reveal some text similar to this
+3. Type 'python3' (without the quote) into the terminal window and it will reveal some text similar to this
 ```python
 Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28) 
 [Clang 6.0 (clang-600.0.57)] on darwin
@@ -59,7 +59,12 @@ Python version 3 is available for download here: [python](https://www.python.org
 
 ## Step 2: Check if pip/pip3 is installed on the computer:
 1. Open terminal (if it is not already opened) by typing cmd+spacebar
-2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
+- Type 'terminal' (without the quotes) and a terminal window should pop-up.
+2. If you are currently in python, for example you see:
+```python
+>>>  <--these chevrons
+```
+- then exit out
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
 ```python
