@@ -57,7 +57,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
-## Setp 2: Check if pip/pip3 is installed on the computer:
+## Step 2: Check if pip/pip3 is installed on the computer:
 1. Open terminal (if it is not already opened) by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
