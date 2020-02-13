@@ -97,7 +97,16 @@ pip3 install xmltodict --user
 ```
 
 ## Step 4: Set/Edit the PATH Environment
-Now that modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
+Now that the modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
+1. Open terminal (if it is not already opened) and type: (Replace AccountName with the name of your account for the computer)
+``` python
+cd /users/AccountName
+```
+2. Still in the terminal, type:
+``` python
+nano .bash_profile
+```
+3. You will be directed to another window.
 
 ## Step 5: Download Zip Folder
 
