@@ -114,7 +114,7 @@ export PATH
 4. Exit with control+x
 5. Save by selecting 'y' for yes
 6. Then press 'Enter'/'Return'
-7. Exit terminal application, don't just close the terminal.
+7. Exit terminal application (cmd+q), don't just close the terminal.
 8. Check if python recognizes the path to the modules.  Open terminal and type 'python3' without the quotations.  Next, type:
 ``` python
 >>> import xmltodict
