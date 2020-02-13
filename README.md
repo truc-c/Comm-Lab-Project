@@ -83,7 +83,7 @@ command not found
 3. Open terminal (if it is not already opened) and your AccountName (first and last name no spaces) will be located in terminal window: (for example, laura's AccountName is provided below which is bolded)
 
 ```python
-iMac:~ **lauraLastName**$
+iMac:~ __lauraLastName__$
 ```
 4. After navigating to your desktop type:
 ```python
