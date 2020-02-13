@@ -80,10 +80,10 @@ command not found
 ## If pip/pip3 is not installed, please download pip/pip3
 1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
 2. Open the Downloads folder and drag the file 'get-pip.py' onto the desktop.
-3. Open terminal (if it is not already opened) and your account name will be locat: (for example, mine would be, /users/curtchang/desktop):
+3. Open terminal (if it is not already opened) and your AccountName (first and last name no spaces) will be located in terminal window: (for example, laura's AccountName is provided below which is bolded)
 
 ```python
-cd /users/AccountName/desktop
+iMac:~ ##laura******$
 ```
 4. After navigating to your desktop type:
 ```python
