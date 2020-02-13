@@ -60,11 +60,14 @@ Python version 3 is available for download here: [python](https://www.python.org
 ## Step 2: Check if pip/pip3 is installed on the computer:
 1. Open terminal (if it is not already opened) by typing cmd+spacebar
 - Type 'terminal' (without the quotes) and a terminal window should pop-up.
-2. If you are currently in python, for example you see:
-```python
->>>  <--these chevrons
+2. If you are currently in python, for example you will see:
+``` python
+>>>  <-these chevrons
 ```
-- then exit out
+- then exit out of python by typing:
+``` python
+>>> exit()
+```
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
 ```python
