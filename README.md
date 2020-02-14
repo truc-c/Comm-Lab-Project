@@ -54,6 +54,7 @@ Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
+<img src="images/terminal.png" width="100" >
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
