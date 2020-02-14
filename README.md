@@ -45,15 +45,11 @@ P.S.
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
 ## Step 1: Check if Python 3 is already available on current computer
-1. Open terminal by typing cmd+spacebar
-2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
-3. Type 'python3' (without the quote) into the terminal window and it will reveal some text similar to this
-```python
-Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28) 
-[Clang 6.0 (clang-600.0.57)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
+1. Open terminal by typing cmd+spacebar and an white window will open, similar to the picture below (mine is black)
+<img src="images/terminal.png" width="500">
+2. Type 'python3' (without the quote) into the terminal window text similar to the picture will show if you have python 3 installed.  The green square shows that I typed python3 into the terminal, the green underline shows that I have initiated python3, and the green arrow pointing to the three greater than signs (>>>) indicates that I am currently working in the python environment.
+<img src="images/terminal_python.png" width="500" >
+
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
