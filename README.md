@@ -102,7 +102,8 @@ Now that the modules pydub and xmltodict have been downloaded, we need to tell P
 7. Open terminal application again by typing cmd+spacebar, then 'terminal' and hit enter.  We need to check to see if the path that we entered in works, type :
 <img src="images/terminal_python.png" width="500" >
 8. In the terminal, type 'python3' (w/o quotes), then type 'import xmltodict' (w/o quotes).  See picture below.
-9. If you do not get an error such as the example below, then everything is set:
+<img src="images/module_xmltodict_check.png" width="500" >
+9. If you do not get an error, such as the example below, on the next line after typing 'import xmltodict' then you're all set:
 ``` python
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
