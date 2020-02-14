@@ -49,21 +49,23 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 <img src="images/terminal.png" width="500">
 2. Type 'python3' (without the quote) into the terminal window text similar to the picture will show if you have python 3 installed.  The green square shows that I typed python3 into the terminal, the green underline shows that I have initiated python3, and the green arrow pointing to the three greater than signs (>>>) indicates that I am currently working in the python environment.
 <img src="images/terminal_python.png" width="500" >
-3. Do not close terminal.
+3. Do not close terminal
+
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
 ## Step 2: Check if pip/pip3 is installed on the computer:
 1. Terminal should still be open and you may still be in python (indicated by these >>>). Please exit out of python by typing 'exit()' without the quotations similar to the image below:
 <img src="images/exit_python.png" width="100" >
-2. In terminal, type 'pip --version' without quotations and if you receive a message different from what is shown in the image below, that may indicate that pip is not installed.  The picture below shows that I have pip installed.
+2. In terminal, type 'pip --version' without quotations and if you receive a message different from what is shown in the image below (in the green underline), that may indicate that pip is not installed.  The picture below shows that I have pip installed.
+<img src="images/check_pip.png" width="500" >
 
+- However, if you receive a 'command not found' message, this means pip/pip3 is not installed:
 
-
-However, if you receive a 'command not found' message, this means pip/pip3 is not installed:
 ```python
 command not found
 ```
+
 ## If pip/pip3 is not installed, please download pip/pip3
 1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
 2. Open the Downloads folder and drag the file 'get-pip.py' onto the desktop.
