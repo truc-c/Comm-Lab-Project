@@ -87,34 +87,28 @@ We will use pip to install xmltodict and pydub.  These modules will be used in t
 
 ## Step 4: Set/Edit the PATH Environment
 Now that the modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
-1. Open terminal (if it is not already opened) and type: (replace AccountName with the name of your account for the computer)
-``` python
-cd /users/AccountName
-```
-2. Still in the terminal, type:
-``` python
-nano .bash_profile
-```
-3. You will be directed to another window.  Next, type (replace AccountName with the name of your account for the computer):
-``` python
-PATH="/Users/AccountName/Library/Python/3.7/lib/python/site-packages:${PATH}"
-export PATH
-```
-4. Exit with control+x
-5. Save by selecting 'y' for yes
-6. Then press 'Enter'/'Return'
-7. Exit terminal application (cmd+q), don't just close the terminal.
-8. Check if python recognizes the path to the modules.  Open terminal and type 'python3' without the quotations.  Next, type:
-``` python
->>> import xmltodict
-```
+1. In terminal, type 'cd /users/AccountName' (w/o quotes), replace AccountName with yours.
+<img src="images/user_directory.png" width="300" >
+2. Next, we the bash_profile to set our PATH, type 'nano .bash_profile' (w/o quotes).
+<img src="images/nano_bash_profile.png" width="300" >
+3. You will then be directed to another window that looks similar to the one in the picture below.  There you will type what I have in the red box, then control+x to exit.
+<img src="images/add_path.png" width="500" >
+4. Then you'll be asked to save. Enter 'y' (w/o quotes).
+<img src="images/confirm_path.png" width="400" >
+5. Then you'll be asked to write to .bash_profile, hit enter/return on the keyboard.
+<img src="images/write_to_bash_profile.png" width="300" >
+6. Exit terminal application.
+<img src="images/quit_terminal.png" width="200" >
+7. Open terminal application again by typing cmd+spacebar, then 'terminal' and hit enter
+8. We need to check to see if the path that we entered in works, type :
+<img src="images/terminal_python.png" width="500" >
+
 9. If you do not get an error such as the example below, then everything is set:
 ``` python
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ModuleNotFoundError: No module named 'xmltodict'
-```
-
+```2
 ## Step 5: Download Zip Folder and Extract Contents
 Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 1. Select the green 'Clone or download' pull down menu.
