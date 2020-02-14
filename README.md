@@ -48,13 +48,8 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'python3' (without the quote) into the terminal window and it will reveal some text similar to this
-```python
-Python 3.7.1 (v3.7.1:, Oct 20 2018, 03:13:28) 
-[Clang 6.0 (clang-600.0.57)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>>
-```
-<img src="images/terminal.png" width="100" >
+<img src="images/terminal.png" width="300" >
+
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
