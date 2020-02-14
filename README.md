@@ -54,7 +54,8 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
 ## Step 2: Check if pip/pip3 is installed on the computer:
-1. Terminal should still be open and you may still be in python (indicated by these >>>). Please exit out of python by typing 'exit()' without the quotations  
+1. Terminal should still be open and you may still be in python (indicated by these >>>). Please exit out of python by typing 'exit()' without the quotations similar to the image below:
+<img src="images/exit_python.png" width="100" >
 
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
