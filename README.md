@@ -68,9 +68,14 @@ command not found
 
 ## If pip/pip3 is not installed, please download pip/pip3
 1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
+<img src="images/download_linked_files.png" width="150" >
 2. Click on the Finder icon in your dock, then look for the Downloads tab, and there you will find the 'get-pip.py' file.  Please move/click/drag this file to the desktop.  The pictures should help guide you:
 <img src="images/finder_dock.png" width="100" >
-<img src="images/download_folder_pip_file.png" width="200" >
+<img src="images/download_folder_pip_file.png" width="300" >
+3. Let's navigate to the desktop by typing 'cd /users/AccountName/desktop'.  You will be replacing 'AccountName' with your AccountName.  You can find this in the terminal.  I have encased mine in a green box as an example.  The picture should help:
+<img src="images/desktop.png" width="400" >
+4. Now let's run the get-pip.py file that we just downloaded.  Type 'python3 get-pip.py' into the terminal, just like it is shown in the picture:
+<img src="images/run_get_pip.png" width="400" >
 
 
 ## Step 3: Install pydub and xmltodict:
