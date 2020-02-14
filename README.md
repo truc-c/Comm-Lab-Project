@@ -108,7 +108,7 @@ Now that the modules pydub and xmltodict have been downloaded, we need to tell P
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ModuleNotFoundError: No module named 'xmltodict'
-```2
+```
 ## Step 5: Download Zip Folder and Extract Contents
 Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 1. Select the green 'Clone or download' pull down menu.
