@@ -49,21 +49,13 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 <img src="images/terminal.png" width="500">
 2. Type 'python3' (without the quote) into the terminal window text similar to the picture will show if you have python 3 installed.  The green square shows that I typed python3 into the terminal, the green underline shows that I have initiated python3, and the green arrow pointing to the three greater than signs (>>>) indicates that I am currently working in the python environment.
 <img src="images/terminal_python.png" width="500" >
-
+3. Do not close terminal.
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
 
 ## Step 2: Check if pip/pip3 is installed on the computer:
-1. Open terminal (if it is not already opened) by typing cmd+spacebar
-- Type 'terminal' (without the quotes) and a terminal window should pop-up.
-2. If you are currently in python, for example you will see:
-``` python
->>>  <-these chevrons
-```
-- then exit out of python by typing:
-``` python
->>> exit()
-```
+1. Terminal should still be open and you may still be in python (indicated by these >>>). Please exit out of python by typing 'exit()' without the quotations  
+
 3. Type 'pip3 --version' or 'pip --version' (double hypthens before 'version')
 If you receive a response such as the example below, then it is intalled:
 ```python
