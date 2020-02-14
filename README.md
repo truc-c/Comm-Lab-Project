@@ -80,14 +80,10 @@ command not found
 
 ## Step 3: Install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
-1. Open terminal (if it is not already opened) and type:
-``` python
-pip3 install pydub --user
-```
-2. Then type:
-``` python
-pip3 install xmltodict --user
-```
+1. In your terminal, type 'pip3 install pydub --user' without the quotations, just like the picture below:
+<img src="images/pydub.png" width="400" >
+2. Next, after pydub is finishing installing, type 'pip3 install xmltodict --user' without the quotation, just like the picture below:
+<img src="images/xmltodict.png" width="400" >
 
 ## Step 4: Set/Edit the PATH Environment
 Now that the modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
