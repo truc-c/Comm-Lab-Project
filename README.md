@@ -48,7 +48,7 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 1. Open terminal by typing cmd+spacebar
 2. Type 'terminal' (without the quotes) and a terminal window should pop-up.
 3. Type 'python3' (without the quote) into the terminal window and it will reveal some text similar to this
-<img src="images/terminal.png" width="300" >
+<img src="images/terminal.png" width="500" >
 
 ## If Python 3 is not on the computer, please download the latest edition of Python:
 Python version 3 is available for download here: [python](https://www.python.org/downloads/)
