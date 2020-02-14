@@ -109,6 +109,7 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ModuleNotFoundError: No module named 'xmltodict'
 ```
+
 ## Step 5: Download Zip Folder and Extract Contents
 Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 1. Select the green 'Clone or download' pull down menu.
