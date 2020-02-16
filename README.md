@@ -113,12 +113,18 @@ ModuleNotFoundError: No module named 'xmltodict'
 
 ## Step 5: Download Zip Folder and Extract Contents
 Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
-1. Select the green 'Clone or download' pull down menu.
-2. Select 'Download ZIP'.  One of two things may happen, a folder or ZIP named 'Comm-Lab-Project-master' file will be downloaded.
-3. On the computer, find the 'Downloads' folder.  Move this folder or ZIP to your desktop.
-- If it is a ZIP (the icon will look like a file with a zipper on it) you will need to unzip the file which will then reveal the folder
-- If it is a folder icon, you don't need to do anything else.
-4. 
+1. Click on the green 'Clone or download' pull down menu.
+<img src="images/downlaod_button.png" width="500" >
+2. Select 'Download ZIP' and save it.
+<img src="images/downlaod_zip.png" width="300" >
+<img src="images/confirm_save.png" width="300" >
+3. On the computer, go to Finder in the dock and navigate to the 'Downloads' tab.  There you will find the ZIP file titled Comm-Lab-Project-master.zip
+<img src="images/finder_dock.png" width="100" >
+<img src="images/sip_file_download.png" width="200" >
+4. Move the ZIP file to your desktop and double click on it; a folder will appear with a similar name (Comm-Lab-Project-master) as the ZIP file.
+<img src="images/extract_zip_file.png" width="200" >
+5. Open the folder (Comm-Lab-Project-master) and move the 2 files (extract_and_silence.py and parsing_functions.py) to your desktop.
+<img src="images/py_files.png" width="300">
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
