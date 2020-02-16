@@ -91,7 +91,7 @@ Now that the modules pydub and xmltodict have been downloaded, we need to tell P
 <img src="images/user_directory.png" width="300" >
 2. Next, we the bash_profile to set our PATH, type 'nano .bash_profile' (w/o quotes).
 <img src="images/nano_bash_profile.png" width="300" >
-3. You will then be directed to another window that looks similar to the one in the picture below.  There you will type what I have in the red box, then control+x to exit.
+3. You will then be directed to another window that looks similar to the one in the picture below.  There you will type what I have in the red box.  Replace AccountName with your AccountName. Then, control+x to exit.
 <img src="images/add_path.png" width="500" >
 4. Then you'll be asked to save. Enter 'y' (w/o quotes).
 <img src="images/confirm_path.png" width="400" >
