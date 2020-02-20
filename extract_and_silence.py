@@ -63,3 +63,6 @@ user_input = pf.py_version_input(python_version,tier_name_prompt)
 annotation_values = pf.combined_process(eaf_obj,user_input)
 audio_object = AudioSegment.from_wav(selected_audio_file)
 silenced_product = pf.silence_segments(annotation_values, audio_object)
+
+rename_wav = pf.modify_filename(sys.argv[2])
+silenced_product.export(rename_wav, format="wav")
