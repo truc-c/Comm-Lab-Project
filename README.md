@@ -44,8 +44,8 @@ P.S.
 
 Special thank you to James Robert (http://jiaaro.com) for his guidance on using the pydub module.
 
-## Step 1: Here is how to check if Python 3 is already available on your current computer:
-1. Start off by holding the cmd button and then pushing spacebar and the Spotlight Search will open.  Then inside the Spotlight Search type in: (terminal) without the parentheses.
+## Step 1: Here is how to check if Python 3 is already available on your desktop:
+1. Start off by holding the "cmd" button followed by the spacebar button. The "Spotlight Search" function should then appear. Then, inside the "Spotlight Search" bar, type in "terminal".
 <img src="images/terminal.png" width="500">
 2. Type 'python3' (without the quote) into the terminal window text similar to the picture will show if you have python 3 installed.  The green square shows that I typed python3 into the terminal, the green underline shows that I have initiated python3, and the green arrow pointing to the three greater than signs (>>>) indicates that I am currently working in the python environment.
 <img src="images/terminal_python.png" width="500" >
