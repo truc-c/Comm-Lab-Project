@@ -119,11 +119,10 @@ ModuleNotFoundError: No module named 'xmltodict'
 Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 1. Click on the green 'Clone or download' pull down menu.
 <img src="images/downlaod_button.png" width="500" >
-2. Select 'Download ZIP' and save it.
+2. Click on 'Download ZIP'.
 <img src="images/downlaod_zip.png" width="300" >
-<img src="images/confirm_save.png" width="300" >
-3. On the computer, go to Finder in the dock and navigate to the 'Downloads' tab.  There you will find the ZIP file titled Comm-Lab-Project-master.zip
-<img src="images/finder_dock.png" width="100" >
+3. On the computer, go to Finder in the dock and navigate to the 'Downloads' tab.  There you will find the folder titled "Comm-Lab-Project-master". 
+<img src="images/comm_folder.png" width="300" >
 <img src="images/sip_file_download.png" width="200" >
 4. Move the ZIP file to your desktop and double click on it; a folder will appear with a similar name (Comm-Lab-Project-master) as the ZIP file.
 <img src="images/extract_zip_file.png" width="200" >
