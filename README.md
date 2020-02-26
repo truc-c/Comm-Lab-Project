@@ -122,10 +122,9 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 2. Click on 'Download ZIP'.
 <img src="images/downlaod_zip.png" width="300" >
 3. On the computer, go to Finder in the dock and navigate to the 'Downloads' tab.  There you will find the folder titled "Comm-Lab-Project-master". 
+<img src="images/finder_dock.png" width="100" >
 <img src="images/comm_folder.png" width="300" >
-<img src="images/sip_file_download.png" width="200" >
-4. Move the ZIP file to your desktop and double click on it; a folder will appear with a similar name (Comm-Lab-Project-master) as the ZIP file.
-<img src="images/extract_zip_file.png" width="200" >
+4. Move the folder onto your desktop.
 5. Open the folder (Comm-Lab-Project-master) and move the 2 files (extract_and_silence.py and parsing_functions.py) to your desktop.
 <img src="images/py_files.png" width="300">
 
