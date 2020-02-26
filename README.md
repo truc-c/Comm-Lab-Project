@@ -134,14 +134,14 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 <img src="images/terminal.png" width="500" >
 2. Now that Terminal is open, nagivate to desktop by typing 'cd /users/AccountName/desktop' (without quotation marks) into the Terminal box. You will be replacing 'AccountName' with your AccountName.  I have encased mine in a green box as an example.  The picture should help:
 <img src="images/desktop.png" width="400" >
-3. Before continuing with the next steps, please read through all of the instructions from 3.-6. before pressing  the 'return'/enter button.
-- If you have nagivated the previous steps correctly, the image below should resemble your Terminal window.
+3. If you have nagivated the previous steps correctly, the image below should resemble your Terminal window.
 <img src="images/nav_desktop.png" width="300" >
-4. Now copy and paste the text below:
+4. Before continuing with the next steps, please read through all of the instructions from 4.1-4.6. before pressing the return or enter button.
+- 4.1. Copy and paste the text below into the Terminal window but DO NOT push enter (there are more steps to be followed):
 ```python
-python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
+python3 -W ignore extract_and_silence.py
 ```
-
+- 4.2. 
 The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
 - for example: 
 ```python
