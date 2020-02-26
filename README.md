@@ -125,6 +125,7 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 <img src="images/finder_dock.png" width="100" >
 <img src="images/comm_folder.png" width="300" >
 4. Move the folder onto your desktop.
+
 5. Open the folder (Comm-Lab-Project-master) and move the 2 files (extract_and_silence.py and parsing_functions.py) to your desktop.
 <img src="images/py_files.png" width="300">
 
