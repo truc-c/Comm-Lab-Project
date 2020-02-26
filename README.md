@@ -129,6 +129,28 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 5. Open the folder (Comm-Lab-Project-master) and move the 2 files (extract_and_silence.py and parsing_functions.py) to your desktop.
 <img src="images/py_files.png" width="300">
 
+## Step 6: Running the code in MacOS terminal
+1. Open "Terminal" if it is not already opened. If not, refer to Step 1, #1. 
+<img src="images/terminal.png" width="500" >
+2. Now that Terminal is open, nagivate to desktop by typing 'cd /users/AccountName/desktop' (without quotation marks) into the Terminal box. You will be replacing 'AccountName' with your AccountName.  I have encased mine in a green box as an example.  The picture should help:
+<img src="images/desktop.png" width="400" >
+3. Before continuing with the next steps, please read through all of the instructions from 3.-6. before pressing  the 'return'/enter button.
+- If you have nagivated the previous steps correctly, the image below should resemble your Terminal window.
+<img src="images/nav_desktop.png" width="300" >
+4. Now copy and paste the text below:
+```python
+python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
+```
+
+The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
+- for example: 
+```python
+python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
+```
+We use '-W ignore' to ignore this warning:
+-  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
+  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
 - [pydub](https://pypi.org/project/pydub/)
@@ -148,19 +170,6 @@ Modules os, sys, platform and pprint are built-in modules.
 The sample_audio.wav is a 30 second audio of Curt Chang counting from 1 to 30.\
 The ELAN_sample.eaf are annotations that Curt Chang has made using ELAN.\
 The software is available for download here: [ELAN](https://tla.mpi.nl/tools/tla-tools/elan/)
-
-## Running the code in MacOS terminal:
-The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
-- for example: 
-```python
-python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
-```
-
-We use '-W ignore' to ignore this warning:
--  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
-  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
-
-
 
 ## Documentation:
 Here are some examples of how to use the functions and their output.
