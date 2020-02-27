@@ -145,7 +145,7 @@ python3 -W ignore extract_and_silence.py
 - 4.2. Drag the merged .eaf file and audio (.wav) file into the terminal.  The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.  Click on the image if it is too small to read.
 - <img src="images/eaf_and_wav.png" width="700" >
 
-- 4.3. Check to make sure that the spacing is correct between the text that you copy and pasted and the red box, as well as, the spacing between the red and green box.  If there are not spaces between these, use the arrow keys to move the cursor to the desired space and use the space bar.  Once everything is spaced correctly, push the 'Enter' key.
+- 4.3. Check to make sure that the spacing is correct between the text that you copy and pasted and the red box, as well as, the spacing between the red and green box.  If there aren't any spaces between them use the arrow keys to move the cursor to the desired placemnt and use the space bar.  Once everything is spaced correctly, push the 'Enter' key.
 
 ## Step 7: Follow the Instructions in Terminal
 
