@@ -138,15 +138,18 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 <img src="images/nav_desktop.png" width="300" >
 4. Before continuing with the next steps, please read through all of the instructions from 4.1-4.6. before pressing the return or enter button.
 
-- 4.1. Copy and paste the text below into the Terminal window but DO NOT push enter (there are more steps to be followed):
+- 4.1. Copy and paste the text below into the Terminal window then push the space bar after pasting the text but DO NOT push enter (there are more steps to be followed):
 ```python
 python3 -W ignore extract_and_silence.py
 ```
-- 4.2. Drag the merged .eaf file and audio (.wav) file into the terminal.  The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.
+- 4.2. Drag the merged .eaf file and audio (.wav) file into the terminal.  The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.  Click on the image if it is too small to read.
+- <img src="images/eaf_and_wav.png" width="700" >
 
-We use '-W ignore' to ignore this warning:
--  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
-  warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
+- 4.3. Check to make sure that the spacing is correct between the text that you copy and pasted and the red box, as well as, the spacing between the red and green box.  If there are not spaces between these, use the arrow keys to move the cursor to the desired space and use the space bar.  Once everything is spaced correctly, push the 'Enter' key.
+
+## Step 7: Follow the Instructions in Terminal
+
+If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different.  If it starts with 'List of all tiers:' then you're on the right track.
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
