@@ -137,16 +137,13 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 3. If you have nagivated the previous steps correctly, the image below should resemble your Terminal window.
 <img src="images/nav_desktop.png" width="300" >
 4. Before continuing with the next steps, please read through all of the instructions from 4.1-4.6. before pressing the return or enter button.
+
 - 4.1. Copy and paste the text below into the Terminal window but DO NOT push enter (there are more steps to be followed):
 ```python
 python3 -W ignore extract_and_silence.py
 ```
-- 4.2. 
-The sample coded provided is ran in MacOS terminal along with .eaf file name.  The .eaf and .wav files can be dragged into the terminal or typed in.
-- for example: 
-```python
-python3 -W ignore extract_and_silence.py /path/to/file/name/sample.eaf /path/to/audio/file/sample.wav
-```
+- 4.2. Drag the merged .eaf file and audio (.wav) file into the terminal.  The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.
+
 We use '-W ignore' to ignore this warning:
 -  RuntimeWarning: Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work
   warn("Couldn't find ffmpeg or avconv - defaulting to ffmpeg, but may not work", RuntimeWarning)
