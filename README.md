@@ -136,7 +136,7 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 <img src="images/desktop.png" width="400" >
 3. If you have nagivated the previous steps correctly, the image below should resemble your Terminal window.
 <img src="images/nav_desktop.png" width="300" >
-4. Before continuing with the next steps, please read through all of the instructions from 4.1-4.6. before pressing the return or enter button.
+4. Before continuing with the next steps, please read through all of the instructions from 4.1-4.3. before pressing the return or enter button.
 
 - 4.1. Copy and paste the text below into the Terminal window then push the space bar after pasting the text but DO NOT push enter (there are more steps to be followed):
 ```python
@@ -149,7 +149,8 @@ python3 -W ignore extract_and_silence.py
 
 ## Step 7: Follow the Instructions in Terminal
 
-If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different.  If it starts with 'List of all tiers:' then you're on the right track.
+If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different.  If it starts with 'List of all tiers:' then you're on the right track.  However, if it is different you may need to redo step 6.  Click on the image if it is too small to read.
+<img src="images/terminal_instruct.png" width="700" >
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
