@@ -142,10 +142,10 @@ Navigate to this link: [main page](https://github.com/truc-c/Comm-Lab-Project)
 ```python
 python3 -W ignore extract_and_silence.py
 ```
-- 4.2. Drag the merged (aka combined) .eaf file and its corresponding audio (.wav) file into the terminal. If you drag in the wrong .eaf or .wav file, you may simply delete it manually in the Terminal using the backspace button. The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.  Click on the image if it is too small to read.
-- <img src="images/eaf_and_wav.png" width="700" >
+- 4.2. Drag the merged (aka combined) .eaf file into the Terminal first. Then, drag its corresponding audio (.wav) file into. If you drag in the wrong .eaf or .wav file, you may simply delete it manually in the Terminal with the backspace button. The end result should look similar to the image below.  The text in the red and green box may be different from my example and that is okay.  Click on the image if it is too small to read.
+- <img src="images/eaf_and_wav.png" width="800" >
 
-- 4.3. Ensure that the spacing is correct between the text you copy and pasted, the information seen in the red box, and the information in the green box. If there are no any spaces between the three components, simply use the arrow keys on your keyboard to move around the Terminal information. Once you have found your desired placement for the space, you can simply press the spacebar to add the space. Now that everything is complete, you may FINALLY push the Enter/return key to perform the completed action.
+- 4.3. Notice that there is a space between python3 -W ignore extract_and_silence.py, your .eaf file, and the .wav file. The space between the three components is important in performing the action so if you are missing a space, simply use your arrow keys on the keyboard to manually add a space using the spacebar. Now that all of the formatting is complete, you may FINALLY push the Enter/Return key to perform the completed action.
 
 ## Step 7: Follow the Instructions in Terminal
 
