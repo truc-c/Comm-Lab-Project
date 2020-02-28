@@ -163,7 +163,7 @@ If everything in Step 6 has been done correctly, you will be presented with text
 <img src="images/terminal_cut2.png" width="500" >
 
 3. Type in the letter "n" (without quotation marks) and push Enter/Return. A new question will then appear (as shown in the red box). Then, type in the letter "y" (without quotation marks) to new question. Your screen should resemble the picture below.
-<img src="images/terminal_silence.png" width="500" >
+<img src="images/terminal_silence.png" width="700" >
 
 4. Notice, Terminal is now asking you which tier you would to silence. Type in 'zero_tier', unless explicitly instructed to silence a different tier. 
 <img src="images/terminal_silencefinal.png" width="500" >
