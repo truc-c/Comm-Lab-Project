@@ -168,6 +168,11 @@ If everything in Step 6 has been done correctly, you will be presented with text
 4. Notice, Terminal is now asking you which tier you would to silence. Type in 'zero_tier', unless explicitly instructed to silence a different tier. 
 <img src="images/terminal_silencefinal.png" width="500" >
 
+5. When python is finished with the silencing process, it will create a new .wav file labeled '...scrubbed.wav'.
+<img src="images/scrubbed_file.png" width="250" >
+
+6. Upload the scrubbed.wav file into HomeBank BOX.
+
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
