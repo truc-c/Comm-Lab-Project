@@ -166,6 +166,7 @@ If everything in Step 6 has been done correctly, you will be presented with text
 <img src="images/terminal_silence.png" width="500" >
 
 4. Notice, Terminal is now asking you which tier you would to silence. Type in 'zero_tier', unless explicitly instructed to silence a different tier. 
+<img src="images/terminal_silencefinal.png" width="500" >
 
 
 ## Modules:
