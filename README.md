@@ -162,6 +162,7 @@ If everything in Step 6 has been done correctly, you will be presented with text
 - press "0" to exit out of the Python program
 <img src="images/terminal_cut2.png" width="500" >
 
+
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
 - [pydub](https://pypi.org/project/pydub/)
