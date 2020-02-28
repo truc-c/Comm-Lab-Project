@@ -153,7 +153,7 @@ python3 -W ignore extract_and_silence.py
 If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different. If it starts with 'List of all tiers:' then you are on the right track. Your Terminal should list all of the tiers that were previously created in your .eaf file. However, if it is different, you may need to redo step 6. Click on the image if it is too small to read.
 <img src="images/terminal_instruct.png" width="800" >
 
-1. Type in a tier name (e.g. Dania_cut) into the Terminal and press Enter/Return. The Terminal should then display all annotations of that tier. Below is a picture:
+1. Type in a tier name (e.g. Dania_cut) into the Terminal and press Enter/Return. Feel free to choose any tier of your interest, it does not matter which tier you choose because we are not silencing it at this point. You will instructed which tier to specifically silence later in the steps. This is simply for you to explore. The Terminal should display all annotations of that tier. Below is a picture for reference:
 <img src="images/terminal_cut.png" width="700" >
 
 2. Once in Terminal, scroll all the way to the bottom after the annotations. You will be presented with the following question and options to choose from. 
@@ -161,6 +161,11 @@ If everything in Step 6 has been done correctly, you will be presented with text
 - press 'n' to continue on to the audio silencing process
 - press "0" to exit out of the Python program
 <img src="images/terminal_cut2.png" width="500" >
+
+3. Type in the letter "n" (without quotation marks) and push Enter/Return. A new question will then appear (as shown in the red box). Then, type in the letter "y" (without quotation marks) to new question. Your screen should resemble the picture below.
+<img src="images/terminal_silence.png" width="500" >
+
+4. Notice, Terminal is now asking you which tier you would to silence. Type in 'zero_tier', unless explicitly instructed to silence a different tier. 
 
 
 ## Modules:
