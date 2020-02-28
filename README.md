@@ -150,8 +150,17 @@ python3 -W ignore extract_and_silence.py
 
 ## Step 7: Follow the Instructions in Terminal
 
-If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different.  If it starts with 'List of all tiers:' then you're on the right track.  However, if it is different you may need to redo step 6.  Click on the image if it is too small to read.
-<img src="images/terminal_instruct.png" width="700" >
+If everything in Step 6 has been done correctly, you will be presented with text similar to the one in the image below in the red box, but a bit different. If it starts with 'List of all tiers:' then you are on the right track. Your Terminal should list all of the tiers that were previously created in your .eaf file. However, if it is different, you may need to redo step 6. Click on the image if it is too small to read.
+<img src="images/terminal_instruct.png" width="800" >
+
+1. Type in a tier name (e.g. Dania_cut) into the Terminal and press Enter/Return. The Terminal should then display all annotations of that tier. Below is a picture:
+<img src="images/terminal_cut.png" width="700" >
+
+2. Once in Terminal, scroll all the way to the bottom after the annotations. You will be presented with the following question and options to choose from. 
+- press 'y' to select another tier and see those annotations
+- press 'n' to continue on to the audio silencing process
+- press "0" to exit out of the Python program
+<img src="images/terminal_cut2.png" width="500" >
 
 ## Modules:
 - [xmltodict](https://pypi.org/project/xmltodict/)
