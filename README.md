@@ -25,6 +25,10 @@ UCLA Anderson School of Management: Masters of Science in Business Analytics
 Curt Chang\
 Major: Commuications w/ Computing Specialization
 
+Dania Pineda\
+Major: Applied Linguistics
+Minor: Education Studies
+
 
 Greetings,
 
