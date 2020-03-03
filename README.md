@@ -7,11 +7,11 @@ Lab of Professor Anne Warlaumont
 **Mentors:**\
 Anne Warlaumont\
 UCLA Professor\
-https://www.annewarlaumont.org
+[Emergence of Communication Lab](https://www.annewarlaumont.org)
 
 Kyle MacDonald\
 UCLA Postdoc Researcher\
-https://kemacdonald.com
+[Kyle MacDonald's Website](https://kemacdonald.com)
 
 **Contributors:**\
 Anne Warlaumont
