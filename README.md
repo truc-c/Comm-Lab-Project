@@ -26,7 +26,7 @@ Curt Chang\
 Major: Commuications w/ Computing Specialization
 
 Dania Pineda\
-Major: Applied Linguistics
+Major: Applied Linguistics\
 Minor: Education Studies
 
 
