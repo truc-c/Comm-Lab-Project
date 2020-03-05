@@ -61,14 +61,12 @@ Python version 3 is available for download here: [python](https://www.python.org
 ## Step 2: Check if pip/pip3 is installed on the computer:
 1. Terminal should still be open and you may still be in python (indicated by these >>>). Please exit out of python by typing "exit()" (without quotation marks) similar to the image below:
 <img src="images/exit_python.png" width="200" >
-2. In terminal, type "pip --version" (without quotation marks but with a space in between "pip" and "--") and if you receive a message different from what is shown in the image below (in the green underline), that may indicate that pip is not installed.  The picture below shows that if you have pip installed.
+2. In terminal, type "pip --version" (without quotation marks but with a space in between "pip" and "--") The picture below shows the output you will receive if you have pip installed.
 <img src="images/check_pip.png" width="650" >
 
 - However, if you receive a "command not found" message, this means pip/pip3 is not installed:
+<img src="images/cmd_not_found.png" width="500" >
 
-```python
-command not found
-```
 
 ## If pip/pip3 is not installed, please download pip/pip3
 1. Right click on this link -> [pip](https://bootstrap.pypa.io/get-pip.py) and select Download Linked File or Save Link As.
