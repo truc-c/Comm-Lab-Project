@@ -78,7 +78,7 @@ Python version 3 is available for download here: [python](https://www.python.org
 <img src="images/desktop.png" width="400" >
 4. Now let's run the get-pip.py file that we just downloaded.  Type 'python3 get-pip.py' (without quotation marks) into the terminal, just like it is shown in the picture. Text will automatically fill the terminal so do not be alarmed. 
 <img src="images/run_get_pip.png" width="400" >
-5. Now, let's check to see if you have successfully installed pip by typing "pip --version" (without quotation marks). The following image should appear:
+5. Now, let's check to see if you have successfully installed pip by typing "pip3 --version" (without quotation marks but with a space in between "pip3" and "--version"). The following image should appear:
 <img src="images/check_pip.png" width="650" >
 
 ## Step 3: Install pydub and xmltodict:
