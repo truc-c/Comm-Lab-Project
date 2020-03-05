@@ -83,7 +83,7 @@ Python version 3 is available for download here: [python](https://www.python.org
 
 ## Step 3: Install pydub and xmltodict:
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
-1. In your terminal, type "pip3 install pydub --user" (without the quotations) just like the picture below:
+1. In your terminal, type "pip3 install pydub --user" (without the quotations but with a space in between "pydub" and "--user") just like the picture below:
 <img src="images/pydub.png" width="400" >
 2. Next, after pydub is finishing installing, type 'pip3 install xmltodict --user' (without the quotations) just like the picture below:
 <img src="images/xmltodict.png" width="400" >
