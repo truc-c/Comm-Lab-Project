@@ -74,7 +74,7 @@ Python version 3 is available for download here: [python](https://www.python.org
 2. Click on the Finder icon in your dock, then look for the Downloads tab, and there you will find the 'get-pip.py' file.  Please move/click/drag this file to the desktop.  The pictures should help guide you:
 <img src="images/finder_dock.png" width="100" >
 <img src="images/download_folder_pip_file.png" width="300" >
-3. Go back to the terminal and type 'cd /users/AccountName/desktop' (without quotation marks).  You will be replacing 'AccountName' with your AccountName.  You can find this in the terminal.  I have encased mine in a green box as an example.  The picture should help:
+3. Go back to the terminal and type 'cd /users/AccountName/desktop' (without quotation marks, but with a space in between "cd" and "/users/...").  You will be replacing 'AccountName' with your AccountName.  You can find this in the terminal.  I have encased mine in a green box as an example.  The picture should help:
 <img src="images/desktop.png" width="400" >
 4. Now let's run the get-pip.py file that we just downloaded.  Type 'python3 get-pip.py' (without quotation marks) into the terminal, just like it is shown in the picture. Text will automatically fill the terminal so do not be alarmed. 
 <img src="images/run_get_pip.png" width="400" >
