@@ -85,14 +85,14 @@ Python version 3 is available for download here: [python](https://www.python.org
 We will use pip to install xmltodict and pydub.  These modules will be used in the silencing and parsing of the audio file and .eaf file
 1. In your terminal, type "pip3 install pydub --user" (without the quotations but with a space in between "pydub" and "--user") just like the picture below:
 <img src="images/pydub.png" width="400" >
-2. Next, after pydub is finishing installing, type 'pip3 install xmltodict --user' (without the quotations) just like the picture below:
+2. Next, after pydub is finishing installing, type 'pip3 install xmltodict --user' (without the quotations but with a space in between "xmltodict" and "--user") just like the picture below:
 <img src="images/xmltodict.png" width="400" >
 
 ## Step 4: Set/Edit the PATH Environment
 Now that the modules pydub and xmltodict have been downloaded, we need to tell Python where to look for them.
-1. In terminal, type 'cd /users/AccountName' (without the quotation marks), replace AccountName with yours.
+1. In terminal, type 'cd /users/AccountName' (without the quotation marks but with a space in between "cd" and "/users..."), replace AccountName with yours.
 <img src="images/user_directory.png" width="400" >
-2. Next, type 'nano .bash_profile' (also without the quotation marks).
+2. Next, type 'nano .bash_profile' (also without the quotation marks but with a space in between "nano" and ".bash...").
 <img src="images/nano_bash_profile.png" width="400" >
 
 3. You will then be directed to another window that looks similar to the one in the picture below. 
