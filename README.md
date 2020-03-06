@@ -29,6 +29,10 @@ Dania Pineda\
 Major: Applied Linguistics\
 Minor: Education Studies
 
+Natalie Hynes\
+Major: Communications\
+Minor: Linguistics
+
 
 Greetings,
 
