@@ -55,7 +55,7 @@ Special thank you to James Robert (http://jiaaro.com) for his guidance on using 
 ## Step 1: Here is how to check if Python 3 is already available on your desktop:
 1. Start off by holding the "cmd" button followed pushing the spacebar. The "Spotlight Search" function should then appear. Inside the "Spotlight Search" bar, type in "terminal". The following image should appear, this is the terminal window these instructions will refer to.
 <img src="images/terminal.png" width="500" >
-2. Type "python3" directly into the terminal window. If you have Python 3 installed, your output should resemble the following picture. (Note: I have added the green underline under "Python 3" and the green arrow pointing to ">>>" in order to emphasize the parts of the terminal that prove Python 3 is now initiated.Alson, The green underline in the picture shows "Phython 3.7.2" but your version could be higher than "3.7.2", so long as it is not "Python 2.x.x". 
+2. Type "python3" directly into the terminal window. If you have Python 3 installed, your output should resemble the following picture. (Note: I have added the green underline under "Python 3" and the green arrow pointing to the three greater than signs (>>>) to emphasize the parts of the terminal that show Python 3 is now initiated.  Additionally, the green underline in the picture shows "Phython 3.7.2" but your version could be higher than "3.7.2", so long as it is not "Python 2.x.x". 
 <img src="images/terminal_python.png" width="600" >
 3. Do not close terminal
 
